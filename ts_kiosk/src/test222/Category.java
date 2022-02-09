@@ -57,7 +57,6 @@ public class Category extends JFrame {
        
       pane.addTab("커피&음료", pane2);
       pane2.add("에스프레소 베리에이이션", new Panelcoff());
-      //pane2.addTab("에스프레소 베리에이션", new JLabel("하이"));
       pane2.addTab("티 베리에이션", new Panelcoff());
       pane2.addTab("음료", new JLabel("하이"));
                  
