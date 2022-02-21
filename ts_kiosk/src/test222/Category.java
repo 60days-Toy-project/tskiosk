@@ -1,6 +1,5 @@
 package test222;
 
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -444,7 +443,7 @@ class Panelcoff extends JPanel{
                   int cvh = 0;
                   int cvi = 0;
                   
-                  int quantity=1;
+                  int quantity=0;
                   int sum=0;
                     /*
                   for (int i = 0; i < rowCont; i++) {
@@ -469,10 +468,12 @@ class Panelcoff extends JPanel{
                   }
 */
                   for (int i = 0; i < rowCont; i++)
-                        quantity += (int) table.getValueAt(i, 1);
+                	  //quantity += (int) table.getValueAt(i, 1);
+                	  quantity += Integer.parseInt(String.valueOf(table.getValueAt(i, 1)));
                   
                   for (int i = 0; i < rowCont; i++)
-                     sum += (int) table.getValueAt(i, 2);
+                     //sum += (int) table.getValueAt(i, 2);
+                	  sum += Integer.parseInt(String.valueOf(table.getValueAt(i, 1))) * Integer.parseInt(String.valueOf(table.getValueAt(i, 2)));
 
                   tq.setText(String.valueOf(" 총 수량 : " + quantity + " 개 " ));
                   ts.setText(String.valueOf(" 총 금액 : " + sum + " 원 " ));
@@ -515,7 +516,7 @@ class Panelcoff extends JPanel{
                
                int quantity=0;
                int sum=0;
-
+/*
                for (int i = 0; i < rowCont; i++) {
                   if (table.getValueAt(i, 0).equals("아메리카노"))
                      cva += (int) table.getValueAt(i, 1);
@@ -536,12 +537,20 @@ class Panelcoff extends JPanel{
                   else if (table.getValueAt(i, 0).equals("에스프레소"))
                      cvi += (int) table.getValueAt(i, 1);
                }
-
-               for (int i = 0; i < rowCont; i++)
-                  sum += (int) table.getValueAt(i, 2);
+  */             
+               for (int i = 0; i < rowCont; i++) {
+            	   int tq = Integer.parseInt(String.valueOf(table.getValueAt(i, 1)));
+            	   int tc = Integer.parseInt(String.valueOf(table.getValueAt(i, 2)));
+            	   sum+=tq * tc;
+                  
+               }
+               
 
                ts.setText(String.valueOf(" 총 수량 : " + quantity + " 개 \n" + " 총 금액 : " + sum + " 원 "));
                ts.setFont(new Font("굴림체", Font.BOLD, 40));
+               
+               payScreen ps = new payScreen();
+               ps.disPayScreen(sum);
             
             }
          });
