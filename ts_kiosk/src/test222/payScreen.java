@@ -170,9 +170,12 @@ public class payScreen {
         cardbtn.addActionListener(new ActionListener() { 
             @Override
             public void actionPerformed(ActionEvent e) {
-                new Category("A TwoSome Place");
+            	//new TableRowHeaderTest();
             	//new Category(new Pos()));
-                fr.setVisible(false); // 창 안보이게 하기 
+                //frm.setVisible(false); // 창 안보이게 하기 
+            	creditCardScreen cs = new creditCardScreen();
+                cs.disCreditCardScreen(receive);
+                //fr.setVisible(false); // 창 안보이게 하기 
             }
         });
         

@@ -33,6 +33,7 @@ public class DAO {
 			res=stmt.executeQuery();
 			if(res.next()) {
 				return 1;
+				
 			}
 		} catch(SQLException e) {
 			e.printStackTrace();
