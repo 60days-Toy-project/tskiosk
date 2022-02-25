@@ -20,9 +20,22 @@ import javax.swing.JTextField;
 import javax.swing.JToggleButton;
 import javax.swing.SwingConstants;
 
-public class OptionSelction extends JFrame {
+public class OptionSelction extends JFrame{
+    private boolean stop;
+    
+    //boolean의 경우 getter은 is로 시작하게 된다. 그래서 isStop() 이다 getStop()가 아니고
+    public boolean isStop() {
+        return stop;
+    }
+
+
+    public void setStop(boolean stop) {
+        this.stop = stop;
+    }
 
 	public String Result;
+	//public String imgmenu;
+	//public int imgprice;
 	
 	int quncount = 1; // + - 버튼 누를때 수량
 	
@@ -33,10 +46,15 @@ public class OptionSelction extends JFrame {
 	String menu;
 	int price;
 	
-	public void methodTest() {
+	/*public void getInfo(String menu, int price) {
+		imgmenu = menu;
+		imgprice = price;
+	}*/
+	
+	/*public void methodTest() {
 		
 		Result = getResult(menu, price, quncount, temper, Size, TakeOut);
-	}
+	}*/
 
 	public String getResult(String menu, int price, int count, String tmeper, String Size, String takeout) {
 		String result = "";
@@ -48,15 +66,14 @@ public class OptionSelction extends JFrame {
 		return result;
 
 	}
-
+	
+	
 	public void extra(String imgmenu, int imgprice) {
 
 		// setLayout(null);
 		menu= imgmenu;
 		price = imgprice;
-		Panelcoff co =new Panelcoff();
-		co.OPflag=0;
-		
+
 		setTitle("옵션 선택");
 
 		JPanel jp1 = new JPanel();
@@ -127,7 +144,7 @@ public class OptionSelction extends JFrame {
 		String toquncount = Integer.toString(quncount);
 		textcount.setText(toquncount);
 		textcount.setBackground(Color.WHITE);
-		textcount.setEditable(false);
+		textcount.setEditable(false); //텍스트 필드 수정 못학=도록
 
 		JButton btnminus = new JButton("-");
 
@@ -342,10 +359,10 @@ public class OptionSelction extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				Panelcoff co =new Panelcoff();
-				//co.getResult(imgmenu, imgprice, quncount , temper, Size, TakeOut);
+				co.getResult(imgmenu, imgprice, quncount , temper, Size, TakeOut);
                 //System.out.println(co.Result);
-				methodTest();
-				co.OPflag=1;
+				//methodTest();
+				setStop(true);
 				dispose();
 				
 			
@@ -353,5 +370,27 @@ public class OptionSelction extends JFrame {
 
 		});
 	}
+
+	/*class dd extends Thread {
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
+			
+			while(!stop) {
+					
+	                try {
+	                	
+	                	Panelcoff co =new Panelcoff();
+	    				co.getResult(menu, price, quncount , temper, Size, TakeOut);
+	                    System.out.println(co.Result);
+	                    
+						Thread.sleep(10000);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+			}
+		}
+	}*/
 
 }
