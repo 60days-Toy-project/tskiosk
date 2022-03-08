@@ -19,59 +19,54 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JToggleButton;
 import javax.swing.SwingConstants;
-
-public class OptionSelction extends JFrame{
-    private boolean stop;
-    
-    //boolean의 경우 getter은 is로 시작하게 된다. 그래서 isStop() 이다 getStop()가 아니고
-    public boolean isStop() {
-        return stop;
-    }
+import javax.swing.SwingWorker;
 
 
-    public void setStop(boolean stop) {
-        this.stop = stop;
-    }
+
+public class OptionSelction extends JFrame {
+
+
+
 
 	public String Result;
-	//public String imgmenu;
-	//public int imgprice;
-	
+
+
 	int quncount = 1; // + - 버튼 누를때 수량
-	
+
 	String temper;
 	String Size;
 	String TakeOut;
-	
+
 	String menu;
 	int price;
-	
-	/*public void getInfo(String menu, int price) {
-		imgmenu = menu;
-		imgprice = price;
-	}*/
-	
-	/*public void methodTest() {
-		
-		Result = getResult(menu, price, quncount, temper, Size, TakeOut);
-	}*/
+
+	/*
+	 * public void getInfo(String menu, int price) { imgmenu = menu; imgprice =
+	 * price; }
+	 */
+
+	/*
+	 * public void methodTest() {
+	 * 
+	 * Result = getResult(menu, price, quncount, temper, Size, TakeOut); }
+	 */
 
 	public String getResult(String menu, int price, int count, String tmeper, String Size, String takeout) {
 		String result = "";
 
 		int cost = price * count;
-		
+
 		result = menu + "," + cost + "," + count + "," + tmeper + "," + Size + "," + takeout;
 
 		return result;
 
 	}
-	
-	
+
+	/* String imgmenu, int imgprice 인자 */
 	public void extra(String imgmenu, int imgprice) {
 
 		// setLayout(null);
-		menu= imgmenu;
+		menu = imgmenu;
 		price = imgprice;
 
 		setTitle("옵션 선택");
@@ -144,7 +139,7 @@ public class OptionSelction extends JFrame{
 		String toquncount = Integer.toString(quncount);
 		textcount.setText(toquncount);
 		textcount.setBackground(Color.WHITE);
-		textcount.setEditable(false); //텍스트 필드 수정 못학=도록
+		textcount.setEditable(false); // 텍스트 필드 수정 못학=도록
 
 		JButton btnminus = new JButton("-");
 
@@ -188,7 +183,7 @@ public class OptionSelction extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				temper = "ice";
+				temper = "I";
 			}
 
 		});
@@ -202,7 +197,7 @@ public class OptionSelction extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				Size = "레귤러";
+				Size = "R";
 			}
 
 		});
@@ -216,7 +211,7 @@ public class OptionSelction extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				Size = "라지";
+				Size = "L";
 			}
 
 		});
@@ -358,39 +353,25 @@ public class OptionSelction extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				Panelcoff co =new Panelcoff();
-				co.getResult(imgmenu, imgprice, quncount , temper, Size, TakeOut);
-                //System.out.println(co.Result);
-				//methodTest();
-				setStop(true);
-				dispose();
+				//Cart co = new Cart();
+				//co.Carts(imgmenu, imgprice, quncount, temper, Size, TakeOut);
+				//co.setData();
+				String[] newMenu = new String[3];
+                newMenu[0] = temper+"/"+imgmenu+"("+Size+")";
+                newMenu[1] = Integer.toString(quncount);
+                newMenu[2] = Integer.toString(imgprice);
+                
+				Cart.model.addRow(newMenu);
+				Cart.Qty_sum += quncount;
+				Cart.Cost_sum += imgprice*quncount;
+				Cart.SetIndex();
 				
-			
+				
+				dispose();
+
 			}
 
 		});
 	}
-
-	/*class dd extends Thread {
-		@Override
-		public void run() {
-			// TODO Auto-generated method stub
-			
-			while(!stop) {
-					
-	                try {
-	                	
-	                	Panelcoff co =new Panelcoff();
-	    				co.getResult(menu, price, quncount , temper, Size, TakeOut);
-	                    System.out.println(co.Result);
-	                    
-						Thread.sleep(10000);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-			}
-		}
-	}*/
 
 }
