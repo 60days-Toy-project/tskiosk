@@ -25,6 +25,10 @@ import javax.swing.text.PlainDocument;
 
 public class creditCardScreen {
 	
+	static String PName; //결제자 이름
+	static String PEmail; //결제자 이메일
+	static String PTel; //결제자 전화 번호
+	
 	class BoundDocument extends PlainDocument {
 		protected int charLimit;
 		protected JTextComponent textComp;
@@ -37,6 +41,12 @@ public class creditCardScreen {
 		}
 		}
 	
+public void pushname(String name, String email, String tel) {
+
+	PName = name;
+	PEmail = email;
+	PTel = tel;
+}
 	
 public void disCreditCardScreen(int receive) {
 		
@@ -56,11 +66,16 @@ public void disCreditCardScreen(int receive) {
         lb.setFont(new Font("SansSerif", Font.BOLD, 30));
         lb.setForeground(Color.WHITE);
         
-                 
-        JLabel name = new JLabel("결제자 성명");
-        fr.add(name);
-        name.setBounds(40, 120, 100, 100);
-        name.setFont(new Font("SansSerif", Font.BOLD, 13));
+        JLabel names = new JLabel("결제자 성명");
+        fr.add(names);
+        names.setBounds(40, 120, 100, 100);
+        names.setFont(new Font("SansSerif", Font.BOLD, 13));
+        
+        JLabel pname = new JLabel(PName + "");
+		fr.add(pname);
+		pname.setBounds(500,150,200,50);
+		pname.setFont(new Font("SansSerif", Font.BOLD, 13));
+        
         
         JLabel cardcom = new JLabel("카드사를 선택해주세요");
         fr.add(cardcom);
@@ -85,7 +100,7 @@ public void disCreditCardScreen(int receive) {
         cnum1.setBounds(380,320,60,30);
         cnum1.setDocument(new BoundDocument(4,cnum1));
         
-        /*
+        /* 숫자만 받는 텍스트필드 만들기 시도하는 중
         JFormattedTextField cnum = new JFormattedTextField(new NumberFormatter());
         cnum.setBounds(380, 400, 60, 30);
         cnum.addKeyListener(new KeyAdapter() {
@@ -130,10 +145,20 @@ public void disCreditCardScreen(int receive) {
         num.setBounds(40, 420, 150, 100);
         num.setFont(new Font("SansSerif", Font.BOLD, 13));
         
+        JLabel ptel = new JLabel(PTel + "");
+		fr.add(ptel);
+		ptel.setBounds(500,450,200,50);
+		ptel.setFont(new Font("SansSerif", Font.BOLD, 13));
+        
         JLabel email = new JLabel("이메일");
         fr.add(email);
         email.setBounds(40, 520, 150, 100);
         email.setFont(new Font("SansSerif", Font.BOLD, 13));
+        
+        JLabel pemail = new JLabel(PEmail + "");
+		fr.add(pemail);
+		pemail.setBounds(500,550,230,50);
+		pemail.setFont(new Font("SansSerif", Font.BOLD, 13));
         
         JLabel money = new JLabel("총 결제금액");
         fr.add(money);
@@ -155,9 +180,7 @@ public void disCreditCardScreen(int receive) {
 		fr.add(closeBtn);
 		closeBtn.setBounds(450, 770, 130, 40);
 		closeBtn.setFont(new Font("SanSerif", Font.BOLD,13));
-		
-                
-        
+		        
         fr.setVisible(true);
         
         //결제요청 버튼
@@ -173,8 +196,6 @@ public void disCreditCardScreen(int receive) {
                   fr.setVisible(false); // 창 안보이게 하기 
                   
                }
- 
-               
             }
         });
         

@@ -34,6 +34,7 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
 public class Category extends JFrame {
+	
 	public Category() {
 		this.setTitle("No Title");
 
@@ -450,11 +451,15 @@ class Panelcoff extends JPanel {
 				ts.setText(String.valueOf(" 총 금액 :  0 원 "));
 			}
 		});
+		
+	
 
 		// 나중에 창 뜨게 바꿀 것!
 		SBtn[1].addActionListener(new ActionListener() { // 결제 버튼
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
+				
 				JButton MBtn = (JButton) e.getSource();
 				int rowCont = table.getRowCount();
 				int quantity = 0;

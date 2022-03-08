@@ -1,6 +1,8 @@
 package test222;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 //import java.util.ArrayList;
 //import java.util.List;
 
@@ -14,6 +16,7 @@ public class DAO {
 	
 	private final String LOGIN = "select * from Customers where Id = ? and Pw = ? ";
 	private final String INSERT = "insert into Customers(Id,Pw,Cname,gender,birth,email,tel)" + " values(?,?,?,?,?,?,?)";
+	private final String NAME = "Select Cname from Customers where Id = ? and Pw=?";
 
 	private static DAO instance =new DAO();
 	
@@ -22,6 +25,11 @@ public class DAO {
 	}
 	
 	public int idpw(String id, String passwd) {
+		
+		ArrayList<DTO> arr = new ArrayList<DTO>();
+		//ArrayList arr2 = new ArrayList();
+				
+        DTO mDto = null;
 		
 		conn = Database.getConnection();
 		try {
@@ -32,7 +40,31 @@ public class DAO {
 			
 			res=stmt.executeQuery();
 			if(res.next()) {
-				return 1;
+				 mDto = new DTO();
+				 mDto.setId(res.getString("Id"));
+				 mDto.setPassword(res.getString("Pw"));
+	             mDto.setName(res.getString("Cname"));
+	             mDto.setGender(res.getString("gender"));
+	             mDto.setBirth(res.getString("birth"));
+	             mDto.setEmail(res.getString("email"));
+	             mDto.setTel(res.getString("tel"));
+	                          	                 
+	             arr.add(mDto); // mDto arr배열에 추가
+	                       
+	             String information = arr.toString(); //배열 String으로 변환하기
+	             	            
+	             String [] info = information.split("/"); // "/"를 기준으로 나누기
+	             //System.out.println("나눈거"+Arrays.toString(info));
+	             	            
+	             String pname = info[1]; 
+	             String pemail = info[2];
+	             String ptel = info[3];
+	             
+	             //로그인 할 때 사용자 정보, 이메일, 전화번호 정보 넘기기
+	             creditCardScreen ccs = new creditCardScreen();
+	             ccs.pushname(pname, pemail, ptel);
+	            
+	            return 1;
 				
 			}
 		} catch(SQLException e) {
@@ -42,6 +74,7 @@ public class DAO {
 		return -1;
 	}
 	
+
 	public int insertMember(DTO mdto) {
 
 	    conn = Database.getConnection();

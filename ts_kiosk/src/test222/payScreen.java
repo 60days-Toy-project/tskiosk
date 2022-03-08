@@ -15,8 +15,9 @@ import javax.swing.JTabbedPane;
 //결제하기 버튼 누르면 나오는 결제창 화면
 public class payScreen {
 	
+ 	
 	public void disPayScreen(int sum) {
-		
+		    			
 		int discount = 0;
 		int pay = 0;
 		int receive = sum-discount-pay;
@@ -173,6 +174,7 @@ public class payScreen {
             	//new TableRowHeaderTest();
             	//new Category(new Pos()));
                 //frm.setVisible(false); // 창 안보이게 하기 
+            	
             	creditCardScreen cs = new creditCardScreen();
                 cs.disCreditCardScreen(receive);
                 //fr.setVisible(false); // 창 안보이게 하기 

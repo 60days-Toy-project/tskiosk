@@ -59,7 +59,11 @@ public class DTO {
 
 	@Override
 	public String toString() {
-	    return "ManagementDTO [id=" + id + ", password=" + password + ", name=" + name + ", gender="
-	            + gender + ",birth ="+ birth + ", email="+ email +" tel=" + tel + "]";
+	    //return "ManagementDTO [id=" + id + ", password=" + password + ", name=" + name + ", gender="
+	      //      + gender + ",birth ="+ birth + ", email="+ email +" tel=" + tel + "]";
+		
+		// "/"를 기준으로 나누기 위해서
+		return "/"+name + "/" + email +"/" + tel + "/"; 
+		    
 	   }
 }
