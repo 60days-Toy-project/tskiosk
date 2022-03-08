@@ -49,7 +49,7 @@ public class Cart extends JPanel {
 
 		setBackground(new Color(255, 255, 204));
 		// DefaultTableModel m = (DefaultTableModel) table.getModel();
-		table.setRowHeight(40);
+		table.setRowHeight(50);
 		table.getTableHeader().setFont(new Font("±¼¸²Ã¼", Font.BOLD, 15));
 		table.getTableHeader().setBackground(Color.white);
 		table.setBackground(Color.orange);
