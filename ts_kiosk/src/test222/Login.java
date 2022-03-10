@@ -11,18 +11,19 @@ public class Login extends JFrame{
 		setTitle("로그인");
 		JPanel title = new JPanel();
 		
-		JLabel login = new JLabel("로그인 화면");
+		JLabel login = new JLabel("LOGIN");
 		
 		login.setForeground(new Color(5,0,153));
-		login.setFont(new Font("함초롱바탕",Font.BOLD,25));
+		login.setFont(new Font("맑은 고딕",Font.BOLD,30));
 		title.add(login);//컴포넌트 컨테이너에 올림
 		
 		JPanel jp1 = new JPanel();
 		jp1.setLayout(new GridLayout(3, 2));
 		
+		
 		JPanel idPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 		JLabel jlID1 = new JLabel("아이디 : ", JLabel.CENTER);
-		
+						
 		idPanel.add(jlID1);
 		
 		JPanel idPanel2 = new JPanel(new FlowLayout(FlowLayout.LEFT));

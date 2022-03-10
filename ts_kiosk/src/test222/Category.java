@@ -214,7 +214,6 @@ class Panelcoff extends JPanel {
 			scrollSingle.getVerticalScrollBar().setUnitIncrement(16);
 
 			add(scrollSingle);
-
 		}
 	}
 

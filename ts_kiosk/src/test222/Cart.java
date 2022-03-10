@@ -116,6 +116,7 @@ public class Cart extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			int result = JOptionPane.showConfirmDialog(null, "처음으로 돌아가시겠습니까?", "알림", JOptionPane.YES_NO_OPTION);
 			if (result == JOptionPane.YES_OPTION) {
+				//Btn.setVisible(false);
 				FirstScreen fs = new FirstScreen();
 				fs.disScreen();
 

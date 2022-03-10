@@ -301,9 +301,9 @@ public class OptionSelction extends JFrame {
 		add(jp1);
 		add(panel, BorderLayout.SOUTH);
 
-		setBounds(100, 100, 300, 350);
+		setBounds(400, 0, 300, 350);
 
-		setSize(800, 900);
+		setSize(800, 830);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 
