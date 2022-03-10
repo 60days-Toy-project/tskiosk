@@ -37,8 +37,11 @@ public class OptionSelction extends JFrame {
 	String Size;
 	String TakeOut;
 
-	String menu;
-	int price;
+	String dmenu;//음료 메뉴
+	int dprice;//음료 가격
+	
+	String imenu;//음료 외 메뉴
+	int iprice;// 음료 외 가격
 
 	/*
 	 * public void getInfo(String menu, int price) { imgmenu = menu; imgprice =
@@ -66,8 +69,8 @@ public class OptionSelction extends JFrame {
 	public void extra(String imgmenu, int imgprice) {
 
 		// setLayout(null);
-		menu = imgmenu;
-		price = imgprice;
+		dmenu = imgmenu;
+		dprice = imgprice;
 
 		setTitle("옵션 선택");
 
@@ -362,6 +365,240 @@ public class OptionSelction extends JFrame {
                 newMenu[2] = Integer.toString(imgprice);
                 
 				Cart.model.addRow(newMenu);
+				Cart.Qty_sum += quncount;
+				Cart.Cost_sum += imgprice*quncount;
+				Cart.SetIndex();
+				
+				
+				dispose();
+
+			}
+
+		});
+	}
+	public void Icrcreamextra(String imgmenu, int imgprice) {
+
+		// setLayout(null);
+		imenu = imgmenu;
+		iprice = imgprice;
+
+		setTitle("옵션 선택");
+
+		JPanel jp1 = new JPanel();
+		jp1.setLayout(null);
+
+		JPanel title = new JPanel();
+
+		JLabel optionOrder = new JLabel("옵션 선택");
+
+		optionOrder.setBounds(0, 0, 800, 100);
+		optionOrder.setForeground(new Color(255, 255, 255));
+		optionOrder.setBackground(new Color(255, 0, 102));
+		optionOrder.setOpaque(true);
+		optionOrder.setHorizontalAlignment(JLabel.CENTER);
+		optionOrder.setFont(new Font("함초롱바탕", Font.BOLD, 30));
+		jp1.add(optionOrder);// 컴포넌트 컨테이너에 올림
+
+		JButton cancelbtn = new JButton("이전");
+		cancelbtn.setPreferredSize(new Dimension(180, 50));
+		cancelbtn.setFont(new Font("SansSerif", Font.BOLD, 30));
+		cancelbtn.setForeground(Color.WHITE);
+		cancelbtn.setBackground(Color.GRAY);
+
+		JButton addbtn = new JButton("담기");
+		addbtn.setPreferredSize(new Dimension(180, 50));
+		addbtn.setFont(new Font("SansSerif", Font.BOLD, 30));
+		addbtn.setForeground(Color.WHITE);
+		addbtn.setBackground(new Color(255, 0, 102));
+
+		JLabel imgLabel = new JLabel();// 제품 사진
+
+		// 아이콘 생성
+		ImageIcon icon = new ImageIcon("image/" + imgmenu + ".jpg");
+		imgLabel.setIcon(icon);
+
+		// 라벨 설정(크기, 정렬...)
+		imgLabel.setBounds(50, 120, 260, 260);
+
+		// 프레임에 컴포넌트 추가
+		// getContentPane().add(imgLabel);
+		jp1.add(imgLabel);
+
+		// 제품 이름
+		JLabel menuname = new JLabel(imgmenu);
+
+		menuname.setBounds(80, 300, 220, 220);
+
+		menuname.setHorizontalAlignment(JLabel.CENTER);
+		menuname.setFont(new Font("SansSerif", Font.PLAIN, 25));
+
+		jp1.add(menuname);
+
+		String topirce = Integer.toString(imgprice);
+		JLabel price = new JLabel(topirce + "원");
+		price.setFont(new Font("SansSerif", Font.BOLD, 30));
+		price.setHorizontalAlignment(JLabel.CENTER);
+		price.setBounds(80, 390, 220, 220);
+
+		jp1.add(price);
+
+		JPanel jpQuanty = new JPanel(); // - 수량 +
+		// jpQuanty.setLayout(null);
+
+		jpQuanty.setLayout(new FlowLayout(FlowLayout.CENTER));
+
+		JTextField textcount = new JTextField(5);// 수량 기본값 1
+
+		String toquncount = Integer.toString(quncount);
+		textcount.setText(toquncount);
+		textcount.setBackground(Color.WHITE);
+		textcount.setEditable(false); // 텍스트 필드 수정 못학=도록
+
+		JButton btnminus = new JButton("-");
+
+		JButton btnplus = new JButton("+");
+
+		jpQuanty.setBounds(50, 520, 260, 260);
+
+		jpQuanty.add(btnminus);
+		jpQuanty.add(textcount);
+		jpQuanty.add(btnplus);
+
+		jp1.add(jpQuanty);
+
+		// 옵션 선택 토글 버튼들
+
+
+		ImageIcon mug = new ImageIcon("image/icon_mug.png");
+		ImageIcon takeaway = new ImageIcon("image/icon_takeaway.png");
+
+		// 선택 안되어있을때 회색 아이콘 이미지
+
+		ImageIcon gmug = new ImageIcon("image/icon_gmug.png");
+		ImageIcon gtakeaway = new ImageIcon("image/icon_gtakeaway.png");
+
+
+		JToggleButton jtbmug = new JToggleButton("매장", gmug);
+		JToggleButton jtbtakeaway = new JToggleButton("포장", gtakeaway);
+
+		jtbmug.setBackground(Color.WHITE);
+		jtbmug.setHorizontalTextPosition(SwingConstants.CENTER);
+		jtbmug.setVerticalTextPosition(SwingConstants.BOTTOM);
+		jtbmug.setSelectedIcon(mug);
+		jtbmug.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				TakeOut = "매장";
+			}
+
+		});
+
+		jtbtakeaway.setBackground(Color.WHITE);
+		jtbtakeaway.setHorizontalTextPosition(SwingConstants.CENTER);
+		jtbtakeaway.setVerticalTextPosition(SwingConstants.BOTTOM);
+		jtbtakeaway.setSelectedIcon(takeaway);
+		jtbtakeaway.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				TakeOut = "포장";
+			}
+
+		});
+
+
+		ButtonGroup bg3 = new ButtonGroup();
+
+
+		bg3.add(jtbmug);
+		bg3.add(jtbtakeaway);
+
+		JPanel text3 = new JPanel();
+		text3.setLayout(new FlowLayout(FlowLayout.LEFT));
+		text3.add(new JLabel("1.포장"));
+		text3.setBounds(400, 220, 70, 30);
+		jp1.add(text3);
+
+		JPanel takeout = new JPanel();
+		takeout.setLayout(new FlowLayout(FlowLayout.LEFT));
+		takeout.add(jtbmug);
+		takeout.add(jtbtakeaway);
+		takeout.setBounds(400, 280, 300, 150);
+		jp1.add(takeout);
+
+		JPanel panel = new JPanel();
+		panel.add(cancelbtn);
+		panel.add(addbtn);
+
+		// add(title, BorderLayout.NORTH);
+
+		add(jp1);
+		add(panel, BorderLayout.SOUTH);
+
+		setBounds(400, 0, 300, 350);
+
+		setSize(800, 830);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setVisible(true);
+
+		btnplus.addActionListener(new java.awt.event.ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				quncount += 1;
+				String toquncount = Integer.toString(quncount);
+				textcount.setText(toquncount);
+
+			}
+
+		});
+
+		btnminus.addActionListener(new java.awt.event.ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				if (quncount > 1) {
+					quncount -= 1;
+				} else {
+					quncount = 1;
+				}
+
+				String toquncount = Integer.toString(quncount);
+				textcount.setText(toquncount);
+
+			}
+
+		});
+
+		cancelbtn.addActionListener(new java.awt.event.ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+
+				dispose();
+			}
+
+		});
+		addbtn.addActionListener(new java.awt.event.ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				//Cart co = new Cart();
+				//co.Carts(imgmenu, imgprice, quncount, temper, Size, TakeOut);
+				//co.setData();
+				String[] putMenu = new String[3];
+				putMenu[0] = imgmenu;
+				putMenu[1] = Integer.toString(quncount);
+				putMenu[2] = Integer.toString(imgprice);
+                
+				Cart.model.addRow(putMenu);
 				Cart.Qty_sum += quncount;
 				Cart.Cost_sum += imgprice*quncount;
 				Cart.SetIndex();
