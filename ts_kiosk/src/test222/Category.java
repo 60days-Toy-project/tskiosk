@@ -35,6 +35,9 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
 public class Category extends JFrame {
+	
+	private JPanel orderPan = new Orderpan(this);
+	
 	public Category() {
 		this.setTitle("No Title");
 
@@ -45,6 +48,7 @@ public class Category extends JFrame {
 		JTabbedPane pane = createTabbedPane(); // 탭 패널
 		JPanel pn = createPanel(); // 장바구니 패널
 		// this.add(pane, BorderLayout.CENTER);
+		
 		this.add(pane);
 		this.add(pn);
 	}
@@ -53,12 +57,11 @@ public class Category extends JFrame {
 		JPanel pn = new JPanel();
 		pn.setLayout(null);
 
-		Orderpan sc = new Orderpan();
-		sc.Orderpan();
+		
 
-		sc.setSize(550, 800);
-		sc.setLocation(555, 50);
-		pn.add(sc);
+		orderPan.setSize(550, 800);
+		orderPan.setLocation(555, 50);
+		pn.add(orderPan);
 
 		return pn;
 
@@ -109,11 +112,12 @@ public class Category extends JFrame {
 }
 
 class Orderpan extends JPanel { // 장바구니 담을 패널
+	private JFrame f;
 	public String Result = "";
 
-	public void Orderpan() {
-
-		Cart csCart = new Cart();
+	public  Orderpan(JFrame f) {
+		this.f = f;
+		Cart csCart = new Cart(f);
 		setLayout(null);
 		csCart.setSize(555, 800);
 		csCart.setLocation(1, 1);

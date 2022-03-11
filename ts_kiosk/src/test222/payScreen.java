@@ -14,10 +14,10 @@ import javax.swing.JTabbedPane;
 
 //결제하기 버튼 누르면 나오는 결제창 화면
 public class payScreen {
+	private JFrame mainf;//메인프레임
 	
- 	
-	public void disPayScreen(int sum) {
-		    			
+	public void disPayScreen(JFrame mainf,int sum) {
+		this.mainf=mainf;
 		int discount = 0;
 		int pay = 0;
 		int receive = sum-discount-pay;
@@ -176,7 +176,7 @@ public class payScreen {
                 //frm.setVisible(false); // 창 안보이게 하기 
             	
             	creditCardScreen cs = new creditCardScreen();
-                cs.disCreditCardScreen(receive);
+                cs.disCreditCardScreen(mainf,fr,receive); //메인프레임, 현재 프레임 같이 넘기기
                 //fr.setVisible(false); // 창 안보이게 하기 
             }
         });

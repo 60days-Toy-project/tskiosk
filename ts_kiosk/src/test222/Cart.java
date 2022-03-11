@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.AbstractCellEditor;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -21,6 +22,8 @@ import javax.swing.table.TableCellRenderer;
 
 public class Cart extends JPanel {
 
+	private JFrame mainf; //메인프레임
+	
 	public String Result;
 	
 	public static int Cost_sum; //총 가격
@@ -42,8 +45,10 @@ public class Cart extends JPanel {
 	JButton PayBtn = new JButton("결제하기"); // 결제 하기
 	JPanel Btn = new JPanel();
 
-	public Cart() {
+	public Cart(JFrame mainf) {
 
+		this.mainf = mainf;
+		
 		model = new DefaultTableModel(Data, ColName);
 		table = new JTable(model);
 
@@ -109,7 +114,7 @@ public class Cart extends JPanel {
 			JButton MBtn = (JButton) e.getSource();
 
 			payScreen ps = new payScreen();
-			ps.disPayScreen(Cost_sum);
+			ps.disPayScreen(mainf,Cost_sum);
 		}
 	}
 	class HomeBtnActionListener implements ActionListener{ // 처음화면
@@ -119,6 +124,7 @@ public class Cart extends JPanel {
 				//Btn.setVisible(false);
 				FirstScreen fs = new FirstScreen();
 				fs.disScreen();
+				mainf.setVisible(false);
 
 			}
 		}

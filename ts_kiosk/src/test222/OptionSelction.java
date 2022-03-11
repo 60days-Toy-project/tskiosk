@@ -159,6 +159,7 @@ public class OptionSelction extends JFrame {
 		// 옵션 선택 토글 버튼들
 
 		ImageIcon ice = new ImageIcon("image/icon_ice.png");
+		ImageIcon hot = new ImageIcon("image/icon_hot.png");
 		ImageIcon regular = new ImageIcon("image/icon_Regular.png");
 		ImageIcon large = new ImageIcon("image/icon_Large.png");
 		ImageIcon mug = new ImageIcon("image/icon_mug.png");
@@ -166,16 +167,18 @@ public class OptionSelction extends JFrame {
 
 		// 선택 안되어있을때 회색 아이콘 이미지
 		ImageIcon gice = new ImageIcon("image/icon_gice.png");
+		ImageIcon ghot = new ImageIcon("image/icon_ghot.png");
 		ImageIcon gregular = new ImageIcon("image/icon_gRegular.png");
 		ImageIcon glarge = new ImageIcon("image/icon_gLarge.png");
 		ImageIcon gmug = new ImageIcon("image/icon_gmug.png");
 		ImageIcon gtakeaway = new ImageIcon("image/icon_gtakeaway.png");
 
-		JToggleButton jtbice = new JToggleButton("아이스", gice);
+		JToggleButton jtbice = new JToggleButton("차갑게", gice);
+		JToggleButton jtbhot = new JToggleButton("뜨겁게", ghot);
 		JToggleButton jtbregular = new JToggleButton("레귤러", gregular);
 		JToggleButton jtblarge = new JToggleButton("라지", glarge);
-		JToggleButton jtbmug = new JToggleButton("머그컵", gmug);
-		JToggleButton jtbtakeaway = new JToggleButton("일회용컵", gtakeaway);
+		JToggleButton jtbmug = new JToggleButton("매장이용", gmug);
+		JToggleButton jtbtakeaway = new JToggleButton("포장", gtakeaway);
 
 		jtbice.setBackground(Color.WHITE);
 		jtbice.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -187,6 +190,20 @@ public class OptionSelction extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				temper = "I";
+			}
+
+		});
+		
+		jtbhot.setBackground(Color.WHITE);
+		jtbhot.setHorizontalTextPosition(SwingConstants.CENTER);
+		jtbhot.setVerticalTextPosition(SwingConstants.BOTTOM);
+		jtbhot.setSelectedIcon(hot);
+		jtbhot.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				temper = "H";
 			}
 
 		});
@@ -228,7 +245,7 @@ public class OptionSelction extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				TakeOut = "머그컵";
+				TakeOut = "매장 이용";
 			}
 
 		});
@@ -242,7 +259,7 @@ public class OptionSelction extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				TakeOut = "일회용컵";
+				TakeOut = "포장";
 			}
 
 		});
@@ -252,13 +269,14 @@ public class OptionSelction extends JFrame {
 		ButtonGroup bg3 = new ButtonGroup();
 
 		bg1.add(jtbice);
+		bg1.add(jtbhot);
 		bg2.add(jtbregular);
 		bg2.add(jtblarge);
 		bg3.add(jtbmug);
 		bg3.add(jtbtakeaway);
 
 		JPanel text1 = new JPanel();
-		text1.add(new JLabel("1.아이스"));
+		text1.add(new JLabel("1.온도"));
 		text1.setLayout(new FlowLayout(FlowLayout.LEFT));
 		text1.setBounds(400, 130, 70, 30);
 		jp1.add(text1);
@@ -277,8 +295,9 @@ public class OptionSelction extends JFrame {
 
 		JPanel ice1 = new JPanel();
 		ice1.add(jtbice);
+		ice1.add(jtbhot);
 		ice1.setLayout(new FlowLayout(FlowLayout.LEFT));
-		ice1.setBounds(400, 150, 150, 150);
+		ice1.setBounds(400, 150, 300, 150);
 		jp1.add(ice1);
 
 		JPanel cupsize = new JPanel();
@@ -478,7 +497,7 @@ public class OptionSelction extends JFrame {
 		ImageIcon gtakeaway = new ImageIcon("image/icon_gtakeaway.png");
 
 
-		JToggleButton jtbmug = new JToggleButton("매장", gmug);
+		JToggleButton jtbmug = new JToggleButton("매장이용", gmug);
 		JToggleButton jtbtakeaway = new JToggleButton("포장", gtakeaway);
 
 		jtbmug.setBackground(Color.WHITE);
@@ -490,7 +509,7 @@ public class OptionSelction extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				TakeOut = "매장";
+				TakeOut = "매장이용";
 			}
 
 		});
