@@ -228,7 +228,7 @@ class Paneltea extends JPanel {
 	JButton[] MBtn = new JButton[11];
 	String[] menu = { "로얄밀크티", "블랙티", "그린티라떼", "얼그레이", "오렌지자몽티", "유자레몬티", "잉글리쉬브렉퍼스트", "제주유기농녹차", "카모마일", "애플민트티",
 			"민트" };
-	int[] price = { 4500, 5000, 5500, 5900, 6000, 5500, 5500, 6500, 5000, 6500, 6500 };
+	int[] price = { 5500, 5100, 5100, 5200, 6100, 6100, 5100, 4800, 5100, 5100,6100 };
 
 	JTextField tq = new JTextField(30); // 총 수량
 	JTextField ts = new JTextField(40); // 총 가격
@@ -310,7 +310,7 @@ class Paneldrink extends JPanel {
 	JButton[] MBtn = new JButton[10];
 	String[] menu = { "고구마라떼", "민트초코프라페", "복숭아에이드", "생딸기가득주스", "치즈크럼블딸기쉐이크", "샹그리아에이드", "바닐라밀크쉐이크", "레몬셔벗에이드",
 			"쑥라떼", "망고프라페" };
-	int[] price = { 4500, 5000, 5500, 5900, 6000, 5500, 5500, 6500, 5000, 6500 };
+	int[] price = { 5200, 5800, 6000, 6000, 6300, 6000, 5600, 6500, 5500, 5500 };
 
 	JTextField tq = new JTextField(30); // 총 수량
 	JTextField ts = new JTextField(40); // 총 가격
