@@ -791,7 +791,7 @@ public class OptionSelction extends JFrame {
 
 				// JButton btnplus2 = new JButton("+");
 
-				jpqcandle.setBounds(500, 290, 200, 240);
+				jpqcandle.setBounds(500, 310, 200, 240);
 
 				jpqcandle.add(bcandle);
 				jpqcandle.add(btnminus1);
@@ -926,34 +926,34 @@ public class OptionSelction extends JFrame {
 		JPanel text2 = new JPanel();
 		text2.setLayout(new FlowLayout(FlowLayout.LEFT));
 		text2.add(new JLabel("2.ÆøÁ×"));
-		text2.setBounds(400, 360, 70, 30);
+		text2.setBounds(400, 390, 70, 30);
 		jp1.add(text2);
 
 		JPanel text3 = new JPanel();
 		text3.setLayout(new FlowLayout(FlowLayout.LEFT));
 		text3.add(new JLabel("3.Ä®"));
-		text3.setBounds(400, 550, 70, 30);
+		text3.setBounds(400, 580, 70, 30);
 		jp1.add(text3);
 
 		JPanel jpcandle = new JPanel();
 		jpcandle.setLayout(new FlowLayout(FlowLayout.LEFT));
 		jpcandle.add(jtbno1);
 		jpcandle.add(jtbcandle);
-		jpcandle.setBounds(400, 130, 300, 150);
+		jpcandle.setBounds(400, 140, 300, 150);
 		jp1.add(jpcandle);
 
 		JPanel firecr = new JPanel();
 		firecr.setLayout(new FlowLayout(FlowLayout.LEFT));
 		firecr.add(jtbno2);
 		firecr.add(jtbfirecracker);
-		firecr.setBounds(400, 380, 300, 150);
+		firecr.setBounds(400, 410, 300, 150);
 		jp1.add(firecr);
 
 		JPanel jpknife = new JPanel();
 		jpknife.setLayout(new FlowLayout(FlowLayout.LEFT));
 		jpknife.add(jtbno3);
 		jpknife.add(jtbknife);
-		jpknife.setBounds(400, 570, 300, 150);
+		jpknife.setBounds(400, 600, 300, 150);
 		jp1.add(jpknife);
 
 		JPanel panel = new JPanel();
@@ -967,7 +967,7 @@ public class OptionSelction extends JFrame {
 
 		setBounds(400, 0, 300, 350);
 
-		setSize(800, 830);
+		setSize(800, 900);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 

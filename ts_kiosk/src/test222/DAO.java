@@ -12,14 +12,31 @@ public class DAO {
 	private Connection conn = null;
 	private PreparedStatement stmt = null;
 	private ResultSet res = null;
-
 	private final String LOGIN = "select * from Customers where Id = ? and Pw = ? ";
+	private final String NAME = "Select Cname from Customers where Id = ? and Pw=?";
+	
+	//고객 정보 DB 
 	private final String INSERT = "insert into Customers(Id,Pw,Cname,gender,birth,email,tel)"
 			+ " values(?,?,?,?,?,?,?)";
-	private final String NAME = "Select Cname from Customers where Id = ? and Pw=?";
 	private final String UPDATE = "UPDATE Customers SET Pw=?,Cname=?, gender=?, birth=?, email=?, tel=? "
 			+ "where Id=?";
 	private final String SELECT = "select Id, Pw, Cname, gender, birth, email,tel from Customers";
+	private final String DELETE = "delete from  Customers where id= ?";
+	private final String SEARCH_id = "select * from Customers where Id = ?";
+	private final String SEARCH_name = "select * from Customers where Cname = ?";
+	private final String SEARCH_gender = "select * from Customers where gender = ?";
+	
+	//메뉴 정보 DB
+	private final String MINSERT = "insert into product(Category,Sub,Subkey,Qty,Price,Realeasedate)"
+			+ " values(?,?,?,?,?,?)";
+
+	private final String MUPDATE = "UPDATE product SET Category=?, Subkey=?, Qty=?, Price=?, Realeasedate=? "
+			+ "where Sub=?";
+	private final String MSELECT = "select Category, Sub, Subkey, Qty, Price, Realeasedate from product";
+	private final String MDELETE = "delete from product where Sub= ?";
+	
+	
+	
 	private static DAO instance = new DAO();
 
 	public static DAO getInstance() {
@@ -134,7 +151,7 @@ public class DAO {
 			stmt = conn.prepareStatement(SELECT);
 			res = stmt.executeQuery();
 			while (res.next()) { // 각각 값을 가져와서 테이블값들을 추가
-				Admin_member.model.addRow(new Object[] {
+				makeTable.model.addRow(new Object[] {
 						res.getString("Id"), res.getString("Pw"),
 						res.getString("Cname"), res.getString("gender"), 
 						res.getString("birth"), res.getString("email"),
@@ -147,4 +164,147 @@ public class DAO {
 		}
 		return -1;
 	}
+	public int deletemember(String id) {//고객 정보 삭제
+		
+		conn = Database.getConnection();
+
+		try {
+			stmt = conn.prepareStatement(DELETE);
+			stmt.setString(1, id);
+			stmt.executeUpdate();
+			
+			return 1;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
+	}
+	
+	public int searchmember(String field, String st) {//검색
+		
+		conn = Database.getConnection();
+
+		try {
+			if(field =="Id")
+			{
+				stmt = conn.prepareStatement(SEARCH_id);
+			}
+			else if(field =="Cname")
+			{
+				stmt = conn.prepareStatement(SEARCH_name);
+			}
+			else if(field =="gender") 
+			{
+				stmt = conn.prepareStatement(SEARCH_gender);
+			}
+			
+			
+			stmt.setString(1, st);
+			
+			res = stmt.executeQuery();
+			while (res.next()) { // 각각 값을 가져와서 테이블값들을 추가
+				makeTable.model.addRow(new Object[] {
+						res.getString("Id"), res.getString("Pw"),
+						res.getString("Cname"), res.getString("gender"), 
+						res.getString("birth"), res.getString("email"),
+						res.getString("tel") });
+			}
+			return 1;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
+	}
+	
+	
+	
+	//메뉴 관련
+	public int insertmenu(Admin_DTO adto) { //새로 추가
+
+		conn = Database.getConnection();
+
+		try {
+			stmt = conn.prepareStatement(MINSERT);
+
+			stmt.setString(1, adto.getCategory());
+			stmt.setString(2, adto.getSub());
+			stmt.setString(3, adto.getSubkey());
+			stmt.setString(4, adto.getQty());
+			stmt.setString(5, adto.getPrice());
+			stmt.setString(6, adto.getRdate());
+			
+			stmt.executeUpdate();
+
+			return 1;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
+	}
+
+	public int updatemenu(Admin_DTO adto) { //고객정보 수정 후 업데이트
+
+		conn = Database.getConnection();
+
+		try {
+			stmt = conn.prepareStatement(MUPDATE);
+
+			stmt.setString(1, adto.getCategory());
+			stmt.setString(2, adto.getSubkey());
+			stmt.setString(3, adto.getQty());
+			stmt.setString(4, adto.getPrice());
+			stmt.setString(5, adto.getRdate());
+			stmt.setString(6, adto.getSub());
+			
+
+			stmt.executeUpdate();
+
+			return 1;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
+	}
+
+	public int selectmenu() { //Customers 테이블 항목 전체 불러오기
+
+		conn = Database.getConnection();
+
+		try {
+			stmt = conn.prepareStatement(MSELECT);
+			res = stmt.executeQuery();
+			while (res.next()) { // 각각 값을 가져와서 테이블값들을 추가
+				menumakeTable.model.addRow(new Object[] {
+						res.getString("Category"),res.getString("Sub"), 
+						res.getString("Subkey"),res.getString("Qty"), 
+						res.getString("Price"), res.getString("Realeasedate") });
+			}
+			return 1;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
+	}
+	public int deletemenu(String sub) {//고객 정보 삭제
+		
+		conn = Database.getConnection();
+
+		try {
+			stmt = conn.prepareStatement(MDELETE);
+			stmt.setString(1, sub);
+			stmt.executeUpdate();
+			
+			return 1;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
+	}
+	
 }
