@@ -58,14 +58,15 @@ public class DAO {
 
 				String[] info = information.split("/"); // "/"를 기준으로 나누기
 				// System.out.println("나눈거"+Arrays.toString(info));
-
-				String pname = info[1];
-				String pemail = info[2];
-				String ptel = info[3];
+                  
+				String pid = info[1];
+				String pname = info[2];
+				String pemail = info[3];
+				String ptel = info[4];
 
 				// 로그인 할 때 사용자 정보, 이메일, 전화번호 정보 넘기기
 				creditCardScreen ccs = new creditCardScreen();
-				ccs.pushname(pname, pemail, ptel);
+				ccs.pushname(pid, pname, pemail, ptel);
 
 				return 1;
 

@@ -47,18 +47,18 @@ public class Admin_main extends JFrame{
 		productbtn.setForeground(Color.WHITE);
 		productbtn.setBackground(new Color(240, 0, 98));
 		
-		JButton ordertbtn = new JButton("<html><body>林巩<br>包府</body></html>");
-		ordertbtn.setPreferredSize(new Dimension(200,210));
-		ordertbtn.setFont(new Font("SansSerif", Font.BOLD, 30));
-		ordertbtn.setForeground(Color.WHITE);
-		ordertbtn.setBackground(new Color(240, 0, 98));
+		JButton orderbtn = new JButton("<html><body>林巩<br>包府</body></html>");
+		orderbtn.setPreferredSize(new Dimension(200,210));
+		orderbtn.setFont(new Font("SansSerif", Font.BOLD, 30));
+		orderbtn.setForeground(Color.WHITE);
+		orderbtn.setBackground(new Color(240, 0, 98));
 		
 		JPanel btnset = new JPanel();
 		btnset.setLayout(new FlowLayout(FlowLayout.LEFT));
 		btnset.setBounds(1,370,640, 310);
 		btnset.add(memberbtn);
 		btnset.add(productbtn);
-		btnset.add(ordertbtn);
+		btnset.add(orderbtn);
 		jp1.add(btnset);
 		
 		memberbtn.addActionListener(new ActionListener() {
@@ -67,6 +67,17 @@ public class Admin_main extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				Admin_member adm = new Admin_member();
+			}
+			
+		});
+		
+		orderbtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				Admin_order ord = new Admin_order();
+				
 			}
 			
 		});

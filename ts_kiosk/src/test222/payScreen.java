@@ -177,7 +177,9 @@ public class payScreen {
             	
             	creditCardScreen cs = new creditCardScreen();
                 cs.disCreditCardScreen(mainf,fr,receive); //메인프레임, 현재 프레임 같이 넘기기
-                //fr.setVisible(false); // 창 안보이게 하기 
+                //fr.setVisible(false); // 창 안보이게 하기
+               
+                
             }
         });
         

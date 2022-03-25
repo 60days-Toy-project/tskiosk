@@ -28,9 +28,17 @@ public class creditCardScreen {
 	private JFrame mainf;//카테고리메인창 프레임
 	private JFrame payscreenf; //결제창 프레임
 	
+	static String PId;
 	static String PName; // 결제자 이름
 	static String PEmail; // 결제자 이메일
 	static String PTel; // 결제자 전화 번호
+	
+	static int lastrow; //필요한 행의 수 만큼만 출력하기 위함
+	
+	static int totalQ;
+	static int totalP;
+	static int ONum = 1;
+	
 
 	class BoundDocument extends PlainDocument {
 		protected int charLimit;
@@ -52,11 +60,24 @@ public class creditCardScreen {
 		}
 	}
 
-	public void pushname(String name, String email, String tel) {
+	public void pushname(String id, String name, String email, String tel) {
 
+		PId = id;
 		PName = name;
 		PEmail = email;
 		PTel = tel;
+	}
+	
+	public void pushrow (int row) {
+		lastrow = row;
+	}
+	
+	public void pushTotalQ (int totalq) {
+		totalQ = totalq;
+	}
+	
+	public void pushTotalP (int totalp) {
+		totalP = totalp;
 	}
 
 	public void disCreditCardScreen(JFrame mainf, JFrame payscreenf, int receive) {
@@ -318,6 +339,43 @@ public class creditCardScreen {
 				mainf.setVisible(false);
 				payscreenf.setVisible(false);
 				fr.setVisible(false); // 창 안보이게 하기
+				
+				///////결제 완료 후에
+				/*
+				for (int i = 0; i < lastrow; i++) {
+		            for (int j = 0; j < 3; j++) {
+		                System.out.println(Cart.orders[i][j]); // 열 출력
+		            }
+		            System.out.println(); // 행 출력
+		        }
+				*/
+				Order order = new Order();
+				for (int i = 0; i < lastrow; i++) {
+					order.setOrderNum(ONum);
+					order.setCustomerId(PId);
+					order.setProductName(Cart.orders[i][0]); // 열 출력
+					order.setQuantity(Integer.parseInt(Cart.orders[i][1]));
+					order.setPrice(Integer.parseInt(Cart.orders[i][2]));
+					java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
+					order.setTime(date);
+					order.setStatus(1);
+					order.setTotalQuantity(totalQ);
+					order.setTotalPrice(totalP);
+					
+					OrderDB odb = OrderDB.getInstance();
+					int result = odb.insertMember(order);
+					if (result==1) {
+						JOptionPane.showMessageDialog(null, "주민기록 등록 완료");
+					    //dispose();
+					}else {
+		                JOptionPane.showMessageDialog(null, "주민기록 등록 실패");
+		      	      	 //dispose();
+		            }
+						            
+		            System.out.println(); // 행 출력
+		        }
+				
+				
 			}
 		});
 

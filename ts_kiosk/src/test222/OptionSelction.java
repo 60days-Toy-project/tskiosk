@@ -23,6 +23,7 @@ import javax.swing.SwingWorker;
 
 public class OptionSelction extends JFrame {
 
+	
 	public String Result;
 
 	int quncount = 1; // + - 버튼 누를때 수량
@@ -33,12 +34,19 @@ public class OptionSelction extends JFrame {
 	String Size;
 	String TakeOut;
 
+	/*
 	String qcandle; // 초 (필요없음 용)
 	String qbigcandle; // 큰 초
 	String qsmallcandle; // 작은 초
 	String qfirecr;
 	String qknife;
-
+*/
+	int qcandle; // 초 (필요없음 용)
+	int qbigcandle; // 큰 초
+	int qsmallcandle; // 작은 초
+	int qfirecr;
+	int qknife;
+	
 	String dmenu;// 음료 메뉴
 	int dprice;// 음료 가격
 
@@ -791,7 +799,7 @@ public class OptionSelction extends JFrame {
 
 				// JButton btnplus2 = new JButton("+");
 
-				jpqcandle.setBounds(500, 290, 200, 240);
+				jpqcandle.setBounds(500, 300, 200, 240);
 
 				jpqcandle.add(bcandle);
 				jpqcandle.add(btnminus1);
@@ -805,6 +813,7 @@ public class OptionSelction extends JFrame {
 
 				jp1.add(jpqcandle);
 				// jp1.add(bcandle);
+				
 				bcandle.setVisible(true);
 				btnminus1.setVisible(true);
 				bccount.setVisible(true);
@@ -813,7 +822,8 @@ public class OptionSelction extends JFrame {
 				btnminus2.setVisible(true);
 				sccount.setVisible(true);
 				btnplus2.setVisible(true);
-				// jpqcandle.setVisible(true);
+				
+				//jpqcandle.setVisible(true);
 				// bcandle.setBounds(700, 150, 100, 100);
 				// bcandle.setFont(new Font("SansSerif", Font.BOLD, 13));
 
@@ -842,7 +852,9 @@ public class OptionSelction extends JFrame {
 				btnplus2.setVisible(false);
 				// bcount = 0;
 				// scount = 0;
-				qcandle = "필요없음";
+				
+				//qcandle = "필요없음";
+				qcandle = 0;
 
 			}
 
@@ -857,7 +869,8 @@ public class OptionSelction extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				qfirecr = "2";
+				//qfirecr = "2";
+				qfirecr = 2;
 			}
 
 		});
@@ -871,7 +884,8 @@ public class OptionSelction extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				qfirecr = "필요없음";
+				//qfirecr = "필요없음";
+				qfirecr = 0;
 			}
 
 		});
@@ -885,7 +899,8 @@ public class OptionSelction extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				qknife = "1";
+				//qknife = "1";
+				qknife = 1;
 			}
 
 		});
@@ -899,7 +914,8 @@ public class OptionSelction extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				qknife = "필요없음";
+				//qknife = "필요없음";
+				qknife = 0;
 			}
 
 		});
@@ -926,13 +942,13 @@ public class OptionSelction extends JFrame {
 		JPanel text2 = new JPanel();
 		text2.setLayout(new FlowLayout(FlowLayout.LEFT));
 		text2.add(new JLabel("2.폭죽"));
-		text2.setBounds(400, 360, 70, 30);
+		text2.setBounds(400, 390, 70, 30);
 		jp1.add(text2);
 
 		JPanel text3 = new JPanel();
 		text3.setLayout(new FlowLayout(FlowLayout.LEFT));
 		text3.add(new JLabel("3.칼"));
-		text3.setBounds(400, 550, 70, 30);
+		text3.setBounds(400, 580, 70, 30);
 		jp1.add(text3);
 
 		JPanel jpcandle = new JPanel();
@@ -946,14 +962,14 @@ public class OptionSelction extends JFrame {
 		firecr.setLayout(new FlowLayout(FlowLayout.LEFT));
 		firecr.add(jtbno2);
 		firecr.add(jtbfirecracker);
-		firecr.setBounds(400, 380, 300, 150);
+		firecr.setBounds(400, 420, 300, 150);
 		jp1.add(firecr);
 
 		JPanel jpknife = new JPanel();
 		jpknife.setLayout(new FlowLayout(FlowLayout.LEFT));
 		jpknife.add(jtbno3);
 		jpknife.add(jtbknife);
-		jpknife.setBounds(400, 570, 300, 150);
+		jpknife.setBounds(400, 610, 300, 150);
 		jp1.add(jpknife);
 
 		JPanel panel = new JPanel();
@@ -967,7 +983,7 @@ public class OptionSelction extends JFrame {
 
 		setBounds(400, 0, 300, 350);
 
-		setSize(800, 830);
+		setSize(850, 900);  // 전체 사이즈
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 
@@ -1091,26 +1107,35 @@ public class OptionSelction extends JFrame {
 				String[] bcandle = new String[3];
 				bcandle[0] = "큰초";
 				bcandle[1] = Integer.toString(bcount);
-				bcandle[2] = "0원";
+				//bcandle[2] = "0원";
+				bcandle[2] = Integer.toString(0);
+				
 				String[] scandle = new String[3];
 				scandle[0] = "작은초";
 				scandle[1] = Integer.toString(scount);
-				scandle[2] = "0원";
+				//scandle[2] = 0+"원";
+				scandle[2] = Integer.toString(0);
 
 				String[] candle = new String[3];
 				candle[0] = "초";
-				candle[1] = qcandle;
-				candle[2] = "0원";
-
+				//candle[1] = qcandle;
+				candle[1] = Integer.toString(qcandle);
+				//candle[2] = "0원";
+				candle[2] = Integer.toString(0);
+				
 				String[] firecracker = new String[3];
 				firecracker[0] = "폭죽";
-				firecracker[1] = qfirecr;
-				firecracker[2] = "0원";
+				//firecracker[1] = qfirecr;
+				//firecracker[2] = "0원";
+				firecracker[1] = Integer.toString(qfirecr);
+				firecracker[2] = Integer.toString(0);
 
 				String[] knife = new String[3];
 				knife[0] = "칼";
-				knife[1] = qknife;
-				knife[2] = "0원";
+				//knife[1] = qknife;
+				//knife[2] = "0원";
+				knife[1] = Integer.toString(qknife);
+				knife[2] = Integer.toString(0);
 
 				Cart.model.addRow(newMenu);
 				Cart.Qty_sum += quncount;

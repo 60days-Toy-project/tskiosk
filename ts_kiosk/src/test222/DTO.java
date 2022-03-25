@@ -74,7 +74,7 @@ public class DTO {
 		// + gender + ",birth ="+ birth + ", email="+ email +" tel=" + tel + "]";
 
 		// "/"를 기준으로 나누기 위해서
-		return "/" + name + "/" + email + "/" + tel + "/";
+		return "/" + id + "/" + name + "/" + email + "/" + tel + "/";
 
 	}
 

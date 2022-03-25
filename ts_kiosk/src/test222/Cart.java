@@ -7,6 +7,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 
 import javax.swing.AbstractCellEditor;
 import javax.swing.JButton;
@@ -28,13 +29,22 @@ public class Cart extends JPanel {
 	
 	public static int Cost_sum; //총 가격
 	public static int Qty_sum; // 총 수량
-
+	
+	
+	public static String [][] orders = new String [30][3]; // 영수증을 위해 값을 넘기는 
+	
+	//public static String [] orders = {};
+	
 	String[] ColName = { "메뉴", "수량", "가격", "추가", "감소", "삭제" };
 
 	String[][] Data;
 	int count = 1;
 
-	private JTable table;
+	public static JTable table;
+	//private JTable table;
+	
+	
+	
 	public static DefaultTableModel model;
 
 	static JTextField tqty = new JTextField(27); // 총 수량
@@ -115,6 +125,23 @@ public class Cart extends JPanel {
 
 			payScreen ps = new payScreen();
 			ps.disPayScreen(mainf,Cost_sum);
+			
+			int rows = table.getRowCount();
+			creditCardScreen cs = new creditCardScreen();
+			cs.pushrow(rows);
+			
+			for (int i=0; i<rows; i++) {
+				orders[i][0] = table.getValueAt(i, 0).toString();
+				System.out.println(orders[i][0]);
+				orders[i][1] = table.getValueAt(i, 1).toString();
+				System.out.println(orders[i][1]);
+				orders[i][2] = table.getValueAt(i, 2).toString();
+				System.out.println(orders[i][2]);
+					//System.out.println(table.getValueAt(i, j));
+				
+				
+			}
+	
 		}
 	}
 	class HomeBtnActionListener implements ActionListener{ // 처음화면
@@ -142,9 +169,12 @@ public class Cart extends JPanel {
 		
 		tqty.setText(String.valueOf(" 총 수량 : " + Qty_sum + " 개 " ));
 		tqty.setFont(new Font("굴림체", Font.BOLD, 30));
+		creditCardScreen cs = new creditCardScreen();
+		cs.pushTotalQ(Qty_sum);
 		
 		tprc.setText(String.valueOf(" 총 금액 : " + Cost_sum + " 원 "));
 		tprc.setFont(new Font("굴림체", Font.BOLD, 30));
+		cs.pushTotalP(Cost_sum);
 	}
 
 	// 포스기 수량 추가 버튼
