@@ -298,11 +298,6 @@ class makeTable extends JPanel {
 		DAO mdao = DAO.getInstance();
 		mdao.selectmeber();
 	}
-	/*
-	 * private void search_member() { // 테이블에 보이기 위해 검색
-	 * 
-	 * DAO mdao = DAO.getInstance(); mdao.searchmemeber(); }
-	 */
 
 	private void initialize() { // 액션이벤트와 버튼 컴포넌트 설정
 		
@@ -420,10 +415,6 @@ class makeTable extends JPanel {
 			public void actionPerformed(java.awt.event.ActionEvent e) {
 				System.out.println(e.getActionCommand()); // 선택된 버튼의 텍스트값 출력
 				DefaultTableModel model2 = (DefaultTableModel) table.getModel();
-
-				int row = table.getSelectedRow();
-				if (row < 0)
-					return; // 선택이 안된 상태면 -1리턴
 
 				model2.setRowCount(0);
 				select();
