@@ -67,9 +67,11 @@ public class Admin_main extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				Admin_member adm = new Admin_member();
+				dispose();
 			}
 			
 		});
+
 		
 		orderbtn.addActionListener(new ActionListener() {
 
@@ -82,6 +84,18 @@ public class Admin_main extends JFrame{
 			
 		});
 
+		productbtn.addActionListener(new ActionListener() {
+
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				Admin_menu adnu = new Admin_menu();
+				dispose();
+			}
+			
+		});
+		
 
 	
 		add(jp1);

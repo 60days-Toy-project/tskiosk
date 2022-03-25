@@ -799,7 +799,11 @@ public class OptionSelction extends JFrame {
 
 				// JButton btnplus2 = new JButton("+");
 
+
 				jpqcandle.setBounds(500, 300, 200, 240);
+
+				jpqcandle.setBounds(500, 310, 200, 240);
+
 
 				jpqcandle.add(bcandle);
 				jpqcandle.add(btnminus1);
@@ -955,21 +959,29 @@ public class OptionSelction extends JFrame {
 		jpcandle.setLayout(new FlowLayout(FlowLayout.LEFT));
 		jpcandle.add(jtbno1);
 		jpcandle.add(jtbcandle);
-		jpcandle.setBounds(400, 130, 300, 150);
+		jpcandle.setBounds(400, 140, 300, 150);
 		jp1.add(jpcandle);
 
 		JPanel firecr = new JPanel();
 		firecr.setLayout(new FlowLayout(FlowLayout.LEFT));
 		firecr.add(jtbno2);
 		firecr.add(jtbfirecracker);
+
 		firecr.setBounds(400, 420, 300, 150);
+
+		firecr.setBounds(400, 410, 300, 150);
+
 		jp1.add(firecr);
 
 		JPanel jpknife = new JPanel();
 		jpknife.setLayout(new FlowLayout(FlowLayout.LEFT));
 		jpknife.add(jtbno3);
 		jpknife.add(jtbknife);
+
 		jpknife.setBounds(400, 610, 300, 150);
+
+		jpknife.setBounds(400, 600, 300, 150);
+
 		jp1.add(jpknife);
 
 		JPanel panel = new JPanel();
@@ -983,7 +995,11 @@ public class OptionSelction extends JFrame {
 
 		setBounds(400, 0, 300, 350);
 
+
 		setSize(850, 900);  // 전체 사이즈
+
+		setSize(800, 900);
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 
