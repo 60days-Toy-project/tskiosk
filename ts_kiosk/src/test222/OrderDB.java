@@ -22,9 +22,9 @@ public class OrderDB {
    private final String NUMSELECT = "select max(orderNum) from OrderList";
    private final String OrderSELECT = "select pName, quantity, price from OrderList where orderNum = ?";
    
-   private final String SEARCH_cId = "select orderNum, cId, pName, totalQ, totalP, time, status from OrderList where cId = ?";
+   private final String SEARCH_cId = "select orderNum, cId, pName, totalQ, totalP, time, status from OrderList where cId = ? and time in (select min(time) from OrderList group by orderNum)";
    //private final String SEARCH_cId = "select orderNum, cId, pName, totalQ, totalP, time, status from OrderList where cId = ?";
-   private final String SEARCH_status = "select orderNum, cId, pName, totalQ, totalP, time, status from OrderList where status = ?";
+   private final String SEARCH_status = "select orderNum, cId, pName, totalQ, totalP, time, status from OrderList where status = ? and time in (select min(time) from OrderList group by orderNum)";
    
    private final String COUNTSELECT = "select count(pName) FROM OrderList where orderNum=?";
    
@@ -88,7 +88,7 @@ public class OrderDB {
          stmt = conn.prepareStatement(SELECT);
          res = stmt.executeQuery();
          while (res.next()) { // 각각 값을 가져와서 테이블값들을 추가
-        	 ordermakeTable.model.addRow(new Object[] {
+            ordermakeTable.model.addRow(new Object[] {
                   res.getInt("orderNum"), res.getString("cId"),
                   res.getString("pName"), res.getInt("totalQ"), 
                   res.getInt("totalP"), res.getString("time"),
@@ -119,7 +119,7 @@ public class OrderDB {
          res = stmt.executeQuery();
          while (res.next()) { // 각각 값을 가져와서 테이블값들을 추가
             
-        	 ordermakeTable.model.addRow(new Object[] {res.getInt("orderNum"), res.getString("cId"),
+            ordermakeTable.model.addRow(new Object[] {res.getInt("orderNum"), res.getString("cId"),
                   res.getString("pName"), res.getInt("totalQ"), 
                   res.getInt("totalP"), res.getString("time"),
                   res.getString("status") });

@@ -30,6 +30,8 @@ import javax.swing.table.DefaultTableModel;
 
 
 
+
+
 public class Admin_order extends JFrame {
    private JPanel tablePan = new OTablepane(this);
 
@@ -100,6 +102,9 @@ class ordermakeTable extends JPanel {
    private JTextField search = new JTextField(13);
    private JButton jBtnSearch = new JButton("검색");
    private String Content; // 검색 카테고리 id cname gender 담을 스트링
+   
+   private JLabel backimgLabel = new JLabel();// 제품 사진
+   private ImageIcon bicon;
 
    private static String colNames[] = {"번호", "주문자ID", "메뉴", "총수량", "총금액","주문시간","주문상태"}; // 테이블 컬럼 값들
    static DefaultTableModel model = new DefaultTableModel(colNames, 0); // 테이블 데이터 모델 객체 생성
@@ -113,6 +118,12 @@ class ordermakeTable extends JPanel {
       jp1.setLocation(1,1);
       jp1.setSize(960,800);
       
+      bicon = new ImageIcon("image/icon/backspace.png");
+      backimgLabel.setIcon(bicon);
+      backimgLabel.setBounds(5, 5, 45, 45);
+      jp1.add(backimgLabel);
+      backimgLabel.addMouseListener((MouseListener) new BackSpace()); // 테이블에 마우스리스너 연결
+      
       JLabel optionOrder = new JLabel("주문 조회");
 
       optionOrder.setBounds(0, 0, 960, 60);
@@ -123,15 +134,21 @@ class ordermakeTable extends JPanel {
       optionOrder.setFont(new Font("함초롱바탕", Font.BOLD, 30));
       jp1.add(optionOrder);// 컴포넌트 컨테이너에 올림
       
-      
-      
+            
       JPanel searchpan = new JPanel(); //검색 패널
       searchpan.setLocation(130, 100);
-      searchpan.setSize(300, 60);
+      searchpan.setSize(350, 60);
       JPanel ssspan = new JPanel();//검색 컴포넌트 넣을 패널
       ssspan.setLayout(new FlowLayout(FlowLayout.LEFT));
+      
+      jBtnSearch.setBorderPainted(false);
+      jBtnSearch.setBackground(new Color(255, 0, 102));
+      jBtnSearch.setForeground(Color.WHITE);
+      jBtnSearch.setFont(new Font("SansSerif", Font.BOLD, 16));
+   
 
       cbbsearch = new JComboBox(comboNames); //콤보박스
+      cbbsearch.setBackground(Color.WHITE);
       ssspan.add(cbbsearch);//콤보박스
       ssspan.add(search); //텍스트필드
       ssspan.add(jBtnSearch);//검색 버튼
@@ -308,7 +325,11 @@ class ordermakeTable extends JPanel {
             select();
          }
       });
-      jbtnAllRow.setBounds(620, 100, 200, 40);
+      jbtnAllRow.setBounds(700, 100, 150, 50);
+      jbtnAllRow.setBorderPainted(false);
+      jbtnAllRow.setBackground(new Color(255, 0, 102));
+      jbtnAllRow.setForeground(Color.WHITE);
+      jbtnAllRow.setFont(new Font("SansSerif", Font.BOLD, 16));
       jbtnAllRow.setText("새로고침");
       jp1.add(jbtnAllRow);
       
