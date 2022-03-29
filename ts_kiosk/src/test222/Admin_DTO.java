@@ -13,7 +13,7 @@ public class Admin_DTO {
 		return category;
 	}
 
-	public void setCategory(String id) {
+	public void setCategory(String category) {
 		this.category = category;
 	}
 
@@ -21,7 +21,7 @@ public class Admin_DTO {
 		return sub;
 	}
 
-	public void setSub(String password) {
+	public void setSub(String sub) {
 		this.sub = sub;
 	}
 
@@ -29,7 +29,7 @@ public class Admin_DTO {
 		return subkey;
 	}
 
-	public void setSubkey(String name) {
+	public void setSubkey(String subkey) {
 		this.subkey = subkey;
 	}
 
@@ -37,7 +37,7 @@ public class Admin_DTO {
 		return qty;
 	}
 
-	public void setQty(String gender) {
+	public void setQty(String qty) {
 		this.qty = qty;
 	}
 
@@ -45,7 +45,7 @@ public class Admin_DTO {
 		return price;
 	}
 
-	public void setPrice(String birth) {
+	public void setPrice(String price) {
 		this.price = price;
 	}
 
@@ -53,7 +53,7 @@ public class Admin_DTO {
 		return realeasedate;
 	}
 
-	public void setRdate(String email) {
+	public void setRdate(String realeasedate) {
 		this.realeasedate = realeasedate;
 	}
 

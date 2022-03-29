@@ -76,11 +76,11 @@ class menumakeTable extends JPanel {
 	JPanel jp1 = new JPanel();
 
 	private static final long serialVersionUID = 1L;
-	private JButton jBtnAddRow = null; // 테이블 한줄 추가 버튼
-	private JButton jBtnSaveRow = null; // 테이블 한줄 저장 버튼
-	private JButton jBtnEditRow = null; // 테이블 한줄 저장 버튼
-	private JButton jBtnDelRow = null; // 테이블 한줄 삭제 벅튼
-	private JButton jbtnAllRow = null; //고객 전체보기
+	private JButton jBtnmAddRow = null; // 테이블 한줄 추가 버튼
+	private JButton jBtnmSaveRow = null; // 테이블 한줄 저장 버튼
+	private JButton jBtnmEditRow = null; // 테이블 한줄 저장 버튼
+	private JButton jBtnmDelRow = null; // 테이블 한줄 삭제 벅튼
+	private JButton jbtnmAllRow = null; //메뉴 전체보기
 	private JTable table;
 	private JScrollPane scrollPane; // 테이블 스크롤바 자동으로 생성되게 하기
 
@@ -249,7 +249,7 @@ class menumakeTable extends JPanel {
 			JTable jtable = (JTable) e.getSource();
 			int row = jtable.getSelectedRow(); // 선택된 테이블의 행값
 			int col = jtable.getSelectedColumn(); // 선택된 테이블의 열값
-			String imgpath;
+			String imgpath = null;
 			
 			category.setText((String) m.getValueAt(row,0));
 			sub.setText((String) m.getValueAt(row, 1));
@@ -258,7 +258,23 @@ class menumakeTable extends JPanel {
 			price.setText((String) m.getValueAt(row, 4));
 			rdate.setText((String) m.getValueAt(row, 5));
 			
-			imgpath="image/"+(String)m.getValueAt(row, 1)+".jpg";
+			
+			String ca= (String) m.getValueAt(row, 2);
+			int sk= Integer.parseInt(ca);
+			System.out.println(sk+"------1");
+			
+			if(sk<50000) {
+				
+				imgpath="image/"+(String)m.getValueAt(row, 1)+".jpg";
+				System.out.println(imgpath+"디저트 아닐때");
+			}
+			else if(sk>50000){
+				imgpath="image/menu/cake/"+(String)m.getValueAt(row, 1)+".jpg";
+				
+				
+				System.out.println(imgpath+"디저트일때");
+			}
+			
 			icon = new ImageIcon(imgpath);
 			
 			Image img = icon.getImage();
@@ -322,8 +338,8 @@ class menumakeTable extends JPanel {
 		
 		
 		// 테이블 새로 한줄 추가하는 부분
-		jBtnAddRow = new JButton();
-		jBtnAddRow.addActionListener(new ActionListener() {
+		jBtnmAddRow = new JButton();
+		jBtnmAddRow.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println(e.getActionCommand()); // 선택된 버튼의 텍스트값 출력
 				DefaultTableModel model1 = (DefaultTableModel) table.getModel();
@@ -331,13 +347,13 @@ class menumakeTable extends JPanel {
 			}
 		});
 
-		jBtnAddRow.setBounds(10, 680, 200, 40);
-		jBtnAddRow.setText("추가");
-		jp1.add(jBtnAddRow);
+		jBtnmAddRow.setBounds(10, 680, 200, 40);
+		jBtnmAddRow.setText("추가");
+		jp1.add(jBtnmAddRow);
 
 		// 테이블 새로 저장하는 부분
-		jBtnSaveRow = new JButton();
-		jBtnSaveRow.addActionListener(new ActionListener() {
+		jBtnmSaveRow = new JButton();
+		jBtnmSaveRow.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println(e.getActionCommand()); // 선택된 버튼의 텍스트값 출력
 				DefaultTableModel model1 = (DefaultTableModel) table.getModel();
@@ -364,13 +380,13 @@ class menumakeTable extends JPanel {
 			}
 		});
 
-		jBtnSaveRow.setBounds(250, 680, 200, 40);
-		jBtnSaveRow.setText("저장");
-		jp1.add(jBtnSaveRow);
+		jBtnmSaveRow.setBounds(250, 680, 200, 40);
+		jBtnmSaveRow.setText("저장");
+		jp1.add(jBtnmSaveRow);
 
 		// 선택된 테이블 한줄 수정하는 부분
-		jBtnEditRow = new JButton();
-		jBtnEditRow.addActionListener(new ActionListener() {
+		jBtnmEditRow = new JButton();
+		jBtnmEditRow.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
 				System.out.println(e.getActionCommand()); // 선택된 버튼의 텍스트값 출력
@@ -382,11 +398,12 @@ class menumakeTable extends JPanel {
 				Admin_DTO adto = new Admin_DTO();
 				
 				adto.setCategory((String) category.getText());
+				adto.setSub((String) sub.getText());
 				adto.setSubkey((String) subkey.getText());
 				adto.setQty((String) qty.getText());
 				adto.setPrice((String) price.getText());
 				adto.setRdate((String) rdate.getText());
-				adto.setSub((String) sub.getText());
+				
 			
 
 				DAO dao = DAO.getInstance();
@@ -399,13 +416,13 @@ class menumakeTable extends JPanel {
 				menuselect(); // 수정 후다시 전체 값들을 받아옴.
 			}
 		});
-		jBtnEditRow.setBounds(490, 680, 200, 40);
-		jBtnEditRow.setText("수정");
-		jp1.add(jBtnEditRow);
+		jBtnmEditRow.setBounds(490, 680, 200, 40);
+		jBtnmEditRow.setText("수정");
+		jp1.add(jBtnmEditRow);
 
 		// 선택된 테이블 한줄 삭제하는 부분
-		jBtnDelRow = new JButton();
-		jBtnDelRow.addActionListener(new ActionListener() {
+		jBtnmDelRow = new JButton();
+		jBtnmDelRow.addActionListener(new ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent e) {
 				System.out.println(e.getActionCommand()); // 선택된 버튼의 텍스트값 출력
 				DefaultTableModel model1 = (DefaultTableModel) table.getModel();
@@ -424,27 +441,23 @@ class menumakeTable extends JPanel {
 				menuselect();
 			}
 		});
-		jBtnDelRow.setBounds(730, 680, 200, 40);
-		jBtnDelRow.setText("삭제");
-		jp1.add(jBtnDelRow);
+		jBtnmDelRow.setBounds(730, 680, 200, 40);
+		jBtnmDelRow.setText("삭제");
+		jp1.add(jBtnmDelRow);
 		
-		jbtnAllRow = new JButton();
-		jbtnAllRow.addActionListener(new ActionListener() {//전체보기 버튼
+		jbtnmAllRow = new JButton();
+		jbtnmAllRow.addActionListener(new ActionListener() {//전체보기 버튼
 			public void actionPerformed(java.awt.event.ActionEvent e) {
 				System.out.println(e.getActionCommand()); // 선택된 버튼의 텍스트값 출력
 				DefaultTableModel model1 = (DefaultTableModel) table.getModel();
-
-				int row = table.getSelectedRow();
-				if (row < 0)
-					return; // 선택이 안된 상태면 -1리턴
 
 				model1.setRowCount(0);
 				menuselect();
 			}
 		});
-		jbtnAllRow.setBounds(960, 680, 200, 40);
-		jbtnAllRow.setText("전체 보기");
-		jp1.add(jbtnAllRow);
+		jbtnmAllRow.setBounds(960, 680, 200, 40);
+		jbtnmAllRow.setText("전체 보기");
+		jp1.add(jbtnmAllRow);
 		
 	}
 

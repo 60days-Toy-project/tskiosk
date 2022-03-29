@@ -1,37 +1,10 @@
 package test222;
 
 import java.awt.Color;
+
+import java.awt.FlowLayout;
 import java.awt.Font;
-
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-/*
-public class Admin_order {
-	
-	public void orderScreen() {
-		
-		JFrame fr = new JFrame("주문 관리");
-		
-		fr.setSize(800, 900);
-		fr.setLocationRelativeTo(null);
-		fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		fr.getContentPane().setLayout(null);
-
-		JLabel lb = new JLabel("주문 관리");
-		fr.add(lb);
-		lb.setBounds(0, 0, 800, 100);
-		lb.setBackground(new Color(255, 0, 102));
-		lb.setOpaque(true); // Opaque값을 true로 설정해야 배경색이 적용된다.
-		lb.setHorizontalAlignment(JLabel.CENTER);
-		lb.setFont(new Font("SansSerif", Font.BOLD, 30));
-		lb.setForeground(Color.WHITE);
-	}	
-
-}
-*/
-
-
-import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -41,201 +14,306 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-public class Admin_order extends JPanel {
-
-	// DB에서 스윙 화면으로 테이블 값 가져오기(select) , 저장하기(insert), 수정하기(update), 삭제하기(delete)
-	private static final long serialVersionUID = 1L;
-	private JButton jBtnAddRow = null; // 테이블 한줄 추가 버튼
-	private JButton jBtnSaveRow = null; // 테이블 한줄 저장 버튼
-	private JButton jBtnEditRow = null; // 테이블 한줄 저장 버튼
-	private JButton jBtnDelRow = null; // 테이블 한줄 삭제 벅튼
-	private JTable table;
-	private JScrollPane scrollPane; // 테이블 스크롤바 자동으로 생성되게 하기
-	
-
-	private static String colNames[] = { "번호", "주문자ID", "메뉴", "총수량", "총금액","주문시간","주문상태" }; // 테이블 컬럼 값들
-	static DefaultTableModel model = new DefaultTableModel(colNames, 0); // 테이블 데이터 모델 객체 생성
 
 
-	public Admin_order() {
-		setLayout(null); // 레이아웃 배치관리자 삭제
-		
-		JLabel lb = new JLabel("신용카드 결제");
-		//panel.add(lb);
-		lb.setBounds(0, 0, 800, 100);
-		lb.setBackground(new Color(255, 0, 102));
-		lb.setOpaque(true); // Opaque값을 true로 설정해야 배경색이 적용된다.
-		lb.setHorizontalAlignment(JLabel.CENTER);
-		lb.setFont(new Font("SansSerif", Font.BOLD, 30));
-		lb.setForeground(Color.WHITE);
-		
-		
-		table = new JTable(model); // 테이블에 모델객체 삽입
-		table.setRowHeight(40);
-		table.getTableHeader().setFont(new Font("굴림체", Font.BOLD, 15));
-        table.getColumnModel().getColumn(0).setPreferredWidth(180);  //JTable 의 컬럼 길이 조절
-        table.getColumnModel().getColumn(1).setPreferredWidth(280);
-        table.getColumnModel().getColumn(2).setPreferredWidth(280);
-        table.getColumnModel().getColumn(3).setPreferredWidth(280);
-        table.getColumnModel().getColumn(4).setPreferredWidth(280);
-        table.getColumnModel().getColumn(5).setPreferredWidth(280);
-        table.getColumnModel().getColumn(6).setPreferredWidth(280);
-        
-        
-		table.addMouseListener((MouseListener) new JTableMouseListener()); // 테이블에 마우스리스너 연결
-		scrollPane = new JScrollPane(table); // 테이블에 스크롤 생기게 하기
-		scrollPane.setSize(700, 250);
-		scrollPane.setLocation(10, 10);
-	
-		add(scrollPane);
-		initialize();
-		select();
+public class Admin_order extends JFrame {
+   private JPanel tablePan = new OTablepane(this);
 
-	}
+   public Admin_order() {
+      OmakeFrame();
+      JPanel pn = OmakePanel();
+      this.add(pn);
+   }
 
-	private class JTableMouseListener implements MouseListener { // 마우스로 눌려진값확인하기
-		public void mouseClicked(java.awt.event.MouseEvent e) { // 선택된 위치의 값을 출력
+   void OmakeFrame() {
 
-			JTable jtable = (JTable) e.getSource();
-			int row = jtable.getSelectedRow(); // 선택된 테이블의 행값
-			int col = jtable.getSelectedColumn(); // 선택된 테이블의 열값
+      this.setTitle("주문관리");
+      this.setSize(960, 800);
+      this.setLocationRelativeTo(null);
+      this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      this.setVisible(true);
+   }
 
-			System.out.println(model.getValueAt(row, col)); // 선택된 위치의 값을 얻어내서 출력
-			
-			if(e.getClickCount() == 2) { // 셀을 더블 클릭했을 때 영수증 나오도록 설정
-				
-			}
+   public JPanel OmakePanel() {// 반으로 쪼개놓은거 스플릿팬 적용 가능한지 나중에 시도
+      JPanel pn = new JPanel();
+      pn.setLayout(null);
 
-		}
+      tablePan.setSize(1200, 800);
+      tablePan.setLocation(1, 1);
+      pn.add(tablePan);
 
-		public void mouseEntered(java.awt.event.MouseEvent e) {
-		}
+      return pn;
 
-		public void mouseExited(java.awt.event.MouseEvent e) {
-		}
+   }
 
-		public void mousePressed(java.awt.event.MouseEvent e) {
-		}
-
-		public void mouseReleased(java.awt.event.MouseEvent e) {
-		}
-	}
-
-	private void select() { // 테이블에 보이기 위해 검색
-
-		OrderDB odb = OrderDB.getInstance();
-		odb.selectmeber();
-	}
-
-	private void initialize() { // 액션이벤트와 버튼 컴포넌트 설정
-
-		// 테이블 새로 한줄 추가하는 부분
-		jBtnAddRow = new JButton();
-		jBtnAddRow.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.out.println(e.getActionCommand()); // 선택된 버튼의 텍스트값 출력
-				DefaultTableModel model2 = (DefaultTableModel) table.getModel();
-				model2.addRow(new String[] { "", "", "", "", "" ,"",""}); // 새테이블의 초기값
-			}
-		});
-		jBtnAddRow.setBounds(30, 270, 120, 25);
-		jBtnAddRow.setText("추가");
-		add(jBtnAddRow);
-
-		// 테이블 새로 저장하는 부분
-		jBtnSaveRow = new JButton();
-		jBtnSaveRow.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.out.println(e.getActionCommand()); // 선택된 버튼의 텍스트값 출력
-				DefaultTableModel model2 = (DefaultTableModel) table.getModel();
-				int row = table.getSelectedRow();
-				if (row < 0)
-					return; // 선택이 안된 상태면 -1리턴
-				Order odto = new Order();
-				
-				odto.setOrderNum( (int)model2.getValueAt(row, 0));
-				odto.setCustomerId( (String)model2.getValueAt(row, 1));
-				odto.setProductName( (String)model2.getValueAt(row, 2));
-				odto.setTotalQuantity( (int)model2.getValueAt(row, 3));
-				odto.setTotalPrice( (int)model2.getValueAt(row, 4));
-				//odto.setTime((String)model2.getValueAt(row, 5).toString());
-				odto.setStatus( (int)model2.getValueAt(row, 6));
-				
-				OrderDB odb = OrderDB.getInstance();
-				int result = odb.insertMember(odto);
-				if (result==1) {
-					JOptionPane.showMessageDialog(null, "저장 완료");
-
-				}
-				model2.setRowCount(0); // 전체 테이블 화면을 지워줌
-				select(); // 저장 후 다시 전체 값들을 받아옴.
-			}
-		});
-		
-		
-		jBtnSaveRow.setBounds(182, 270, 120, 25);
-		jBtnSaveRow.setText("저장");
-		add(jBtnSaveRow);
-
-
-		// 선택된 테이블 한줄 삭제하는 부분
-		jBtnDelRow = new JButton();
-		jBtnDelRow.addActionListener(new ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent e) {
-				System.out.println(e.getActionCommand()); // 선택된 버튼의 텍스트값 출력
-				DefaultTableModel model2 = (DefaultTableModel) table.getModel();
-				int row = table.getSelectedRow();
-				if (row < 0)
-					return; // 선택이 안된 상태면 -1리턴
-				/*
-				String query = "delete from user_info where id= ?";
-
-				try {
-					Class.forName(driver); // 드라이버 로딩
-					con = DriverManager.getConnection(url, "aaaa", "aaaa"); // DB 연결
-					pstmt = con.prepareStatement(query);
-
-					// 물음표가 1개 이므로 4개 각각 입력해줘야한다.
-					pstmt.setString(1, (String) model2.getValueAt(row, 0));
-					int cnt = pstmt.executeUpdate();
-					// pstmt.executeUpdate(); create insert update delete
-					// pstmt.executeQuery(); select
-				} catch (Exception eeee) {
-					System.out.println(eeee.getMessage());
-				} finally {
-					try {
-						pstmt.close();
-						con.close();
-					} catch (Exception e2) {
-					}
-				}
-				model2.removeRow(row); // 테이블 상의 한줄 삭제*/
-			}
-		});
-		jBtnDelRow.setBounds(new Rectangle(320, 270, 120, 25));
-		jBtnDelRow.setText("삭제");
-		add(jBtnDelRow);
-	}
-
-	public static void main(String[] args) {
-
-		Admin_order panel = new Admin_order();
-	
-		JFrame win = new JFrame();
-
-		win.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-		win.add(panel);
-		win.setSize(800, 900);
-		win.setVisible(true);
-	}
 }
 
+class OTablepane extends JPanel { // 장바구니 담을 패널
+   private JFrame f;
+   public String Result = "";
+
+   public OTablepane(JFrame f) {
+      this.f = f;
+      ordermakeTable orderTable = new ordermakeTable(f);
+      setLayout(null);
+      orderTable.setSize(1200, 800);
+      orderTable.setLocation(1, 1);
+
+      add(orderTable);
+
+   }
+}
+
+class ordermakeTable extends JPanel {
+   // DB에서 스윙 화면으로 테이블 값 가져오기(select) , 저장하기(insert), 수정하기(update), 삭제하기(delete)
+
+   
+   public static int ordernum;
+   
+   private JFrame f1;
+   JPanel jp1 = new JPanel();
+
+   private static final long serialVersionUID = 1L;
+   
+   private JButton jbtnAllRow = null; //고객 전체보기
+   private JButton jbtnComplete = new JButton("주문완료"); // 주문완료 버튼
+   private JTable table;
+   private JScrollPane scrollPane; // 테이블 스크롤바 자동으로 생성되게 하기
+
+   
+   private JComboBox<String> cbbsearch;
+   private static String comboNames[] = { "주문자 ID", "주문상태"};
+   private JTextField search = new JTextField(13);
+   private JButton jBtnSearch = new JButton("검색");
+   private String Content; // 검색 카테고리 id cname gender 담을 스트링
+
+   private static String colNames[] = {"번호", "주문자ID", "메뉴", "총수량", "총금액","주문시간","주문상태"}; // 테이블 컬럼 값들
+   static DefaultTableModel model = new DefaultTableModel(colNames, 0); // 테이블 데이터 모델 객체 생성
+
+   public ordermakeTable(JFrame f1) {
+
+      this.f1 = f1;
+      setLayout(null); // 레이아웃 배치관리자 삭제
+      
+      jp1.setLayout(null);
+      jp1.setLocation(1,1);
+      jp1.setSize(960,800);
+      
+      JLabel optionOrder = new JLabel("주문 조회");
+
+      optionOrder.setBounds(0, 0, 960, 60);
+      optionOrder.setForeground(new Color(255, 255, 255));
+      optionOrder.setBackground(new Color(255, 0, 102));
+      optionOrder.setOpaque(true);
+      optionOrder.setHorizontalAlignment(JLabel.CENTER);
+      optionOrder.setFont(new Font("함초롱바탕", Font.BOLD, 30));
+      jp1.add(optionOrder);// 컴포넌트 컨테이너에 올림
+      
+      
+      
+      JPanel searchpan = new JPanel(); //검색 패널
+      searchpan.setLocation(130, 100);
+      searchpan.setSize(300, 60);
+      JPanel ssspan = new JPanel();//검색 컴포넌트 넣을 패널
+      ssspan.setLayout(new FlowLayout(FlowLayout.LEFT));
+
+      cbbsearch = new JComboBox(comboNames); //콤보박스
+      ssspan.add(cbbsearch);//콤보박스
+      ssspan.add(search); //텍스트필드
+      ssspan.add(jBtnSearch);//검색 버튼
+      searchpan.add(ssspan);
+      searchpan.setBackground(Color.WHITE);
+      ssspan.setBackground(Color.WHITE);
+      
+      
+
+      jBtnSearch.addActionListener(new ActionListener() { //검색 버튼 눌렀을 떄 //////오류는 없는데 검색안된다 우쒸
+         public void actionPerformed(ActionEvent e) {
+            System.out.println(e.getActionCommand()); // 선택된 버튼의 텍스트값 출력
+            DefaultTableModel model2 = (DefaultTableModel) table.getModel();
+
+            if (cbbsearch.getSelectedItem().toString().equals("주문자 ID")) {
+               Content = "cId";
+               
+            } else if (cbbsearch.getSelectedItem().toString().equals("주문상태")) {
+               Content = "status";
+               
+            }
+            
+            model2.setRowCount(0); // 전체 테이블 화면을 지워줌
+            
+            System.out.println("이거는" + Content);
+            System.out.println((String)search.getText());
+            OrderDB odb = OrderDB.getInstance();
+            int result = odb.searchorder(Content,(String)search.getText()) ;
+            if (result == -1) { //검색 결과 없을 떄 
+               JOptionPane.showMessageDialog(null, "해당내용이 없습니다");
+
+            }            
+         }
+      });
+
+   
+
+      table = new JTable(model); // 테이블에 모델객체 삽입
+      table.setRowHeight(50);
+      table.getTableHeader().setFont(new Font("굴림체", Font.BOLD, 15));
+      table.getColumnModel().getColumn(0).setPreferredWidth(180); // JTable 의 컬럼 길이 조절
+      table.getColumnModel().getColumn(1).setPreferredWidth(280);
+      table.getColumnModel().getColumn(2).setPreferredWidth(280);
+      table.getColumnModel().getColumn(3).setPreferredWidth(280);
+      table.getColumnModel().getColumn(4).setPreferredWidth(280);
+      table.getColumnModel().getColumn(5).setPreferredWidth(370);
+      table.getColumnModel().getColumn(6).setPreferredWidth(280);
+
+      table.addMouseListener((MouseListener) new JTableMouseListener()); // 테이블에 마우스리스너 연결
+
+      scrollPane = new JScrollPane(table); // 테이블에 스크롤 생기게 하기
+      scrollPane.setSize(800, 450);
+      scrollPane.setLocation(70, 180);
+      
+      /*
+      jbtnComplete.addActionListener(new ActionListener() {
+         public void actionPerformed(java.awt.event.ActionEvent e) {
+            JTable jtable = (JTable) e.getSource();
+            int row = jtable.getSelectedRow(); // 선택된 테이블의 행값
+            String status = (String) model.getValueAt(row, 6);
+            if (status.equals("주문대기")) {
+               JOptionPane.showMessageDialog(null, "주문이 아직 접수되지 않았습니다.");
+            }
+            else if (status.equals("주문접수")) {
+               int onumber = (int)model.getValueAt(row, 0);
+               OrderDB odb = new OrderDB();
+               odb.completeStatus(onumber);
+               JOptionPane.showMessageDialog(null, "주문이 완료되었습니다.");
+            }
+            else if (status.equals("주문완료")) {
+               JOptionPane.showMessageDialog(null, "이미 완료된 주문입니다.");
+            }
+         }
+      });
+      */
+      
+      
+      //jbtnComplete.setSize(200,40);
+      //jbtnComplete.setLocation(670,680);
+
+      jp1.add(searchpan);
+      //jp1.add(jbtnComplete);
+      jp1.add(scrollPane);
+      jp1.setBackground(Color.WHITE);
+      add(jp1);
+      initialize();
+      select();
+
+   }
+
+   private class JTableMouseListener implements MouseListener { // 마우스로 눌려진값확인하기
+      public void mouseClicked(java.awt.event.MouseEvent e) { // 선택된 위치의 값을 출력
+
+         JTable jtable = (JTable) e.getSource();
+         int row = jtable.getSelectedRow(); // 선택된 테이블의 행값
+         int col = jtable.getSelectedColumn(); // 선택된 테이블의 열값
+
+         ordernum = (int) model.getValueAt(row, 0);
+          String cid = (String) model.getValueAt(row, 1);
+          int totalq = (int) model.getValueAt(row, 3);
+          int totalp = (int) model.getValueAt(row, 4);
+          String status = (String) model.getValueAt(row, 6);
+          System.out.println("상태는요" + status);
+         System.out.println(ordernum);
+         if(e.getClickCount() == 1) { // 셀을 더블 클릭했을 때 영수증 나오도록 설정
+            System.out.println("더블클릭");
+            OrderReceipt orc = new OrderReceipt();
+            orc.pushorderinfo(ordernum, cid, totalq, totalp, status);
+            System.out.println("상태는 " +status);
+            
+            
+                     
+            OrderDB odb = new OrderDB();
+            odb.countpName(ordernum);
+            odb.printOrder(ordernum);
+            
+         }
+
+      }
+
+      public void mouseEntered(java.awt.event.MouseEvent e) {
+      }
+
+      public void mouseExited(java.awt.event.MouseEvent e) {
+      }
+
+      public void mousePressed(java.awt.event.MouseEvent e) {
+      }
+
+      public void mouseReleased(java.awt.event.MouseEvent e) {
+      }
+   }
+   private class BackSpace implements MouseListener { //뒤로가기 클릭 이벤트
+      public void mouseClicked(java.awt.event.MouseEvent e) { 
+         
+         int result = JOptionPane.showConfirmDialog(null,"뒤로 가시겠습니까?","Confirm",JOptionPane.YES_NO_OPTION);
+         if(result==JOptionPane.YES_OPTION) {
+            Admin_main admain = new Admin_main();
+            admain.adminmain();
+            f1.setVisible(false);
+         }
+         
+      }
+
+      public void mouseEntered(java.awt.event.MouseEvent e) {
+      }
+
+      public void mouseExited(java.awt.event.MouseEvent e) {
+      }
+
+      public void mousePressed(java.awt.event.MouseEvent e) {
+      }
+
+      public void mouseReleased(java.awt.event.MouseEvent e) {
+      }
+   }
+   private void select() { // 테이블에 보이기 위해 검색
+
+      OrderDB odb = OrderDB.getInstance();
+       odb.selectmeber();
+
+   }
+
+   private void initialize() { // 액션이벤트와 버튼 컴포넌트 설정
+      
+      
+      jbtnAllRow = new JButton();
+      jbtnAllRow.addActionListener(new ActionListener() {
+         public void actionPerformed(java.awt.event.ActionEvent e) {
+            System.out.println(e.getActionCommand()); // 선택된 버튼의 텍스트값 출력
+            DefaultTableModel model2 = (DefaultTableModel) table.getModel();
+
+            model2.setRowCount(0);
+            select();
+         }
+      });
+      jbtnAllRow.setBounds(620, 100, 200, 40);
+      jbtnAllRow.setText("새로고침");
+      jp1.add(jbtnAllRow);
+      
+   }
+   
+   
+
+}

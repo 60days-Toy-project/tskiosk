@@ -358,7 +358,7 @@ public class creditCardScreen {
 					order.setPrice(Integer.parseInt(Cart.orders[i][2]));
 					java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
 					order.setTime(date);
-					order.setStatus(1);
+					order.setStatus("주문대기");
 					order.setTotalQuantity(totalQ);
 					order.setTotalPrice(totalP);
 					

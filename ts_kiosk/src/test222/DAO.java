@@ -13,6 +13,10 @@ public class DAO {
 	private PreparedStatement stmt = null;
 	private ResultSet res = null;
 	private final String LOGIN = "select * from Customers where Id = ? and Pw = ? ";
+	//관리자
+	private final String ADMIN_IDNUM = "select * from Admin where Aid_num = ?";
+	private final String ADMIN_INSERT = "insert into Members(Aid_num,Aid,Apw,Aname)"+" values(?,?,?,?)";
+	private final String ADMIN_LOGIN = "select * from Members where Id = ? and Pw = ? ";
 	private final String NAME = "Select Cname from Customers where Id = ? and Pw=?";
 
 	// 고객 정보 DB
@@ -30,9 +34,9 @@ public class DAO {
 	private final String MINSERT = "insert into product(Category,Sub,Subkey,Qty,Price,Realeasedate)"
 			+ " values(?,?,?,?,?,?)";
 
-	private final String MUPDATE = "UPDATE product SET Category=?, Subkey=?, Qty=?, Price=?, Realeasedate=? "
-			+ "where Sub=?";
-	private final String MSELECT = "select Category, Sub, Subkey, Qty, Price, Realeasedate from product";
+	private final String MUPDATE = "UPDATE product SET Category=?, Sub=?, Qty=?, Price=?, Realeasedate=? "
+			+ "where Subkey=?";
+	private final String MSELECT = "select * from product";
 	private final String MDELETE = "delete from product where Sub= ?";
 	private final String MSEARCH_category = "select * from product where Category = ?";
 	private final String MSEARCH_sub = "select * from product where Sub = ?";
@@ -96,7 +100,72 @@ public class DAO {
 
 		return -1;
 	}
+	
+	/////관리자 로그인
+	public int Admin_idpw(String id, String passwd) {
 
+	
+		conn = Database.getConnection();
+		try {
+			stmt = conn.prepareStatement(LOGIN);
+
+			stmt.setString(1, id);
+			stmt.setString(2, passwd);
+			
+
+			return 1;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return -1;
+	}
+	
+	
+	public int Admin_searchIDNUM(String id_num) {
+	
+		conn = Database.getConnection();
+		try {
+			stmt = conn.prepareStatement(ADMIN_IDNUM);
+
+			stmt.setString(1, id_num);
+			
+			res = stmt.executeQuery();
+
+			return 1;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return -1;
+	}
+	
+	
+	public int Admin_insertMember(DTO mdto) { // 새로 추가
+
+		conn = Database.getConnection();
+
+		try {
+			stmt = conn.prepareStatement(ADMIN_INSERT);
+			
+			stmt.setString(1, mdto.getAidnum());
+			stmt.setString(2, mdto.getAid());
+			stmt.setString(3, mdto.getApassword());
+			stmt.setString(4, mdto.getAname());
+			
+			
+			stmt.executeUpdate();
+
+			return 1;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
+	}
+	
+	
+	////////////////////고객
 	public int insertMember(DTO mdto) { // 새로 추가
 
 		conn = Database.getConnection();
@@ -246,11 +315,11 @@ public class DAO {
 			stmt = conn.prepareStatement(MUPDATE);
 
 			stmt.setString(1, adto.getCategory());
-			stmt.setString(2, adto.getSubkey());
+			stmt.setString(2, adto.getSub());
 			stmt.setString(3, adto.getQty());
 			stmt.setString(4, adto.getPrice());
 			stmt.setString(5, adto.getRdate());
-			stmt.setString(6, adto.getSub());
+			stmt.setString(6, adto.getSubkey());
 
 			stmt.executeUpdate();
 

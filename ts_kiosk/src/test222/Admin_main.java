@@ -96,6 +96,7 @@ public class Admin_main extends JFrame{
 			
 		});
 		
+		
 
 	
 		add(jp1);

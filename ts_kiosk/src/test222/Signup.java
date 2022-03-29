@@ -16,6 +16,7 @@ public class Signup extends JFrame {
 		title.setFont(new Font("함초롱바탕",Font.BOLD,25));
 		
 		JButton signup = new JButton("회원가입");
+		JButton Adminsignup = new JButton("관리자 회원가입");
 		JButton cancel = new JButton("취소");
 		
 		JTextField id = new JTextField(13);//아이디
@@ -79,6 +80,7 @@ public class Signup extends JFrame {
 		formPanel.add(emailPanel);	
 		
 		JPanel panel = new JPanel();
+		panel.add(Adminsignup);
 		panel.add(signup);
 		panel.add(cancel);
 		
@@ -86,7 +88,7 @@ public class Signup extends JFrame {
 		add(formPanel, BorderLayout.CENTER);
 		add(panel, BorderLayout.SOUTH);
 		
-		setBounds(200, 200, 300, 350);
+		setBounds(200, 200, 400, 450);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -135,7 +137,18 @@ public class Signup extends JFrame {
 			}
 			
 		});
-		
+		//관리자 회원가입
+		Adminsignup.addActionListener(new java.awt.event.ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				Admin_signup AS = new Admin_signup();
+				AS.Admin_signup();
+				dispose();
+			}
+			
+		});
 		
 		// 취소 버튼을 클릭했을 때 이벤트 처리
 		cancel.addActionListener(new java.awt.event.ActionListener() {

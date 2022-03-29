@@ -1,0 +1,305 @@
+package test222;
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+
+
+
+
+public class OrderReceipt {
+   
+   static int onumber;
+   static String cusid;
+   static int tquantity;
+   static int tprice;
+   static String ostatus;
+   
+   private static String colNames[] = {"제품명", "수량", "금액"}; // 테이블 컬럼 값들
+   //static DefaultTableModel model = new DefaultTableModel(colNames, 0); // 테이블 데이터 모델 객체 생성
+   //private JTable table;
+   //private JScrollPane scrollPane; // 테이블 스크롤바 자동으로 생성되게 하기
+   public static String[][] oinfo = new String [20][3];
+
+   
+   public void pushorderinfo(int onum, String cid, int totalq, int totalp, String status) { //주문번호, 주문자id, 총수량, 총액 받아오기
+      onumber = onum;
+      cusid = cid;
+      tquantity = totalq;
+      tprice = totalp;
+      ostatus = status;
+      if(onumber==1) {
+         int j=2; 
+         System.out.println("tttttttt" + j);
+         }
+      if(cusid.equals("set1")) {
+         System.out.println("이거읽힘ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ");
+      }
+      if(ostatus=="주문대기") {
+         int i=1;
+         System.out.println("jjjj"+i);
+      }
+      ostatus = status;
+   }
+   
+   
+   public void printReceipt() {
+      
+      JFrame fr = new JFrame("영수증");
+      
+      fr.setSize(800, 1000);
+      fr.setLocationRelativeTo(null);
+      fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      fr.getContentPane().setLayout(null);
+      fr.setBackground(Color.WHITE);
+      
+      JLabel lb = new JLabel("영수증");
+      fr.add(lb);
+      lb.setBounds(0, 0, 800, 100);
+      lb.setBackground(new Color(255, 0, 102));
+      lb.setOpaque(true); // Opaque값을 true로 설정해야 배경색이 적용된다.
+      lb.setHorizontalAlignment(JLabel.CENTER);
+      lb.setFont(new Font("SansSerif", Font.BOLD, 30));
+      lb.setForeground(Color.WHITE);
+      
+      JLabel jlonum = new JLabel("주문 번호 : ");
+      fr.add(jlonum);
+      jlonum.setBounds(40, 120, 100, 100);
+      jlonum.setFont(new Font("SansSerif", Font.BOLD, 13));
+      
+      JLabel onum = new JLabel(onumber + "");
+      fr.add(onum);
+      onum.setBounds(120, 145, 200, 50);
+      onum.setFont(new Font("SansSerif", Font.BOLD, 13));
+      
+      JLabel jlcid = new JLabel("주문자 ID : ");
+      fr.add(jlcid);
+      jlcid.setBounds(40, 160, 150, 100);
+      jlcid.setFont(new Font("SansSerif", Font.BOLD, 13));
+      
+      JLabel cid = new JLabel(cusid + "");
+      fr.add(cid);
+      cid.setBounds(120, 175, 400, 70);
+      cid.setFont(new Font("SansSerif", Font.BOLD, 13));
+      
+      JLabel jlline1 = new JLabel("--------------------------------------------------------------------------------------------------------------------");
+      fr.add(jlline1);
+      jlline1.setBounds(40, 190, 3000, 100);
+      jlline1.setFont(new Font("SansSerif", Font.BOLD, 18));
+      
+      JLabel jltitle = new JLabel("                            제품명                             |           수량           |               가격           ");
+      fr.add(jltitle);
+      jltitle.setBounds(40, 210, 3000, 100);
+      jltitle.setFont(new Font("SansSerif", Font.BOLD, 18));
+      
+      JLabel jlline2 = new JLabel("--------------------------------------------------------------------------------------------------------------------");
+      fr.add(jlline2);
+      jlline2.setBounds(40, 230, 3000, 100);
+      jlline2.setFont(new Font("SansSerif", Font.BOLD, 18));
+      
+      ///JPanel jpinfo = new JPanel();
+      //fr.add(jpinfo);
+      ///jpinfo.setBounds(40,300, 700, 430);
+/*      
+      int m = OrderDB.order_info.length; 
+      int n = OrderDB.order_info[0].length; 
+      for (int i = 0; i < m; i++)   { 
+         for (int j = 0; j < n; j++) { 
+            System.out.print("체크"+OrderDB.order_info[i][j] + "\t"); 
+         } 
+         System.out.println();
+      }
+
+   */
+   
+      /////스크롤이 난리침ㅎㅎ
+      DefaultTableModel model = new DefaultTableModel(OrderDB.order_info, colNames); // 테이블 데이터 모델 객체 생성
+       JTable otable = new JTable(model);
+       otable.setBounds(40,300,650,430);
+       
+       DefaultTableCellRenderer celAlignCenter = new DefaultTableCellRenderer();
+       celAlignCenter.setHorizontalAlignment(JLabel.CENTER); // 가운데 정렬
+              
+       otable.setRowHeight(50);
+      otable.setFont(new Font("굴림체", Font.BOLD, 15));
+       otable.getColumnModel().getColumn(0).setPreferredWidth(330); // JTable 의 컬럼 길이 조절
+       otable.getColumnModel().getColumn(0).setCellRenderer(celAlignCenter);  // 가운데 정렬
+      otable.getColumnModel().getColumn(1).setPreferredWidth(160);
+      otable.getColumnModel().getColumn(1).setCellRenderer(celAlignCenter);
+      otable.getColumnModel().getColumn(2).setPreferredWidth(200);
+      otable.getColumnModel().getColumn(2).setCellRenderer(celAlignCenter);
+      
+      otable.setShowHorizontalLines(false); // 테이블 선 안보이게 하기
+      otable.setShowVerticalLines(false); // 테이블 선 안보이게 하기
+      //otable.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+      
+      JScrollPane scroll = new JScrollPane(otable, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
+            ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+      //scroll.getVerticalScrollBar().setUnitIncrement(16);
+       
+      scroll.setSize(650,430);
+      scroll.setLocation(70, 300);
+      scroll.setBorder(null);
+      
+      fr.add(scroll);
+      
+      ///jpinfo.add(otable);
+      ///jpinfo.add(scroll);
+      //jpinfo.setBackground(Color.WHITE);
+      ////fr.add(jpinfo);
+      
+      
+      ///// 제품명, 수량, 가격 쓰일 패널 -> 스크롤 들어가게 할 것 
+      /*
+      JPanel jpinfo = new JPanel();
+      fr.add(jpinfo);
+      jpinfo.setBounds(40, 250, 3000, 430);
+      
+      
+      
+      JScrollPane scrollSingle = new JScrollPane(jpinfo, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
+            ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+      scrollSingle.getVerticalScrollBar().setUnitIncrement(16);
+
+      fr.add(scrollSingle);
+      */
+      //////////////////////////////////////////////////////////////
+      
+      JLabel jlline3 = new JLabel("--------------------------------------------------------------------------------------------------------------------");
+      fr.add(jlline3);
+      jlline3.setBounds(40, 700, 3000, 100);
+      jlline3.setFont(new Font("SansSerif", Font.BOLD, 18));
+      
+      JLabel jltotalq = new JLabel("총 수량 : ");
+      fr.add(jltotalq);
+      jltotalq.setBounds(500, 740, 150, 100);
+      jltotalq.setFont(new Font("SansSerif", Font.BOLD, 18));
+      
+      JLabel tq = new JLabel(tquantity + "개");
+      fr.add(tq);
+      tq.setBounds(600, 755, 400, 70);
+      tq.setFont(new Font("SansSerif", Font.BOLD, 18));
+      
+      JLabel jltotalp = new JLabel("총액 : ");
+      fr.add(jltotalp);
+      jltotalp.setBounds(500, 770, 150, 100);
+      jltotalp.setFont(new Font("SansSerif", Font.BOLD, 18));
+      
+      JLabel tp = new JLabel(tprice + "원");
+      fr.add(tp);
+      tp.setBounds(600, 785, 400, 70);
+      tp.setFont(new Font("SansSerif", Font.BOLD, 18));
+      
+      
+      JLabel jlline4 = new JLabel("--------------------------------------------------------------------------------------------------------------------");
+      fr.add(jlline4);
+      jlline4.setBounds(40, 800, 3000, 100);
+      jlline4.setFont(new Font("SansSerif", Font.BOLD, 18));
+      
+   /*
+      JButton recbtn = new JButton("주문접수"); //주문접수 버튼 -> 주문대기 상태에서 주문접수로 바뀜
+      fr.add(recbtn);
+      recbtn.setBounds(400, 870, 150, 50);
+      recbtn.setFont(new Font("SansSerif", Font.BOLD, 15));
+      
+      JButton complbtn = new JButton("주문완료");
+      fr.add(complbtn);
+      complbtn.setBounds(400, 870, 150, 50);
+      recbtn.setFont(new Font("SansSerif", Font.BOLD, 15));
+      
+   */
+      JButton recbtn = new JButton("주문접수");
+      JButton complbtn = new JButton("주문완료");
+      
+      if (ostatus.equals("주문대기")) {
+         //JButton recbtn = new JButton("주문접수"); //주문접수 버튼 -> 주문대기 상태에서 주문접수로 바뀜
+         fr.add(recbtn);
+         recbtn.setBounds(400, 870, 150, 50);
+         recbtn.setFont(new Font("SansSerif", Font.BOLD, 15));
+         
+         OrderDB odb = new OrderDB();
+         odb.changeStatus(onumber);
+         System.out.println("실행된겁ㄴ데---");
+         //JOptionPane.showMessageDialog(null, "주문이 접수되었습니다.");
+      }
+      else if (ostatus.equals("주문접수")) {
+         //JButton complbtn = new JButton("주문완료");
+         fr.add(complbtn);
+         complbtn.setBounds(400, 870, 150, 50);
+         complbtn.setFont(new Font("SansSerif", Font.BOLD, 15));
+         
+      }
+      else if (ostatus.equals("주문완료")) {
+         //JOptionPane.showMessageDialog(null, "이미 완료된 주문입니다.");
+      }
+      
+      JButton closebtn = new JButton("닫기"); //주문접수 버튼
+      fr.add(closebtn);
+      closebtn.setBounds(580, 870, 150,50);
+      closebtn.setFont(new Font("SansSerif", Font.BOLD, 15));
+      
+      
+      recbtn.addActionListener(new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent e) {
+            OrderDB odb = new OrderDB();
+            odb.changeStatus(onumber);
+            JOptionPane.showMessageDialog(null, "주문이 접수되었습니다.");
+/*
+            if (ostatus.equals("주문대기")) {
+               OrderDB odb = new OrderDB();
+               odb.changeStatus(onumber);
+               System.out.println("실행된겁ㄴ데---");
+               JOptionPane.showMessageDialog(null, "주문이 접수되었습니다.");
+            }
+            else if (ostatus.equals("주문접수")) {
+               JOptionPane.showMessageDialog(null, "이미 접수된 주문입니다.");
+            }
+            else if (ostatus.equals("주문완료")) {
+               JOptionPane.showMessageDialog(null, "이미 완료된 주문입니다.");
+            }
+   */      
+         }
+      });
+      
+      complbtn.addActionListener(new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent e) {
+            OrderDB odb = new OrderDB();
+            odb.completeStatus(onumber);
+            JOptionPane.showMessageDialog(null, "주문이 완료되었습니다.");
+   
+         }
+      });
+      
+      closebtn.addActionListener(new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent e) {
+
+            fr.setVisible(false); // 창 안보이게 하기
+         }
+      });
+      
+      // 프레임이 보이도록 설정
+        fr.setVisible(true);
+
+
+      
+   }
+
+}

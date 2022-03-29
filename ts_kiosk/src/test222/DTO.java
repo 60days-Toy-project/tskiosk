@@ -10,6 +10,11 @@ public class DTO {
 	private String birth;
 	private String tel;
 	private String email;
+	
+	private String aid_num;
+	private String aid;
+	private String apassword;
+	private String aname;
 
 	public String getId() {
 		return id;
@@ -65,6 +70,38 @@ public class DTO {
 
 	public void setTel(String tel) {
 		this.tel = tel;
+	}
+	
+	//////////////////°ü¸®ÀÚ
+	public String getAidnum() {
+		return aid_num;
+	}
+
+	public void setAidnum(String aid_num) {
+		this.aid_num = aid_num;
+	}
+	public String getAid() {
+		return aid;
+	}
+
+	public void setAid(String aid) {
+		this.aid = aid;
+	}
+
+	public String getApassword() {
+		return apassword;
+	}
+
+	public void setApassword(String apassword) {
+		this.apassword = apassword;
+	}
+
+	public String getAname() {
+		return aname;
+	}
+
+	public void setAname(String aname) {
+		this.aname = aname;
 	}
 
 	@Override
