@@ -128,7 +128,7 @@ class Panelcoff extends JPanel {
 	public int OPflag = 0;
 
 	JButton[] MBtn = new JButton[15];
-	String[] menu = { "아메리카노", "카페라떼", "카페모카", "카라멜마끼아또", "바닐라카페라떼", "숏카페라떼", "롱블랙", "에스프레소", "스패니쉬연유카페라떼", "아이스크림카페라떼",
+	String[] menu = { "아메리카노", "카페라떼", "카페모카", "카라멜마끼아또", "바닐라카페라떼", "숏카페라떼", "롱블랙", "에스프레소", "스페니쉬연유카페라떼", "아이스크림카페라떼",
 			"달고나카페라떼", "콜드브루", "콜드브루라떼", "흑임자카페라떼", "카푸치노" };
 	int[] price = { 4500, 5000, 5500, 5900, 6000, 5500, 5500, 6500, 5000, 6500, 7000, 5500, 6000, 6500, 5500 };
 
@@ -148,22 +148,14 @@ class Panelcoff extends JPanel {
 			setLayout(new GridLayout(1, 1));
 			njp2.setBackground(Color.WHITE);
 			setBackground(Color.WHITE);
-			ImageIcon[] img = new ImageIcon[15];
-			img[0] = new ImageIcon("image/아메리카노.jpg");
-			img[1] = new ImageIcon("image/카페라떼.jpg");
-			img[2] = new ImageIcon("image/카페모카.jpg");
-			img[3] = new ImageIcon("image/카라멜마끼아또.jpg");
-			img[4] = new ImageIcon("image/바닐라카페라떼.jpg");
-			img[5] = new ImageIcon("image/숏카페라떼.jpg");
-			img[6] = new ImageIcon("image/롱블랙.jpg");
-			img[7] = new ImageIcon("image/에스프레소.jpg");
-			img[8] = new ImageIcon("image/스페니쉬연유카페라떼.jpg");
-			img[9] = new ImageIcon("image/아이스크림카페라떼.jpg");
-			img[10] = new ImageIcon("image/달고나카페라떼.jpg");
-			img[11] = new ImageIcon("image/콜드브루.jpg");
-			img[12] = new ImageIcon("image/콜드브루라떼.jpg");
-			img[13] = new ImageIcon("image/흑임자카페라떼.jpg");
-			img[14] = new ImageIcon("image/카푸치노.jpg");
+			ImageIcon[] img = { new ImageIcon("image/menu/drink/아메리카노.jpg"), new ImageIcon("image/menu/drink/카페라떼.jpg"),
+					new ImageIcon("image/menu/drink/카페모카.jpg"), new ImageIcon("image/menu/drink/카라멜마끼아또.jpg"),
+					new ImageIcon("image/menu/drink/바닐라카페라떼.jpg"), new ImageIcon("image/menu/drink/숏카페라떼.jpg"),
+					new ImageIcon("image/menu/drink/롱블랙.jpg"), new ImageIcon("image/menu/drink/에스프레소.jpg"),
+					new ImageIcon("image/menu/drink/스페니쉬연유카페라떼.jpg"), new ImageIcon("image/menu/drink/아이스크림카페라떼.jpg"),
+					new ImageIcon("image/menu/drink/달고나카페라떼.jpg"), new ImageIcon("image/menu/drink/콜드브루.jpg"),
+					new ImageIcon("image/menu/drink/콜드브루라떼.jpg"), new ImageIcon("image/menu/drink/흑임자카페라떼.jpg"),
+					new ImageIcon("image/menu/drink/카푸치노.jpg")};
 
 			for (int i = 0; i < img.length; i++) {
 				icon[i] = img[i].getImage();
@@ -241,11 +233,11 @@ class Paneltea extends JPanel {
 			setLayout(new GridLayout(1, 1));
 			tjp.setBackground(Color.WHITE);
 			setBackground(Color.WHITE);
-			ImageIcon[] img = { new ImageIcon("image/로얄밀크티.jpg"), new ImageIcon("image/블랙티.jpg"),
-					new ImageIcon("image/그린티라떼.jpg"), new ImageIcon("image/얼그레이.jpg"),
-					new ImageIcon("image/오렌지자몽티.jpg"), new ImageIcon("image/유자레몬티.jpg"),
-					new ImageIcon("image/잉글리쉬브렉퍼스트.jpg"), new ImageIcon("image/제주유기농녹차.jpg"),
-					new ImageIcon("image/카모마일.jpg"), new ImageIcon("image/애플민트티.jpg"), new ImageIcon("image/민트.jpg") };
+			ImageIcon[] img = { new ImageIcon("image/menu/drink/로얄밀크티.jpg"), new ImageIcon("image/menu/drink/블랙티.jpg"),
+					new ImageIcon("image/menu/drink/그린티라떼.jpg"), new ImageIcon("image/menu/drink/얼그레이.jpg"),
+					new ImageIcon("image/menu/drink/오렌지자몽티.jpg"), new ImageIcon("image/menu/drink/유자레몬티.jpg"),
+					new ImageIcon("image/menu/drink/잉글리쉬브렉퍼스트.jpg"), new ImageIcon("image/menu/drink/제주유기농녹차.jpg"),
+					new ImageIcon("image/menu/drink/카모마일.jpg"), new ImageIcon("image/menu/drink/애플민트티.jpg"), new ImageIcon("image/menu/drink/민트.jpg") };
 
 			for (int i = 0; i < img.length; i++) {
 				icon[i] = img[i].getImage();
@@ -289,7 +281,7 @@ class Paneltea extends JPanel {
 					int sum = 0;
 
 					OptionSelction ops = new OptionSelction();
-					ops.extra(menu[index], price[index]);
+					ops.extra2(menu[index], price[index]);
 
 				}
 			});
@@ -324,11 +316,11 @@ class Paneldrink extends JPanel {
 			setLayout(new GridLayout(1, 1));
 			djp.setBackground(Color.WHITE);
 			setBackground(Color.WHITE);
-			ImageIcon[] img = { new ImageIcon("image/고구마라떼.jpg"), new ImageIcon("image/민트초코프라페.jpg"),
-					new ImageIcon("image/복숭아에이드.jpg"), new ImageIcon("image/생딸기가득주스.jpg"),
-					new ImageIcon("image/치즈크럼블딸기쉐이크.jpg"), new ImageIcon("image/샹그리아에이드.jpg"),
-					new ImageIcon("image/바닐라밀크쉐이크.jpg"), new ImageIcon("image/레몬셔벗에이드.jpg"),
-					new ImageIcon("image/쑥라떼.jpg"), new ImageIcon("image/망고프라페.jpg") };
+			ImageIcon[] img = { new ImageIcon("image/menu/drink/고구마라떼.jpg"), new ImageIcon("image/menu/drink/민트초코프라페.jpg"),
+					new ImageIcon("image/menu/drink/복숭아에이드.jpg"), new ImageIcon("image/menu/drink/생딸기가득주스.jpg"),
+					new ImageIcon("image/menu/drink/치즈크럼블딸기쉐이크.jpg"), new ImageIcon("image/menu/drink/샹그리아에이드.jpg"),
+					new ImageIcon("image/menu/drink/바닐라밀크쉐이크.jpg"), new ImageIcon("image/menu/drink/레몬셔벗에이드.jpg"),
+					new ImageIcon("image/menu/drink/쑥라떼.jpg"), new ImageIcon("image/menu/drink/망고프라페.jpg") };
 
 			for (int i = 0; i < img.length; i++) {
 				icon[i] = img[i].getImage();
@@ -372,7 +364,7 @@ class Paneldrink extends JPanel {
 					int sum = 0;
 
 					OptionSelction ops = new OptionSelction();
-					ops.extra(menu[index], price[index]);
+					ops.extra2(menu[index], price[index]);
 
 				}
 			});
@@ -406,8 +398,9 @@ class Panelicecream extends JPanel {
 			setLayout(new GridLayout(1, 1));
 			ijp.setBackground(Color.WHITE);
 			setBackground(Color.WHITE);
-			ImageIcon[] img = { new ImageIcon("image/밀크소프트아포가토.jpg"), new ImageIcon("image/바닐라아포가토.jpg"),
-					new ImageIcon("image/컵소프트아이스크림.jpg"), new ImageIcon("image/콘소프트아이스크림.jpg") };
+			ImageIcon[] img = { new ImageIcon("image/menu/icecream/밀크소프트아포가토.jpg"), 
+					new ImageIcon("image/menu/icecream/바닐라아포가토.jpg"), new ImageIcon("image/menu/icecream/컵소프트아이스크림.jpg"), 
+					new ImageIcon("image/menu/icecream/콘소프트아이스크림.jpg") };
 
 			for (int i = 0; i < img.length; i++) {
 				icon[i] = img[i].getImage();
@@ -449,7 +442,7 @@ class Panelicecream extends JPanel {
 					JButton MBtn = (JButton) e.getSource();
 
 					OptionSelction ops = new OptionSelction();
-					ops.Icrcreamextra(menu[index], price[index]);
+					ops.Icecreamextra(menu[index], price[index]);
 
 				}
 			});
@@ -618,7 +611,7 @@ class Panelshortcake extends JPanel {
 					int sum = 0;
 
 					OptionSelction ops = new OptionSelction();
-					ops.Cakeextra(menu[index], price[index]);
+					ops.ShorCakeextra(menu[index], price[index]);
 
 				}
 			});
@@ -701,9 +694,10 @@ class Paneldessert extends JPanel {
 					JButton MBtn = (JButton) e.getSource();
 					int quantity = 0;
 					int sum = 0;
-
+					
+					
 					OptionSelction ops = new OptionSelction();
-					ops.Icrcreamextra(menu[index], price[index]);
+					ops.Dessertextra(menu[index], price[index]);
 
 				}
 			});

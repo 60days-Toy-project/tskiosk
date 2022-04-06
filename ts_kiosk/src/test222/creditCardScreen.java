@@ -37,7 +37,7 @@ public class creditCardScreen {
 	
 	static int totalQ;
 	static int totalP;
-	static int ONum = 1;
+	static int ONum;
 	
 
 	class BoundDocument extends PlainDocument {
@@ -79,6 +79,10 @@ public class creditCardScreen {
 	public void pushTotalP (int totalp) {
 		totalP = totalp;
 	}
+	
+	public void pushONum (int onum) {
+		ONum = onum;
+	}
 
 	public void disCreditCardScreen(JFrame mainf, JFrame payscreenf, int receive) {
 		this.mainf= mainf;
@@ -89,7 +93,8 @@ public class creditCardScreen {
 		fr.setLocationRelativeTo(null);
 		fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fr.getContentPane().setLayout(null);
-
+		
+		
 		JLabel lb = new JLabel("신용카드 결제");
 		fr.add(lb);
 		lb.setBounds(0, 0, 800, 100);
@@ -319,13 +324,21 @@ public class creditCardScreen {
 
 		JButton okBtn = new JButton("결제요청");
 		fr.add(okBtn);
-		okBtn.setBounds(200, 770, 130, 40);
-		okBtn.setFont(new Font("SanSerif", Font.BOLD, 13));
+		okBtn.setBounds(200, 760, 150, 60);
+		okBtn.setBorderPainted(false);
+		okBtn.setBackground(new Color(255, 0, 102));
+		okBtn.setForeground(Color.WHITE);
+		okBtn.setFont(new Font("SansSerif", Font.BOLD, 16));
+		//okBtn.setFont(new Font("SanSerif", Font.BOLD, 13));
 
 		JButton closeBtn = new JButton("닫기");
 		fr.add(closeBtn);
-		closeBtn.setBounds(450, 770, 130, 40);
-		closeBtn.setFont(new Font("SanSerif", Font.BOLD, 13));
+		closeBtn.setBounds(450, 760, 150, 60);
+		closeBtn.setBorderPainted(false);
+		closeBtn.setBackground(Color.GRAY);
+		closeBtn.setForeground(Color.WHITE);
+		closeBtn.setFont(new Font("SansSerif", Font.BOLD, 16));
+		//closeBtn.setFont(new Font("SanSerif", Font.BOLD, 13));
 
 		fr.setVisible(true);
 
@@ -350,6 +363,9 @@ public class creditCardScreen {
 		        }
 				*/
 				Order order = new Order();
+			    OrderDB odb = OrderDB.getInstance();
+				odb.selectONum();
+				System.out.println("제발" + ONum);
 				for (int i = 0; i < lastrow; i++) {
 					order.setOrderNum(ONum);
 					order.setCustomerId(PId);
@@ -362,7 +378,7 @@ public class creditCardScreen {
 					order.setTotalQuantity(totalQ);
 					order.setTotalPrice(totalP);
 					
-					OrderDB odb = OrderDB.getInstance();
+					
 					int result = odb.insertMember(order);
 					if (result==1) {
 						JOptionPane.showMessageDialog(null, "주민기록 등록 완료");

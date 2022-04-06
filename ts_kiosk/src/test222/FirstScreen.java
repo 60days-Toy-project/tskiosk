@@ -1,6 +1,8 @@
 package test222;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -36,12 +38,20 @@ public class FirstScreen {
 		label.setBounds(0,0,600,300);
 		        
         // 버튼 생성
-        JButton btn1 = new JButton("주문을 하시려면 화면을 터치해주세요.");
+        //JButton btn1 = new JButton("주문을 하시려면 화면을 터치해주세요.");
        
  
         // ★ 버튼 위치와 크기 설정
-        btn1.setBounds(0, 300, 600, 300);
-        btn1.setBackground(Color.PINK); 
+        //btn1.setBounds(0, 300, 600, 300);
+        //btn1.setBackground(Color.PINK); 
+        
+        JButton btn1 = new JButton("<html><body>주문을 하시려면<br>화면을 터치해주세요.</body></html>");
+		btn1.setPreferredSize(new Dimension(200, 210));
+		btn1.setBounds(0, 300, 600, 300);
+		btn1.setBorderPainted(false);
+		btn1.setFont(new Font("SansSerif", Font.BOLD, 30));
+		btn1.setForeground(Color.WHITE);
+		btn1.setBackground(new Color(255, 0, 102));
  
         // ★ 프레임에다가 버튼 추가
         frm.getContentPane().add(btn1);
@@ -54,6 +64,7 @@ public class FirstScreen {
 		JLabel label2 = new JLabel(icon2);
 		frm.add(label2);
 		label2.setBounds(0,600,600,300);
+		
         
  
         // 프레임이 보이도록 설정

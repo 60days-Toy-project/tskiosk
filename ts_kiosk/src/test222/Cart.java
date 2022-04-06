@@ -97,7 +97,6 @@ public class Cart extends JPanel {
 		AlldelBtn.setBackground(Color.GRAY);
 		AlldelBtn.addActionListener(new AlldelBtnActionListener());
 
-		
 		PayBtn.setPreferredSize(new Dimension(145, 50));
 		PayBtn.setFont(new Font("굴림체", Font.BOLD, 20));
 		PayBtn.setForeground(Color.WHITE);
@@ -184,6 +183,11 @@ public class Cart extends JPanel {
 		public Plus() {
 
 			plus = new JButton("+");
+			plus.setBorderPainted(false);
+			plus.setBackground(new Color(255, 0, 102));
+			plus.setForeground(Color.WHITE);
+			plus.setFont(new Font("SansSerif", Font.BOLD, 16));
+			
 			plus.addActionListener(e -> {
 
 				int n = table.getSelectedRow();
@@ -226,6 +230,11 @@ public class Cart extends JPanel {
 		public Minus() {
 
 			minus = new JButton("-");
+			minus.setBorderPainted(false);
+			minus.setBackground(new Color(255, 0, 102));
+			minus.setForeground(Color.WHITE);
+			minus.setFont(new Font("SansSerif", Font.BOLD, 16));
+			
 			minus.addActionListener(e -> {
 
 				// DefaultTableModel m = (DefaultTableModel) table.getModel();
@@ -268,12 +277,17 @@ public class Cart extends JPanel {
 
 	// 포스기 부분 삭제 버튼
 	class Del extends AbstractCellEditor implements TableCellEditor, TableCellRenderer {
-		JButton jb;
+		JButton delete;
 
 		public Del() {
 
-			jb = new JButton("삭제");
-			jb.addActionListener(e -> {
+			delete = new JButton("삭제");
+			delete.setBorderPainted(false);
+			delete.setBackground(Color.GRAY);
+			delete.setForeground(Color.WHITE);
+			delete.setFont(new Font("SansSerif", Font.BOLD, 16));
+			
+			delete.addActionListener(e -> {
 				/// JTableRemoveRow();
 				// DefaultTableModel m = (DefaultTableModel) table.getModel();
 				int n = table.getSelectedRow();
@@ -296,13 +310,13 @@ public class Cart extends JPanel {
 		@Override
 		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
 				int row, int column) {
-			return jb;
+			return delete;
 		}
 
 		@Override
 		public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row,
 				int column) {
-			return jb;
+			return delete;
 		}
 	}
 

@@ -276,6 +276,8 @@ public class OrderDB {
          res = stmt.executeQuery();
          while (res.next()) { // 각각 값을 가져와서 테이블값들을 추가
             creditCardScreen.ONum = res.getInt(1)+1; //첫 번째 칸의 값 +1
+            creditCardScreen cs = new creditCardScreen();
+            cs.pushONum(creditCardScreen.ONum);
             
          }
          return 1;
