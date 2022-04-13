@@ -2,6 +2,7 @@ package test222;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -120,6 +121,54 @@ public class Login extends JFrame {
         		dispose();
             }          
         });
+
+	      Action loginok = new AbstractAction() { //엔터쳤을 때 로그인되게 하기
+	          public void actionPerformed(ActionEvent arg0) {
+	      		String indexid = (String)id.getText();
+
+				char[] g_pwd = pw.getPassword();
+				String indexpw = String.valueOf(g_pwd);
+				
+				DAO dao = DAO.getInstance();
+				Admin_DAO Adao = Admin_DAO.ADgetInstance();
+				
+				int result = dao.idpw(indexid, indexpw);
+				
+				
+				if (result == 1) { // 로그인 성공시 첫화면 불러오기
+					JOptionPane.showMessageDialog(null, "로그인 완료");
+
+					FirstScreen fs = new FirstScreen();
+					fs.disScreen();
+
+					dispose();// 현재 창 종료
+				} else if (result != 1) {
+					int result2 = Adao.Admin_idpw(indexid, indexpw);
+					if (result2 == 2) {
+						JOptionPane.showMessageDialog(null, "로그인 완료");
+
+						Admin_main ad = new Admin_main();
+						ad.adminmain();
+
+						dispose();// 현재 창 종료
+					}else {
+						JOptionPane.showMessageDialog(null, "로그인 실패");
+					}
+
+				} else {
+					JOptionPane.showMessageDialog(null, "로그인 실패");
+				}
+	        
+	           
+	           
+	          }
+	       };
+	           
+	      KeyStroke enter = KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0, false);
+	      id.getInputMap(JTable.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).put(enter, "ENTER");
+	      id.getActionMap().put("ENTER", loginok);
+	      pw.getInputMap(JTable.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).put(enter, "ENTER");
+	      pw.getActionMap().put("ENTER", loginok);
 
 
 		// 로그인 버튼을 클릭했을 때
