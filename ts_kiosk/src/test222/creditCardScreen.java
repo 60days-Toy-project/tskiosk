@@ -25,15 +25,15 @@ import javax.swing.text.PlainDocument;
 
 public class creditCardScreen {
 	
-	private JFrame mainf;//Ä«Å×°í¸®¸ŞÀÎÃ¢ ÇÁ·¹ÀÓ
-	private JFrame payscreenf; //°áÁ¦Ã¢ ÇÁ·¹ÀÓ
+	private JFrame mainf;//ì¹´í…Œê³ ë¦¬ë©”ì¸ì°½ í”„ë ˆì„
+	private JFrame payscreenf; //ê²°ì œì°½ í”„ë ˆì„
 	
 	static String PId;
-	static String PName; // °áÁ¦ÀÚ ÀÌ¸§
-	static String PEmail; // °áÁ¦ÀÚ ÀÌ¸ŞÀÏ
-	static String PTel; // °áÁ¦ÀÚ ÀüÈ­ ¹øÈ£
+	static String PName; // ê²°ì œì ì´ë¦„
+	static String PEmail; // ê²°ì œì ì´ë©”ì¼
+	static String PTel; // ê²°ì œì ì „í™” ë²ˆí˜¸
 	
-	static int lastrow; //ÇÊ¿äÇÑ ÇàÀÇ ¼ö ¸¸Å­¸¸ Ãâ·ÂÇÏ±â À§ÇÔ
+	static int lastrow; //í•„ìš”í•œ í–‰ì˜ ìˆ˜ ë§Œí¼ë§Œ ì¶œë ¥í•˜ê¸° ìœ„í•¨
 	
 	static int totalQ;
 	static int totalP;
@@ -87,7 +87,7 @@ public class creditCardScreen {
 	public void disCreditCardScreen(JFrame mainf, JFrame payscreenf, int receive) {
 		this.mainf= mainf;
 		this.payscreenf= payscreenf;
-		JFrame fr = new JFrame("½Å¿ëÄ«µå °áÁ¦");
+		JFrame fr = new JFrame("ì‹ ìš©ì¹´ë“œ ê²°ì œ");
 		
 		fr.setSize(800, 900);
 		fr.setLocationRelativeTo(null);
@@ -95,16 +95,16 @@ public class creditCardScreen {
 		fr.getContentPane().setLayout(null);
 		
 		
-		JLabel lb = new JLabel("½Å¿ëÄ«µå °áÁ¦");
+		JLabel lb = new JLabel("ì‹ ìš©ì¹´ë“œ ê²°ì œ");
 		fr.add(lb);
 		lb.setBounds(0, 0, 800, 100);
 		lb.setBackground(new Color(255, 0, 102));
-		lb.setOpaque(true); // Opaque°ªÀ» true·Î ¼³Á¤ÇØ¾ß ¹è°æ»öÀÌ Àû¿ëµÈ´Ù.
+		lb.setOpaque(true); // Opaqueê°’ì„ trueë¡œ ì„¤ì •í•´ì•¼ ë°°ê²½ìƒ‰ì´ ì ìš©ëœë‹¤.
 		lb.setHorizontalAlignment(JLabel.CENTER);
 		lb.setFont(new Font("SansSerif", Font.BOLD, 30));
 		lb.setForeground(Color.WHITE);
 
-		JLabel names = new JLabel("°áÁ¦ÀÚ ¼º¸í");
+		JLabel names = new JLabel("ê²°ì œì ì„±ëª…");
 		fr.add(names);
 		names.setBounds(40, 120, 100, 100);
 		names.setFont(new Font("SansSerif", Font.BOLD, 13));
@@ -114,13 +114,13 @@ public class creditCardScreen {
 		pname.setBounds(500, 150, 200, 50);
 		pname.setFont(new Font("SansSerif", Font.BOLD, 13));
 
-		JLabel cardcom = new JLabel("Ä«µå»ç¸¦ ¼±ÅÃÇØÁÖ¼¼¿ä");
+		JLabel cardcom = new JLabel("ì¹´ë“œì‚¬ë¥¼ ì„ íƒí•´ì£¼ì„¸ìš”");
 		fr.add(cardcom);
 		cardcom.setBounds(40, 220, 150, 100);
 		cardcom.setFont(new Font("SansSerif", Font.BOLD, 13));
 
-		// Ä«µå»ç ÄŞº¸¹Ú½º
-		String bank[] = { "KB±¹¹ÎÄ«µå", "½ÅÇÑÄ«µå", "ÇÏ³ªÄ«µå", "·Ôµ¥Ä«µå", "BCÄ«µå", "NH³óÇùÄ«µå", "»ï¼ºÄ«µå", "Çö´ëÄ«µå" };
+		// ì¹´ë“œì‚¬ ì½¤ë³´ë°•ìŠ¤
+		String bank[] = { "KBêµ­ë¯¼ì¹´ë“œ", "ì‹ í•œì¹´ë“œ", "í•˜ë‚˜ì¹´ë“œ", "ë¡¯ë°ì¹´ë“œ", "BCì¹´ë“œ", "NHë†í˜‘ì¹´ë“œ", "ì‚¼ì„±ì¹´ë“œ", "í˜„ëŒ€ì¹´ë“œ" };
 
 		ImageIcon[] card = { new ImageIcon("image/card/kbcard.png"), new ImageIcon("image/card/shcard.png"),
 				new ImageIcon("image/card/hncard.png"), new ImageIcon("image/card/ltcard.png"),
@@ -138,18 +138,18 @@ public class creditCardScreen {
 		fr.add(cardimgLabel);
 		cardimgLabel.setBounds(450, 300, 280, 180);
 
-		// Ä«µå»ç ¼±ÅÃ¿¡ µû¶ó ÀÌ¹ÌÁö°¡ ¹Ù²ñ
+		// ì¹´ë“œì‚¬ ì„ íƒì— ë”°ë¼ ì´ë¯¸ì§€ê°€ ë°”ë€œ
 		CCom.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JComboBox jc = (JComboBox) e.getSource(); // ÄŞº¸¹Ú½º °ª ¾Ë¾Æ³»±â
+				JComboBox jc = (JComboBox) e.getSource(); // ì½¤ë³´ë°•ìŠ¤ ê°’ ì•Œì•„ë‚´ê¸°
 				int index = jc.getSelectedIndex();
-				cardimgLabel.setIcon(card[index]); // ÀÎµ¦½ºÀÇ ÀÌ¹ÌÁö¸¦ ÀÌ¹ÌÁö ·¹ÀÌºí¿¡ Ãâ·Â
+				cardimgLabel.setIcon(card[index]); // ì¸ë±ìŠ¤ì˜ ì´ë¯¸ì§€ë¥¼ ì´ë¯¸ì§€ ë ˆì´ë¸”ì— ì¶œë ¥
 				fr.add(cardimgLabel);
 				cardimgLabel.setBounds(450, 300, 280, 180);
 			}
 		});
 
-		JLabel cardnum = new JLabel("Ä«µå ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä");
+		JLabel cardnum = new JLabel("ì¹´ë“œ ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”");
 		fr.add(cardnum);
 		cardnum.setBounds(40, 320, 160, 100);
 		cardnum.setFont(new Font("SansSerif", Font.BOLD, 13));
@@ -164,15 +164,15 @@ public class creditCardScreen {
 			public void keyPressed(KeyEvent keyEvent) {
 			}
 
-			public void keyReleased(KeyEvent keyEvent) { // Å°°¡ ´­·ÈÀ» ¶§
+			public void keyReleased(KeyEvent keyEvent) { // í‚¤ê°€ ëˆŒë ¸ì„ ë•Œ
 
 				String data = cnum1.getText();
 				System.out.println(data);
 				for (int i = 0; i < data.length(); i++) {
 					char c = data.charAt(i);
-					if (c < 48 || c > 57) {// ¼ıÀÚ°¡ ¾Æ´Ñ °æ¿ì
-						JOptionPane.showMessageDialog(null, "¼ıÀÚ¸¸ ÀÔ·Â°¡´ÉÇÕ´Ï´Ù.");
-						cnum1.setText(""); // ÅØ½ºÆ®ÇÊµå ÃÊ±âÈ­
+					if (c < 48 || c > 57) {// ìˆ«ìê°€ ì•„ë‹Œ ê²½ìš°
+						JOptionPane.showMessageDialog(null, "ìˆ«ìë§Œ ì…ë ¥ê°€ëŠ¥í•©ë‹ˆë‹¤.");
+						cnum1.setText(""); // í…ìŠ¤íŠ¸í•„ë“œ ì´ˆê¸°í™”
 						break;
 					}
 				}
@@ -210,8 +210,8 @@ public class creditCardScreen {
 				System.out.println(data);
 				for (int i = 0; i < data.length(); i++) {
 					char c = data.charAt(i);
-					if (c < 48 || c > 57) {// ¼ıÀÚ°¡ ¾Æ´Ñ °æ¿ì
-						JOptionPane.showMessageDialog(null, "¼ıÀÚ¸¸ ÀÔ·Â°¡´ÉÇÕ´Ï´Ù.");
+					if (c < 48 || c > 57) {// ìˆ«ìê°€ ì•„ë‹Œ ê²½ìš°
+						JOptionPane.showMessageDialog(null, "ìˆ«ìë§Œ ì…ë ¥ê°€ëŠ¥í•©ë‹ˆë‹¤.");
 						cnum2.setText("");
 						break;
 					}
@@ -245,8 +245,8 @@ public class creditCardScreen {
 				System.out.println(data);
 				for (int i = 0; i < data.length(); i++) {
 					char c = data.charAt(i);
-					if (c < 48 || c > 57) {// ¼ıÀÚ°¡ ¾Æ´Ñ °æ¿ì
-						JOptionPane.showMessageDialog(null, "¼ıÀÚ¸¸ ÀÔ·Â°¡´ÉÇÕ´Ï´Ù.");
+					if (c < 48 || c > 57) {// ìˆ«ìê°€ ì•„ë‹Œ ê²½ìš°
+						JOptionPane.showMessageDialog(null, "ìˆ«ìë§Œ ì…ë ¥ê°€ëŠ¥í•©ë‹ˆë‹¤.");
 						cnum3.setText("");
 						break;
 					}
@@ -276,8 +276,8 @@ public class creditCardScreen {
 				System.out.println(data);
 				for (int i = 0; i < data.length(); i++) {
 					char c = data.charAt(i);
-					if (c < 48 || c > 57) {// ¼ıÀÚ°¡ ¾Æ´Ñ °æ¿ì
-						JOptionPane.showMessageDialog(null, "¼ıÀÚ¸¸ ÀÔ·Â°¡´ÉÇÕ´Ï´Ù.");
+					if (c < 48 || c > 57) {// ìˆ«ìê°€ ì•„ë‹Œ ê²½ìš°
+						JOptionPane.showMessageDialog(null, "ìˆ«ìë§Œ ì…ë ¥ê°€ëŠ¥í•©ë‹ˆë‹¤.");
 						cnum4.setText("");
 						break;
 					}
@@ -291,7 +291,7 @@ public class creditCardScreen {
 
 		cnum4.addKeyListener(keyListener4);
 
-		JLabel num = new JLabel("¿¬¶ôÃ³");
+		JLabel num = new JLabel("ì—°ë½ì²˜");
 		fr.add(num);
 		num.setBounds(40, 420, 150, 100);
 		num.setFont(new Font("SansSerif", Font.BOLD, 13));
@@ -301,7 +301,7 @@ public class creditCardScreen {
 		ptel.setBounds(500, 450, 200, 50);
 		ptel.setFont(new Font("SansSerif", Font.BOLD, 13));
 
-		JLabel email = new JLabel("ÀÌ¸ŞÀÏ");
+		JLabel email = new JLabel("ì´ë©”ì¼");
 		fr.add(email);
 		email.setBounds(40, 520, 150, 100);
 		email.setFont(new Font("SansSerif", Font.BOLD, 13));
@@ -311,18 +311,18 @@ public class creditCardScreen {
 		pemail.setBounds(500, 550, 230, 50);
 		pemail.setFont(new Font("SansSerif", Font.BOLD, 13));
 
-		JLabel money = new JLabel("ÃÑ °áÁ¦±İ¾×");
+		JLabel money = new JLabel("ì´ ê²°ì œê¸ˆì•¡");
 		fr.add(money);
 		money.setBounds(40, 620, 150, 100);
 		money.setFont(new Font("SansSerif", Font.BOLD, 13));
 
 		String receivemon = Integer.toString(receive);
-		JLabel receive_won = new JLabel(receivemon + "¿ø");
+		JLabel receive_won = new JLabel(receivemon + "ì›");
 		fr.add(receive_won);
 		receive_won.setBounds(500, 650, 200, 50);
 		receive_won.setFont(new Font("SansSerif", Font.BOLD, 13));
 
-		JButton okBtn = new JButton("°áÁ¦¿äÃ»");
+		JButton okBtn = new JButton("ê²°ì œìš”ì²­");
 		fr.add(okBtn);
 		okBtn.setBounds(200, 760, 150, 60);
 		okBtn.setBorderPainted(false);
@@ -331,7 +331,7 @@ public class creditCardScreen {
 		okBtn.setFont(new Font("SansSerif", Font.BOLD, 16));
 		//okBtn.setFont(new Font("SanSerif", Font.BOLD, 13));
 
-		JButton closeBtn = new JButton("´İ±â");
+		JButton closeBtn = new JButton("ë‹«ê¸°");
 		fr.add(closeBtn);
 		closeBtn.setBounds(450, 760, 150, 60);
 		closeBtn.setBorderPainted(false);
@@ -342,65 +342,57 @@ public class creditCardScreen {
 
 		fr.setVisible(true);
 
-		// °áÁ¦¿äÃ» ¹öÆ°
+		// ê²°ì œìš”ì²­ ë²„íŠ¼
 		okBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "°áÁ¦°¡ ¿Ï·áµÇ¾ú½À´Ï´Ù.");
+				JOptionPane.showMessageDialog(null, "ê²°ì œê°€ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.");
 				FirstScreen fs = new FirstScreen();
 				fs.disScreen();
 				mainf.setVisible(false);
 				payscreenf.setVisible(false);
-				fr.setVisible(false); // Ã¢ ¾Èº¸ÀÌ°Ô ÇÏ±â
+				fr.setVisible(false); // ì°½ ì•ˆë³´ì´ê²Œ í•˜ê¸°
 				
-				///////°áÁ¦ ¿Ï·á ÈÄ¿¡
-				/*
-				for (int i = 0; i < lastrow; i++) {
-		            for (int j = 0; j < 3; j++) {
-		                System.out.println(Cart.orders[i][j]); // ¿­ Ãâ·Â
-		            }
-		            System.out.println(); // Çà Ãâ·Â
-		        }
-				*/
+			
 				Order order = new Order();
 			    OrderDB odb = OrderDB.getInstance();
 				odb.selectONum();
-				System.out.println("Á¦¹ß" + ONum);
+				System.out.println("ì œë°œ" + ONum);
 				for (int i = 0; i < lastrow; i++) {
 					order.setOrderNum(ONum);
 					order.setCustomerId(PId);
-					order.setProductName(Cart.orders[i][0]); // ¿­ Ãâ·Â
+					order.setProductName(Cart.orders[i][0]); // ì—´ ì¶œë ¥
 					order.setQuantity(Integer.parseInt(Cart.orders[i][1]));
 					order.setPrice(Integer.parseInt(Cart.orders[i][2]));
 					java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
 					order.setTime(date);
-					order.setStatus("ÁÖ¹®´ë±â");
+					order.setStatus("ì£¼ë¬¸ëŒ€ê¸°");
 					order.setTotalQuantity(totalQ);
 					order.setTotalPrice(totalP);
 					
 					
 					int result = odb.insertMember(order);
 					if (result==1) {
-						System.out.println("ÁÖ¹® µî·Ï ¿Ï·á");
+						System.out.println("ì£¼ë¬¸ ë“±ë¡ ì™„ë£Œ");
 					    //dispose();
 					}else {
-						System.out.println("ÁÖ¹® µî·Ï ½ÇÆĞ");
+						System.out.println("ì£¼ë¬¸ ë“±ë¡ ì‹¤íŒ¨");
 		      	      	 //dispose();
 		            }
 						            
-		            System.out.println(); // Çà Ãâ·Â
+		            System.out.println(); // í–‰ ì¶œë ¥
 		        }
 				
 				
 			}
 		});
 
-		// ´İ±â ¹öÆ°
+		// ë‹«ê¸° ë²„íŠ¼
 		closeBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				fr.setVisible(false); // Ã¢ ¾Èº¸ÀÌ°Ô ÇÏ±â
+				fr.setVisible(false); // ì°½ ì•ˆë³´ì´ê²Œ í•˜ê¸°
 			}
 		});
 
