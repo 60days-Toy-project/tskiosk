@@ -33,14 +33,14 @@ public class Admin_menu extends JFrame {
 
 	void MmakeFrame() {
 
-		this.setTitle("¸Ş´ºÁ¶È¸");
+		this.setTitle("ë©”ë‰´ì¡°íšŒ");
 		this.setSize(1200, 800);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
 	}
 
-	public JPanel MmakePanel() {// ¹İÀ¸·Î ÂÉ°³³õÀº°Å ½ºÇÃ¸´ÆÒ Àû¿ë °¡´ÉÇÑÁö ³ªÁß¿¡ ½Ãµµ
+	public JPanel MmakePanel() {
 		JPanel pn = new JPanel();
 		pn.setLayout(null);
 
@@ -54,7 +54,7 @@ public class Admin_menu extends JFrame {
 
 }
 
-class MTablepane extends JPanel { // Àå¹Ù±¸´Ï ´ãÀ» ÆĞ³Î
+class MTablepane extends JPanel { // ì¥ë°”êµ¬ë‹ˆ ë‹´ì„ íŒ¨ë„
 	private JFrame f;
 	public String Result = "";
 
@@ -71,46 +71,46 @@ class MTablepane extends JPanel { // Àå¹Ù±¸´Ï ´ãÀ» ÆĞ³Î
 }
 
 class menumakeTable extends JPanel {
-	// DB¿¡¼­ ½ºÀ® È­¸éÀ¸·Î Å×ÀÌºí °ª °¡Á®¿À±â(select) , ÀúÀåÇÏ±â(insert), ¼öÁ¤ÇÏ±â(update), »èÁ¦ÇÏ±â(delete)
+	// DBì—ì„œ ìŠ¤ìœ™ í™”ë©´ìœ¼ë¡œ í…Œì´ë¸” ê°’ ê°€ì ¸ì˜¤ê¸°(select) , ì €ì¥í•˜ê¸°(insert), ìˆ˜ì •í•˜ê¸°(update), ì‚­ì œí•˜ê¸°(delete)
 
 	private JFrame f1;
 	JPanel jp1 = new JPanel();
 
 	private static final long serialVersionUID = 1L;
-	private JButton jBtnmAddRow = null; // Å×ÀÌºí ÇÑÁÙ Ãß°¡ ¹öÆ°
-	private JButton jBtnmSaveRow = null; // Å×ÀÌºí ÇÑÁÙ ÀúÀå ¹öÆ°
-	private JButton jBtnmEditRow = null; // Å×ÀÌºí ÇÑÁÙ ÀúÀå ¹öÆ°
-	private JButton jBtnmDelRow = null; // Å×ÀÌºí ÇÑÁÙ »èÁ¦ ¹÷Æ°
-	private JButton jbtnmAllRow = null; // ¸Ş´º ÀüÃ¼º¸±â
+	private JButton jBtnmAddRow = null; // í…Œì´ë¸” í•œì¤„ ì¶”ê°€ ë²„íŠ¼
+	private JButton jBtnmSaveRow = null; // í…Œì´ë¸” í•œì¤„ ì €ì¥ ë²„íŠ¼
+	private JButton jBtnmEditRow = null; // í…Œì´ë¸” í•œì¤„ ì €ì¥ ë²„íŠ¼
+	private JButton jBtnmDelRow = null; // í…Œì´ë¸” í•œì¤„ ì‚­ì œ ë²…íŠ¼
+	private JButton jbtnmAllRow = null; // ë©”ë‰´ ì „ì²´ë³´ê¸°
 	private JTable table;
-	private JScrollPane scrollPane; // Å×ÀÌºí ½ºÅ©·Ñ¹Ù ÀÚµ¿À¸·Î »ı¼ºµÇ°Ô ÇÏ±â
+	private JScrollPane scrollPane; // í…Œì´ë¸” ìŠ¤í¬ë¡¤ë°” ìë™ìœ¼ë¡œ ìƒì„±ë˜ê²Œ í•˜ê¸°
 
-	private JTextField category = new JTextField(20);// Ä«Å×°í¸®
-	private JTextField sub = new JTextField(20);// ¸Ş´º ÀÌ¸§
-	private JTextField subkey = new JTextField(20);// ¸Ş´º ¹øÈ£
-	private JTextField qty = new JTextField(20);// ¼ö·®
-	private JTextField price = new JTextField(20);// °¡°İ
-	private JTextField rdate = new JTextField(20); // Ãô½ÃÀÏ
+	private JTextField category = new JTextField(20);// ì¹´í…Œê³ ë¦¬
+	private JTextField sub = new JTextField(20);// ë©”ë‰´ ì´ë¦„
+	private JTextField subkey = new JTextField(20);// ë©”ë‰´ ë²ˆí˜¸
+	private JTextField qty = new JTextField(20);// ìˆ˜ëŸ‰
+	private JTextField price = new JTextField(20);// ê°€ê²©
+	private JTextField rdate = new JTextField(20); // ì¸Œì‹œì¼
 
-	private JLabel imgLabel = new JLabel();// Á¦Ç° »çÁø
+	private JLabel imgLabel = new JLabel();// ì œí’ˆ ì‚¬ì§„
 	private ImageIcon icon;
 
-	private JLabel backimgLabel = new JLabel();// Á¦Ç° »çÁø
+	private JLabel backimgLabel = new JLabel();// ì œí’ˆ ì‚¬ì§„
 	private ImageIcon bicon;
 
 	private JComboBox<String> cbbsearch;
-	private static String comboNames[] = { "Ä«Å×°í¸®", "¸Ş´ºÀÌ¸§", "¸Ş´º¹øÈ£", "°¡°İ" };
+	private static String comboNames[] = { "ì¹´í…Œê³ ë¦¬", "ë©”ë‰´ì´ë¦„", "ë©”ë‰´ë²ˆí˜¸", "ê°€ê²©" };
 	private JTextField search = new JTextField(13);
-	private JButton jBtnSearch = new JButton("°Ë»ö");
-	private String Content; // °Ë»ö Ä«Å×°í¸®
+	private JButton jBtnSearch = new JButton("ê²€ìƒ‰");
+	private String Content; // ê²€ìƒ‰ ì¹´í…Œê³ ë¦¬
 
-	private static String colNames[] = { "Category", "Sub", "Subkey", "Qty", "Price", "Realeasedate" }; // Å×ÀÌºí ÄÃ·³ °ªµé
-	static DefaultTableModel m = new DefaultTableModel(colNames, 0); // Å×ÀÌºí µ¥ÀÌÅÍ ¸ğµ¨ °´Ã¼ »ı¼º
+	private static String colNames[] = { "Category", "Sub", "Subkey", "Qty", "Price", "Realeasedate" }; // í…Œì´ë¸” ì»¬ëŸ¼ ê°’ë“¤
+	static DefaultTableModel m = new DefaultTableModel(colNames, 0); // í…Œì´ë¸” ë°ì´í„° ëª¨ë¸ ê°ì²´ ìƒì„±
 
 	public menumakeTable(JFrame f1) {
 
 		this.f1 = f1;
-		setLayout(null); // ·¹ÀÌ¾Æ¿ô ¹èÄ¡°ü¸®ÀÚ »èÁ¦
+		setLayout(null); // ë ˆì´ì•„ì›ƒ ë°°ì¹˜ê´€ë¦¬ì ì‚­ì œ
 
 		jp1.setLayout(null);
 		jp1.setLocation(1, 1);
@@ -120,89 +120,89 @@ class menumakeTable extends JPanel {
 		backimgLabel.setIcon(bicon);
 		backimgLabel.setBounds(5, 5, 45, 45);
 		jp1.add(backimgLabel);
-		backimgLabel.addMouseListener((MouseListener) new BackSpace()); // Å×ÀÌºí¿¡ ¸¶¿ì½º¸®½º³Ê ¿¬°á
+		backimgLabel.addMouseListener((MouseListener) new BackSpace()); // í…Œì´ë¸”ì— ë§ˆìš°ìŠ¤ë¦¬ìŠ¤ë„ˆ ì—°ê²°
 
-		JLabel optionOrder = new JLabel("¸Ş´º Á¶È¸");
+		JLabel optionOrder = new JLabel("ë©”ë‰´ ì¡°íšŒ");
 
 		optionOrder.setBounds(0, 0, 1200, 60);
 		optionOrder.setForeground(new Color(255, 255, 255));
 		optionOrder.setBackground(new Color(255, 0, 102));
 		optionOrder.setOpaque(true);
 		optionOrder.setHorizontalAlignment(JLabel.CENTER);
-		optionOrder.setFont(new Font("ÇÔÃÊ·Õ¹ÙÅÁ", Font.BOLD, 30));
-		jp1.add(optionOrder);// ÄÄÆ÷³ÍÆ® ÄÁÅ×ÀÌ³Ê¿¡ ¿Ã¸²
+		optionOrder.setFont(new Font("í•¨ì´ˆë¡±ë°”íƒ•", Font.BOLD, 30));
+		jp1.add(optionOrder);// ì»´í¬ë„ŒíŠ¸ ì»¨í…Œì´ë„ˆì— ì˜¬ë¦¼
 
 		JPanel infopan = new JPanel();
 		infopan.setLayout(new GridLayout(6, 2, 5, 5));
 
-		JPanel searchpan = new JPanel(); // °Ë»ö ÆĞ³Î
+		JPanel searchpan = new JPanel(); // ê²€ìƒ‰ íŒ¨ë„
 		searchpan.setLocation(450, 600);
 		searchpan.setSize(300, 60);
-		JPanel ssspan = new JPanel();// °Ë»ö ÄÄÆ÷³ÍÆ® ³ÖÀ» ÆĞ³Î
+		JPanel ssspan = new JPanel();// ê²€ìƒ‰ ì»´í¬ë„ŒíŠ¸ ë„£ì„ íŒ¨ë„
 		ssspan.setLayout(new FlowLayout(FlowLayout.LEFT));
 
-		cbbsearch = new JComboBox(comboNames); // ÄŞº¸¹Ú½º
-		ssspan.add(cbbsearch);// ÄŞº¸¹Ú½º
-		ssspan.add(search); // ÅØ½ºÆ®ÇÊµå
-		ssspan.add(jBtnSearch);// °Ë»ö ¹öÆ°
+		cbbsearch = new JComboBox(comboNames); // ì½¤ë³´ë°•ìŠ¤
+		ssspan.add(cbbsearch);// ì½¤ë³´ë°•ìŠ¤
+		ssspan.add(search); // í…ìŠ¤íŠ¸í•„ë“œ
+		ssspan.add(jBtnSearch);// ê²€ìƒ‰ ë²„íŠ¼
 		searchpan.add(ssspan);
 		searchpan.setBackground(Color.WHITE);
 		ssspan.setBackground(Color.WHITE);
 
-		jBtnSearch.addActionListener(new ActionListener() { // °Ë»ö ¹öÆ° ´­·¶À» ‹š
+		jBtnSearch.addActionListener(new ActionListener() { // ê²€ìƒ‰ ë²„íŠ¼ ëˆŒë €ì„ Â‹Âš
 			public void actionPerformed(ActionEvent e) {
-				System.out.println(e.getActionCommand()); // ¼±ÅÃµÈ ¹öÆ°ÀÇ ÅØ½ºÆ®°ª Ãâ·Â
+				System.out.println(e.getActionCommand()); // ì„ íƒëœ ë²„íŠ¼ì˜ í…ìŠ¤íŠ¸ê°’ ì¶œë ¥
 				DefaultTableModel model1 = (DefaultTableModel) table.getModel();
 
-				if (cbbsearch.getSelectedItem().toString() == "Ä«Å×°í¸®") {
+				if (cbbsearch.getSelectedItem().toString() == "ì¹´í…Œê³ ë¦¬") {
 					Content = "Category";
 
-				} else if (cbbsearch.getSelectedItem().toString() == "¸Ş´ºÀÌ¸§") {
+				} else if (cbbsearch.getSelectedItem().toString() == "ë©”ë‰´ì´ë¦„") {
 					Content = "Sub";
 
-				} else if (cbbsearch.getSelectedItem().toString() == "¸Ş´º¹øÈ£") {
+				} else if (cbbsearch.getSelectedItem().toString() == "ë©”ë‰´ë²ˆí˜¸") {
 					Content = "Subkey";
 
-				} else if (cbbsearch.getSelectedItem().toString() == "°¡°İ") {
+				} else if (cbbsearch.getSelectedItem().toString() == "ê°€ê²©") {
 					Content = "Price";
 
 				}
 
-				model1.setRowCount(0); // ÀüÃ¼ Å×ÀÌºí È­¸éÀ» Áö¿öÁÜ
+				model1.setRowCount(0); // ì „ì²´ í…Œì´ë¸” í™”ë©´ì„ ì§€ì›Œì¤Œ
 
 				System.out.println(Content + "222");
 
 				DAO dao = DAO.getInstance();
 				int result = dao.searchmenu(Content, (String) search.getText());
-				if (result == -1) { // °Ë»ö °á°ú ¾øÀ» ‹š
-					JOptionPane.showMessageDialog(null, "ÇØ´ç³»¿ëÀÌ ¾ø½À´Ï´Ù");
+				if (result == -1) { // ê²€ìƒ‰ ê²°ê³¼ ì—†ì„ Â‹Âš
+					JOptionPane.showMessageDialog(null, "í•´ë‹¹ë‚´ìš©ì´ ì—†ìŠµë‹ˆë‹¤");
 
 				}
 			}
 		});
 
-		// ¾ÆÀÌÄÜ »ı¼º
+		// ì•„ì´ì½˜ ìƒì„±
 		icon = new ImageIcon("image/coffee500300.jpg");
 		imgLabel.setIcon(icon);
 		imgLabel.setBounds(30, 75, 200, 200);
 		jp1.add(imgLabel);
 
-		infopan.add(new JLabel("Ä«Å×°í¸® : "));
+		infopan.add(new JLabel("ì¹´í…Œê³ ë¦¬ : "));
 		infopan.add(category);
 
-		infopan.add(new JLabel("¸Ş´ºÀÌ¸§ : "));
+		infopan.add(new JLabel("ë©”ë‰´ì´ë¦„ : "));
 		infopan.add(sub);
 
-		infopan.add(new JLabel("¸Ş´º¹øÈ£ : "));
+		infopan.add(new JLabel("ë©”ë‰´ë²ˆí˜¸ : "));
 		infopan.add(subkey);
 
-		infopan.add(new JLabel("¼ö  ·®  : "));
+		infopan.add(new JLabel("ìˆ˜  ëŸ‰  : "));
 		infopan.add(qty);
 
-		infopan.add(new JLabel("°¡  °İ  : "));
+		infopan.add(new JLabel("ê°€  ê²©  : "));
 		infopan.add(price);
 
-		infopan.add(new JLabel("Ãâ ½Ã ÀÏ : "));
+		infopan.add(new JLabel("ì¶œ ì‹œ ì¼ : "));
 		infopan.add(rdate);
 
 		infopan.setBackground(Color.white);
@@ -210,19 +210,19 @@ class menumakeTable extends JPanel {
 		infopan.setSize(350, 300);
 		// emailPanel.setBounds(20,650, 150, 60);
 
-		table = new JTable(m); // Å×ÀÌºí¿¡ ¸ğµ¨°´Ã¼ »ğÀÔ
+		table = new JTable(m); // í…Œì´ë¸”ì— ëª¨ë¸ê°ì²´ ì‚½ì…
 		table.setRowHeight(40);
-		table.getTableHeader().setFont(new Font("±¼¸²Ã¼", Font.BOLD, 15));
-		table.getColumnModel().getColumn(0).setPreferredWidth(180); // JTable ÀÇ ÄÃ·³ ±æÀÌ Á¶Àı
+		table.getTableHeader().setFont(new Font("êµ´ë¦¼ì²´", Font.BOLD, 15));
+		table.getColumnModel().getColumn(0).setPreferredWidth(180); // JTable ì˜ ì»¬ëŸ¼ ê¸¸ì´ ì¡°ì ˆ
 		table.getColumnModel().getColumn(1).setPreferredWidth(280);
 		table.getColumnModel().getColumn(2).setPreferredWidth(280);
 		table.getColumnModel().getColumn(3).setPreferredWidth(280);
 		table.getColumnModel().getColumn(4).setPreferredWidth(280);
 		table.getColumnModel().getColumn(5).setPreferredWidth(280);
 
-		table.addMouseListener((MouseListener) new JTableMouseListener()); // Å×ÀÌºí¿¡ ¸¶¿ì½º¸®½º³Ê ¿¬°á
+		table.addMouseListener((MouseListener) new JTableMouseListener()); // í…Œì´ë¸”ì— ë§ˆìš°ìŠ¤ë¦¬ìŠ¤ë„ˆ ì—°ê²°
 
-		scrollPane = new JScrollPane(table); // Å×ÀÌºí¿¡ ½ºÅ©·Ñ »ı±â°Ô ÇÏ±â
+		scrollPane = new JScrollPane(table); // í…Œì´ë¸”ì— ìŠ¤í¬ë¡¤ ìƒê¸°ê²Œ í•˜ê¸°
 		scrollPane.setSize(700, 450);
 		scrollPane.setLocation(450, 75);
 
@@ -236,12 +236,12 @@ class menumakeTable extends JPanel {
 
 	}
 
-	private class JTableMouseListener implements MouseListener { // ¸¶¿ì½º·Î ´­·ÁÁø°ªÈ®ÀÎÇÏ±â
-		public void mouseClicked(java.awt.event.MouseEvent e) { // ¼±ÅÃµÈ À§Ä¡ÀÇ °ªÀ» Ãâ·Â
+	private class JTableMouseListener implements MouseListener { // ë§ˆìš°ìŠ¤ë¡œ ëˆŒë ¤ì§„ê°’í™•ì¸í•˜ê¸°
+		public void mouseClicked(java.awt.event.MouseEvent e) { // ì„ íƒëœ ìœ„ì¹˜ì˜ ê°’ì„ ì¶œë ¥
 
 			JTable jtable = (JTable) e.getSource();
-			int row = jtable.getSelectedRow(); // ¼±ÅÃµÈ Å×ÀÌºíÀÇ Çà°ª
-			int col = jtable.getSelectedColumn(); // ¼±ÅÃµÈ Å×ÀÌºíÀÇ ¿­°ª
+			int row = jtable.getSelectedRow(); // ì„ íƒëœ í…Œì´ë¸”ì˜ í–‰ê°’
+			int col = jtable.getSelectedColumn(); // ì„ íƒëœ í…Œì´ë¸”ì˜ ì—´ê°’
 			String imgpath = null;
 
 			category.setText((String) m.getValueAt(row, 0));
@@ -258,28 +258,28 @@ class menumakeTable extends JPanel {
 			if (sk < 40000) {
 
 				imgpath = "image/menu/drink/" + (String) m.getValueAt(row, 1) + ".jpg";
-				System.out.println(imgpath + "µğÀúÆ® ¾Æ´Ò¶§");
+				System.out.println(imgpath + "ë””ì €íŠ¸ ì•„ë‹ë•Œ");
 			} else if (sk > 40000 && sk < 50000) {
 				imgpath = "image/menu/icecream/" + (String) m.getValueAt(row, 1) + ".jpg";
 
 			} else if (sk > 50000) {
 				imgpath = "image/menu/cake/" + (String) m.getValueAt(row, 1) + ".jpg";
 
-				System.out.println(imgpath + "µğÀúÆ®ÀÏ¶§");
+				System.out.println(imgpath + "ë””ì €íŠ¸ì¼ë•Œ");
 			}
 
 			icon = new ImageIcon(imgpath);
 
 			Image img = icon.getImage();
 
-			// ÃßÃâµÈ ImageÀÇ Å©±â Á¶ÀıÇÏ¿© »õ·Î¿î Image °´Ã¼ »ı¼º
+			// ì¶”ì¶œëœ Imageì˜ í¬ê¸° ì¡°ì ˆí•˜ì—¬ ìƒˆë¡œìš´ Image ê°ì²´ ìƒì„±
 			Image resizeImg = img.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
 
-			// »õ·Î¿î Image °´Ã¼·Î ImageIcon °´Ã¼ »ı¼º
+			// ìƒˆë¡œìš´ Image ê°ì²´ë¡œ ImageIcon ê°ì²´ ìƒì„±
 			ImageIcon updateIcon = new ImageIcon(resizeImg);
 			imgLabel.setIcon(updateIcon);
 
-			System.out.println(m.getValueAt(row, col)); // ¼±ÅÃµÈ À§Ä¡ÀÇ °ªÀ» ¾ò¾î³»¼­ Ãâ·Â
+			System.out.println(m.getValueAt(row, col)); // ì„ íƒëœ ìœ„ì¹˜ì˜ ê°’ì„ ì–»ì–´ë‚´ì„œ ì¶œë ¥
 
 		}
 
@@ -296,10 +296,10 @@ class menumakeTable extends JPanel {
 		}
 	}
 
-	private class BackSpace implements MouseListener { // µÚ·Î°¡±â Å¬¸¯ ÀÌº¥Æ®
+	private class BackSpace implements MouseListener { // ë’¤ë¡œê°€ê¸° í´ë¦­ ì´ë²¤íŠ¸
 		public void mouseClicked(java.awt.event.MouseEvent e) {
 
-			int result = JOptionPane.showConfirmDialog(null, "µÚ·Î °¡½Ã°Ú½À´Ï±î?", "Confirm", JOptionPane.YES_NO_OPTION);
+			int result = JOptionPane.showConfirmDialog(null, "ë’¤ë¡œ ê°€ì‹œê² ìŠµë‹ˆê¹Œ?", "Confirm", JOptionPane.YES_NO_OPTION);
 			if (result == JOptionPane.YES_OPTION) {
 				Admin_main admain = new Admin_main();
 				admain.adminmain();
@@ -321,37 +321,37 @@ class menumakeTable extends JPanel {
 		}
 	}
 
-	private void menuselect() { // Å×ÀÌºí¿¡ º¸ÀÌ±â À§ÇØ °Ë»ö
+	private void menuselect() { // í…Œì´ë¸”ì— ë³´ì´ê¸° ìœ„í•´ ê²€ìƒ‰
 
 		DAO menudao = DAO.getInstance();
 		menudao.selectmenu();
 	}
 
-	private void initialize() { // ¾×¼ÇÀÌº¥Æ®¿Í ¹öÆ° ÄÄÆ÷³ÍÆ® ¼³Á¤
+	private void initialize() { // ì•¡ì…˜ì´ë²¤íŠ¸ì™€ ë²„íŠ¼ ì»´í¬ë„ŒíŠ¸ ì„¤ì •
 
-		// Å×ÀÌºí »õ·Î ÇÑÁÙ Ãß°¡ÇÏ´Â ºÎºĞ
+		// í…Œì´ë¸” ìƒˆë¡œ í•œì¤„ ì¶”ê°€í•˜ëŠ” ë¶€ë¶„
 		jBtnmAddRow = new JButton();
 		jBtnmAddRow.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println(e.getActionCommand()); // ¼±ÅÃµÈ ¹öÆ°ÀÇ ÅØ½ºÆ®°ª Ãâ·Â
+				System.out.println(e.getActionCommand()); // ì„ íƒëœ ë²„íŠ¼ì˜ í…ìŠ¤íŠ¸ê°’ ì¶œë ¥
 				DefaultTableModel model1 = (DefaultTableModel) table.getModel();
-				model1.addRow(new String[] { "", "", "", "", "", "" }); // »õÅ×ÀÌºíÀÇ ÃÊ±â°ª
+				model1.addRow(new String[] { "", "", "", "", "", "" }); // ìƒˆí…Œì´ë¸”ì˜ ì´ˆê¸°ê°’
 			}
 		});
 
 		jBtnmAddRow.setBounds(10, 680, 200, 40);
-		jBtnmAddRow.setText("Ãß°¡");
+		jBtnmAddRow.setText("ì¶”ê°€");
 		jp1.add(jBtnmAddRow);
 
-		// Å×ÀÌºí »õ·Î ÀúÀåÇÏ´Â ºÎºĞ
+		// í…Œì´ë¸” ìƒˆë¡œ ì €ì¥í•˜ëŠ” ë¶€ë¶„
 		jBtnmSaveRow = new JButton();
 		jBtnmSaveRow.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println(e.getActionCommand()); // ¼±ÅÃµÈ ¹öÆ°ÀÇ ÅØ½ºÆ®°ª Ãâ·Â
+				System.out.println(e.getActionCommand()); // ì„ íƒëœ ë²„íŠ¼ì˜ í…ìŠ¤íŠ¸ê°’ ì¶œë ¥
 				DefaultTableModel model1 = (DefaultTableModel) table.getModel();
 				int row = table.getSelectedRow();
 				if (row < 0)
-					return; // ¼±ÅÃÀÌ ¾ÈµÈ »óÅÂ¸é -1¸®ÅÏ
+					return; // ì„ íƒì´ ì•ˆëœ ìƒíƒœë©´ -1ë¦¬í„´
 				Admin_DTO adto = new Admin_DTO();
 
 				adto.setCategory((String) category.getText());
@@ -364,28 +364,28 @@ class menumakeTable extends JPanel {
 				DAO adao = DAO.getInstance();
 				int result = adao.insertmenu(adto);
 				if (result == 1) {
-					JOptionPane.showMessageDialog(null, "ÀúÀå ¿Ï·á");
+					JOptionPane.showMessageDialog(null, "ì €ì¥ ì™„ë£Œ");
 
 				}
-				model1.setRowCount(0); // ÀüÃ¼ Å×ÀÌºí È­¸éÀ» Áö¿öÁÜ
-				menuselect(); // ÀúÀå ÈÄ ´Ù½Ã ÀüÃ¼ °ªµéÀ» ¹Ş¾Æ¿È.
+				model1.setRowCount(0); // ì „ì²´ í…Œì´ë¸” í™”ë©´ì„ ì§€ì›Œì¤Œ
+				menuselect(); // ì €ì¥ í›„ ë‹¤ì‹œ ì „ì²´ ê°’ë“¤ì„ ë°›ì•„ì˜´.
 			}
 		});
 
 		jBtnmSaveRow.setBounds(250, 680, 200, 40);
-		jBtnmSaveRow.setText("ÀúÀå");
+		jBtnmSaveRow.setText("ì €ì¥");
 		jp1.add(jBtnmSaveRow);
 
-		// ¼±ÅÃµÈ Å×ÀÌºí ÇÑÁÙ ¼öÁ¤ÇÏ´Â ºÎºĞ
+		// ì„ íƒëœ í…Œì´ë¸” í•œì¤„ ìˆ˜ì •í•˜ëŠ” ë¶€ë¶„
 		jBtnmEditRow = new JButton();
 		jBtnmEditRow.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				System.out.println(e.getActionCommand()); // ¼±ÅÃµÈ ¹öÆ°ÀÇ ÅØ½ºÆ®°ª Ãâ·Â
+				System.out.println(e.getActionCommand()); // ì„ íƒëœ ë²„íŠ¼ì˜ í…ìŠ¤íŠ¸ê°’ ì¶œë ¥
 				DefaultTableModel model1 = (DefaultTableModel) table.getModel();
 				int row = table.getSelectedRow();
 				if (row < 0)
-					return; // ¼±ÅÃÀÌ ¾ÈµÈ »óÅÂ¸é -1¸®ÅÏ
+					return; // ì„ íƒì´ ì•ˆëœ ìƒíƒœë©´ -1ë¦¬í„´
 
 				Admin_DTO adto = new Admin_DTO();
 
@@ -399,32 +399,32 @@ class menumakeTable extends JPanel {
 				DAO dao = DAO.getInstance();
 				int result = dao.updatemenu(adto);
 				if (result == 1) {
-					JOptionPane.showMessageDialog(null, "ÀúÀå ¿Ï·á");
+					JOptionPane.showMessageDialog(null, "ì €ì¥ ì™„ë£Œ");
 
 				}
-				model1.setRowCount(0); // ÀüÃ¼ Å×ÀÌºí È­¸éÀ» Áö¿öÁÜ
-				menuselect(); // ¼öÁ¤ ÈÄ´Ù½Ã ÀüÃ¼ °ªµéÀ» ¹Ş¾Æ¿È.
+				model1.setRowCount(0); // ì „ì²´ í…Œì´ë¸” í™”ë©´ì„ ì§€ì›Œì¤Œ
+				menuselect(); // ìˆ˜ì • í›„ë‹¤ì‹œ ì „ì²´ ê°’ë“¤ì„ ë°›ì•„ì˜´.
 			}
 		});
 		jBtnmEditRow.setBounds(490, 680, 200, 40);
-		jBtnmEditRow.setText("¼öÁ¤");
+		jBtnmEditRow.setText("ìˆ˜ì •");
 		jp1.add(jBtnmEditRow);
 
-		// ¼±ÅÃµÈ Å×ÀÌºí ÇÑÁÙ »èÁ¦ÇÏ´Â ºÎºĞ
+		// ì„ íƒëœ í…Œì´ë¸” í•œì¤„ ì‚­ì œí•˜ëŠ” ë¶€ë¶„
 		jBtnmDelRow = new JButton();
 		jBtnmDelRow.addActionListener(new ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent e) {
-				System.out.println(e.getActionCommand()); // ¼±ÅÃµÈ ¹öÆ°ÀÇ ÅØ½ºÆ®°ª Ãâ·Â
+				System.out.println(e.getActionCommand()); // ì„ íƒëœ ë²„íŠ¼ì˜ í…ìŠ¤íŠ¸ê°’ ì¶œë ¥
 				DefaultTableModel model1 = (DefaultTableModel) table.getModel();
 
 				int row = table.getSelectedRow();
 				if (row < 0)
-					return; // ¼±ÅÃÀÌ ¾ÈµÈ »óÅÂ¸é -1¸®ÅÏ
+					return; // ì„ íƒì´ ì•ˆëœ ìƒíƒœë©´ -1ë¦¬í„´
 				String ssub = sub.getText();
 				DAO dao = DAO.getInstance();
 				int result = dao.deletemenu(ssub);
 				if (result == 1) {
-					JOptionPane.showMessageDialog(null, "»èÁ¦ ¿Ï·á");
+					JOptionPane.showMessageDialog(null, "ì‚­ì œ ì™„ë£Œ");
 
 				}
 				model1.setRowCount(0);
@@ -432,13 +432,13 @@ class menumakeTable extends JPanel {
 			}
 		});
 		jBtnmDelRow.setBounds(730, 680, 200, 40);
-		jBtnmDelRow.setText("»èÁ¦");
+		jBtnmDelRow.setText("ì‚­ì œ");
 		jp1.add(jBtnmDelRow);
 
 		jbtnmAllRow = new JButton();
-		jbtnmAllRow.addActionListener(new ActionListener() {// ÀüÃ¼º¸±â ¹öÆ°
+		jbtnmAllRow.addActionListener(new ActionListener() {// ì „ì²´ë³´ê¸° ë²„íŠ¼
 			public void actionPerformed(java.awt.event.ActionEvent e) {
-				System.out.println(e.getActionCommand()); // ¼±ÅÃµÈ ¹öÆ°ÀÇ ÅØ½ºÆ®°ª Ãâ·Â
+				System.out.println(e.getActionCommand()); // ì„ íƒëœ ë²„íŠ¼ì˜ í…ìŠ¤íŠ¸ê°’ ì¶œë ¥
 				DefaultTableModel model1 = (DefaultTableModel) table.getModel();
 
 				model1.setRowCount(0);
@@ -446,7 +446,7 @@ class menumakeTable extends JPanel {
 			}
 		});
 		jbtnmAllRow.setBounds(960, 680, 200, 40);
-		jbtnmAllRow.setText("ÀüÃ¼ º¸±â");
+		jbtnmAllRow.setText("ì „ì²´ ë³´ê¸°");
 		jp1.add(jbtnmAllRow);
 
 	}
