@@ -27,13 +27,13 @@ public class OrderReceipt {
    static int tprice;
    static String ostatus;
    
-   //private static String colNames[] = {"Á¦Ç°¸í", "¼ö·®", "±İ¾×"}; // Å×ÀÌºí ÄÃ·³ °ªµé
-   private static String colNames[] = {"", "", ""}; // Å×ÀÌºí ÄÃ·³ °ªµé
-   //static DefaultTableModel model = new DefaultTableModel(colNames, 0); // Å×ÀÌºí µ¥ÀÌÅÍ ¸ğµ¨ °´Ã¼ »ı¼º
+   //private static String colNames[] = {"ì œí’ˆëª…", "ìˆ˜ëŸ‰", "ê¸ˆì•¡"}; // í…Œì´ë¸” ì»¬ëŸ¼ ê°’ë“¤
+   private static String colNames[] = {"", "", ""}; // í…Œì´ë¸” ì»¬ëŸ¼ ê°’ë“¤
+   //static DefaultTableModel model = new DefaultTableModel(colNames, 0); // í…Œì´ë¸” ë°ì´í„° ëª¨ë¸ ê°ì²´ ìƒì„±
    public static String[][] oinfo = new String [20][3];
 
    
-   public void pushorderinfo(int onum, String cid, int totalq, int totalp, String status) { //ÁÖ¹®¹øÈ£, ÁÖ¹®ÀÚid, ÃÑ¼ö·®, ÃÑ¾× ¹Ş¾Æ¿À±â
+   public void pushorderinfo(int onum, String cid, int totalq, int totalp, String status) { //ì£¼ë¬¸ë²ˆí˜¸, ì£¼ë¬¸ìid, ì´ìˆ˜ëŸ‰, ì´ì•¡ ë°›ì•„ì˜¤ê¸°
       onumber = onum;
       cusid = cid;
       tquantity = totalq;
@@ -44,7 +44,7 @@ public class OrderReceipt {
    
    public void printReceipt() {
       
-      JFrame fr = new JFrame("¿µ¼öÁõ");
+      JFrame fr = new JFrame("ì˜ìˆ˜ì¦");
       
       fr.setSize(800, 1000);
       fr.setLocationRelativeTo(null);
@@ -52,16 +52,16 @@ public class OrderReceipt {
       fr.getContentPane().setLayout(null);
       fr.setBackground(Color.WHITE);
       
-      JLabel lb = new JLabel("¿µ¼öÁõ");
+      JLabel lb = new JLabel("ì˜ìˆ˜ì¦");
       fr.add(lb);
       lb.setBounds(0, 0, 800, 100);
       lb.setBackground(new Color(255, 0, 102));
-      lb.setOpaque(true); // Opaque°ªÀ» true·Î ¼³Á¤ÇØ¾ß ¹è°æ»öÀÌ Àû¿ëµÈ´Ù.
+      lb.setOpaque(true); // Opaqueê°’ì„ trueë¡œ ì„¤ì •í•´ì•¼ ë°°ê²½ìƒ‰ì´ ì ìš©ëœë‹¤.
       lb.setHorizontalAlignment(JLabel.CENTER);
       lb.setFont(new Font("SansSerif", Font.BOLD, 30));
       lb.setForeground(Color.WHITE);
       
-      JLabel jlonum = new JLabel("ÁÖ¹® ¹øÈ£ : ");
+      JLabel jlonum = new JLabel("ì£¼ë¬¸ ë²ˆí˜¸ : ");
       fr.add(jlonum);
       jlonum.setBounds(40, 120, 100, 100);
       jlonum.setFont(new Font("SansSerif", Font.BOLD, 16));
@@ -71,7 +71,7 @@ public class OrderReceipt {
       onum.setBounds(140, 145, 200, 50);
       onum.setFont(new Font("SansSerif", Font.BOLD, 18));
       
-      JLabel jlcid = new JLabel("ÁÖ¹®ÀÚ ID : ");
+      JLabel jlcid = new JLabel("ì£¼ë¬¸ì ID : ");
       fr.add(jlcid);
       jlcid.setBounds(40, 160, 150, 100);
       jlcid.setFont(new Font("SansSerif", Font.BOLD, 16));
@@ -86,7 +86,7 @@ public class OrderReceipt {
       jlline1.setBounds(40, 190, 3000, 100);
       jlline1.setFont(new Font("SansSerif", Font.BOLD, 18));
       
-      JLabel jltitle = new JLabel("                            Á¦Ç°¸í                             |           ¼ö·®           |               °¡°İ           ");
+      JLabel jltitle = new JLabel("                            ì œí’ˆëª…                             |           ìˆ˜ëŸ‰           |               ê°€ê²©           ");
       fr.add(jltitle);
       jltitle.setBounds(40, 210, 3000, 100);
       jltitle.setFont(new Font("SansSerif", Font.BOLD, 18));
@@ -96,24 +96,24 @@ public class OrderReceipt {
       jlline2.setBounds(40, 230, 3000, 100);
       jlline2.setFont(new Font("SansSerif", Font.BOLD, 18));
 
-      DefaultTableModel model = new DefaultTableModel(OrderDB.order_info, colNames); // Å×ÀÌºí µ¥ÀÌÅÍ ¸ğµ¨ °´Ã¼ »ı¼º
+      DefaultTableModel model = new DefaultTableModel(OrderDB.order_info, colNames); // í…Œì´ë¸” ë°ì´í„° ëª¨ë¸ ê°ì²´ ìƒì„±
        JTable otable = new JTable(model);
        otable.setBounds(40,300,650,430);
        
        DefaultTableCellRenderer celAlignCenter = new DefaultTableCellRenderer();
-       celAlignCenter.setHorizontalAlignment(JLabel.CENTER); // °¡¿îµ¥ Á¤·Ä
+       celAlignCenter.setHorizontalAlignment(JLabel.CENTER); // ê°€ìš´ë° ì •ë ¬
        
        otable.setRowHeight(50);
-      otable.setFont(new Font("±¼¸²Ã¼", Font.BOLD, 15));
-       otable.getColumnModel().getColumn(0).setPreferredWidth(390); // JTable ÀÇ ÄÃ·³ ±æÀÌ Á¶Àı
-       otable.getColumnModel().getColumn(0).setCellRenderer(celAlignCenter);  // °¡¿îµ¥ Á¤·Ä
+      otable.setFont(new Font("êµ´ë¦¼ì²´", Font.BOLD, 15));
+       otable.getColumnModel().getColumn(0).setPreferredWidth(390); // JTable ì˜ ì»¬ëŸ¼ ê¸¸ì´ ì¡°ì ˆ
+       otable.getColumnModel().getColumn(0).setCellRenderer(celAlignCenter);  // ê°€ìš´ë° ì •ë ¬
       otable.getColumnModel().getColumn(1).setPreferredWidth(180);
       otable.getColumnModel().getColumn(1).setCellRenderer(celAlignCenter);
       otable.getColumnModel().getColumn(2).setPreferredWidth(200);
       otable.getColumnModel().getColumn(2).setCellRenderer(celAlignCenter);
       
-      //otable.setShowHorizontalLines(false); // Å×ÀÌºí ¼± ¾Èº¸ÀÌ°Ô ÇÏ±â
-      //otable.setShowVerticalLines(false); // Å×ÀÌºí ¼± ¾Èº¸ÀÌ°Ô ÇÏ±â
+      //otable.setShowHorizontalLines(false); // í…Œì´ë¸” ì„  ì•ˆë³´ì´ê²Œ í•˜ê¸°
+      //otable.setShowVerticalLines(false); // í…Œì´ë¸” ì„  ì•ˆë³´ì´ê²Œ í•˜ê¸°
       
       otable.setBackground(new Color(238,238,238));
       
@@ -131,22 +131,22 @@ public class OrderReceipt {
       jlline3.setBounds(40, 700, 3000, 100);
       jlline3.setFont(new Font("SansSerif", Font.BOLD, 18));
       
-      JLabel jltotalq = new JLabel("ÃÑ ¼ö·® : ");
+      JLabel jltotalq = new JLabel("ì´ ìˆ˜ëŸ‰ : ");
       fr.add(jltotalq);
       jltotalq.setBounds(500, 740, 150, 100);
       jltotalq.setFont(new Font("SansSerif", Font.BOLD, 18));
       
-      JLabel tq = new JLabel(tquantity + "°³");
+      JLabel tq = new JLabel(tquantity + "ê°œ");
       fr.add(tq);
       tq.setBounds(600, 755, 400, 70);
       tq.setFont(new Font("SansSerif", Font.BOLD, 18));
       
-      JLabel jltotalp = new JLabel("ÃÑ¾× : ");
+      JLabel jltotalp = new JLabel("ì´ì•¡ : ");
       fr.add(jltotalp);
       jltotalp.setBounds(500, 770, 150, 100);
       jltotalp.setFont(new Font("SansSerif", Font.BOLD, 18));
       
-      JLabel tp = new JLabel(tprice + "¿ø");
+      JLabel tp = new JLabel(tprice + "ì›");
       fr.add(tp);
       tp.setBounds(600, 785, 400, 70);
       tp.setFont(new Font("SansSerif", Font.BOLD, 18));
@@ -157,23 +157,11 @@ public class OrderReceipt {
       jlline4.setBounds(40, 800, 3000, 100);
       jlline4.setFont(new Font("SansSerif", Font.BOLD, 18));
       
-   /*
-      JButton recbtn = new JButton("ÁÖ¹®Á¢¼ö"); //ÁÖ¹®Á¢¼ö ¹öÆ° -> ÁÖ¹®´ë±â »óÅÂ¿¡¼­ ÁÖ¹®Á¢¼ö·Î ¹Ù²ñ
-      fr.add(recbtn);
-      recbtn.setBounds(400, 870, 150, 50);
-      recbtn.setFont(new Font("SansSerif", Font.BOLD, 15));
+      JButton recbtn = new JButton("ì£¼ë¬¸ì ‘ìˆ˜");
+      JButton complbtn = new JButton("ì£¼ë¬¸ì™„ë£Œ");
       
-      JButton complbtn = new JButton("ÁÖ¹®¿Ï·á");
-      fr.add(complbtn);
-      complbtn.setBounds(400, 870, 150, 50);
-      recbtn.setFont(new Font("SansSerif", Font.BOLD, 15));
-      
-   */
-      JButton recbtn = new JButton("ÁÖ¹®Á¢¼ö");
-      JButton complbtn = new JButton("ÁÖ¹®¿Ï·á");
-      
-      if (ostatus.equals("ÁÖ¹®´ë±â")) {
-         //JButton recbtn = new JButton("ÁÖ¹®Á¢¼ö"); //ÁÖ¹®Á¢¼ö ¹öÆ° -> ÁÖ¹®´ë±â »óÅÂ¿¡¼­ ÁÖ¹®Á¢¼ö·Î ¹Ù²ñ
+      if (ostatus.equals("ì£¼ë¬¸ëŒ€ê¸°")) {
+         //JButton recbtn = new JButton("ì£¼ë¬¸ì ‘ìˆ˜"); //ì£¼ë¬¸ì ‘ìˆ˜ ë²„íŠ¼ -> ì£¼ë¬¸ëŒ€ê¸° ìƒíƒœì—ì„œ ì£¼ë¬¸ì ‘ìˆ˜ë¡œ ë°”ë€œ
          fr.add(recbtn);
          recbtn.setBounds(400, 870, 150, 50);
          recbtn.setBorderPainted(false);
@@ -183,11 +171,11 @@ public class OrderReceipt {
          
          //OrderDB odb = new OrderDB();
          //odb.changeStatus(onumber);
-         //System.out.println("½ÇÇàµÈ°Ì¤¤µ¥---");
-         //JOptionPane.showMessageDialog(null, "ÁÖ¹®ÀÌ Á¢¼öµÇ¾ú½À´Ï´Ù.");
+         //System.out.println("ì‹¤í–‰ëœê²ã„´ë°---");
+         //JOptionPane.showMessageDialog(null, "ì£¼ë¬¸ì´ ì ‘ìˆ˜ë˜ì—ˆìŠµë‹ˆë‹¤.");
       }
-      else if (ostatus.equals("ÁÖ¹®Á¢¼ö")) {
-         //JButton complbtn = new JButton("ÁÖ¹®¿Ï·á");
+      else if (ostatus.equals("ì£¼ë¬¸ì ‘ìˆ˜")) {
+         //JButton complbtn = new JButton("ì£¼ë¬¸ì™„ë£Œ");
          fr.add(complbtn);
          complbtn.setBounds(400, 870, 150, 50);
          complbtn.setBorderPainted(false);
@@ -197,7 +185,7 @@ public class OrderReceipt {
          
       }
             
-      JButton closebtn = new JButton("´İ±â"); //ÁÖ¹®Á¢¼ö ¹öÆ°
+      JButton closebtn = new JButton("ë‹«ê¸°"); //ì£¼ë¬¸ì ‘ìˆ˜ ë²„íŠ¼
       fr.add(closebtn);
       closebtn.setBounds(580, 870, 150,50);
       closebtn.setBorderPainted(false);
@@ -211,21 +199,8 @@ public class OrderReceipt {
          public void actionPerformed(ActionEvent e) {
             OrderDB odb = new OrderDB();
             odb.changeStatus(onumber);
-            JOptionPane.showMessageDialog(null, "ÁÖ¹®ÀÌ Á¢¼öµÇ¾ú½À´Ï´Ù.");
-/*
-            if (ostatus.equals("ÁÖ¹®´ë±â")) {
-               OrderDB odb = new OrderDB();
-               odb.changeStatus(onumber);
-               System.out.println("½ÇÇàµÈ°Ì¤¤µ¥---");
-               JOptionPane.showMessageDialog(null, "ÁÖ¹®ÀÌ Á¢¼öµÇ¾ú½À´Ï´Ù.");
-            }
-            else if (ostatus.equals("ÁÖ¹®Á¢¼ö")) {
-               JOptionPane.showMessageDialog(null, "ÀÌ¹Ì Á¢¼öµÈ ÁÖ¹®ÀÔ´Ï´Ù.");
-            }
-            else if (ostatus.equals("ÁÖ¹®¿Ï·á")) {
-               JOptionPane.showMessageDialog(null, "ÀÌ¹Ì ¿Ï·áµÈ ÁÖ¹®ÀÔ´Ï´Ù.");
-            }
-   */      
+            JOptionPane.showMessageDialog(null, "ì£¼ë¬¸ì´ ì ‘ìˆ˜ë˜ì—ˆìŠµë‹ˆë‹¤.");
+
          }
       });
       
@@ -234,7 +209,7 @@ public class OrderReceipt {
          public void actionPerformed(ActionEvent e) {
             OrderDB odb = new OrderDB();
             odb.completeStatus(onumber);
-            JOptionPane.showMessageDialog(null, "ÁÖ¹®ÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.");
+            JOptionPane.showMessageDialog(null, "ì£¼ë¬¸ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.");
    
          }
       });
@@ -243,11 +218,11 @@ public class OrderReceipt {
          @Override
          public void actionPerformed(ActionEvent e) {
 
-            fr.setVisible(false); // Ã¢ ¾Èº¸ÀÌ°Ô ÇÏ±â
+            fr.setVisible(false); // ì°½ ì•ˆë³´ì´ê²Œ í•˜ê¸°
          }
       });
       
-      // ÇÁ·¹ÀÓÀÌ º¸ÀÌµµ·Ï ¼³Á¤
+      // í”„ë ˆì„ì´ ë³´ì´ë„ë¡ ì„¤ì •
         fr.setVisible(true);
 
 
