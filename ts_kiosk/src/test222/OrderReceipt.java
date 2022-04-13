@@ -169,10 +169,7 @@ public class OrderReceipt {
          recbtn.setForeground(Color.WHITE);
          recbtn.setFont(new Font("SansSerif", Font.BOLD, 18));
          
-         //OrderDB odb = new OrderDB();
-         //odb.changeStatus(onumber);
-         //System.out.println("실행된겁ㄴ데---");
-         //JOptionPane.showMessageDialog(null, "주문이 접수되었습니다.");
+        
       }
       else if (ostatus.equals("주문접수")) {
          //JButton complbtn = new JButton("주문완료");
