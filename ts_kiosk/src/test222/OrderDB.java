@@ -16,35 +16,29 @@ public class OrderDB {
    private final String INSERT = "insert into OrderList(orderNum,cId,pName,quantity,price,time,status, totalQ, totalP)"
          + " values(?,?,?,?,?,?, ?, ?, ?)";
    private final String NAME = "Select Cname from OrderList where Id = ? and Pw=?";
-   //private final String SELECT = "select orderNum, cId, pName, totalQ, totalP, time, status from OrderList";
    private final String SELECT = "select orderNum, cId, pName, totalQ, totalP, time, status from OrderList where time in (select min(time) from OrderList group by orderNum)";
-   //private final String SELECT = "select orderNum, cId, pName, totalQ, totalP, time, status from OrderList";
    private final String NUMSELECT = "select max(orderNum) from OrderList";
    private final String OrderSELECT = "select pName, quantity, price from OrderList where orderNum = ?";
    
    private final String SEARCH_cId = "select orderNum, cId, pName, totalQ, totalP, time, status from OrderList where cId = ? and time in (select min(time) from OrderList group by orderNum)";
-   //private final String SEARCH_cId = "select orderNum, cId, pName, totalQ, totalP, time, status from OrderList where cId = ?";
    private final String SEARCH_status = "select orderNum, cId, pName, totalQ, totalP, time, status from OrderList where status = ? and time in (select min(time) from OrderList group by orderNum)";
    
    private final String COUNTSELECT = "select count(pName) FROM OrderList where orderNum=?";
    
-   private final String ChangeStatus = "update OrderList set status='ÁÖ¹®Á¢¼ö' where ordernum=?"; //ÁÖ¹®´ë±â->ÁÖ¹®Á¢¼ö·Î ¹Ù²Ş
-   private final String CompleteStatus = "update OrderList set status='ÁÖ¹®¿Ï·á' where ordernum=?"; //ÁÖ¹®Á¢¼ö->ÁÖ¹®¿Ï·á·Î ¹Ù²Ş
+   private final String ChangeStatus = "update OrderList set status='ì£¼ë¬¸ì ‘ìˆ˜' where ordernum=?"; //ì£¼ë¬¸ëŒ€ê¸°->ì£¼ë¬¸ì ‘ìˆ˜ë¡œ ë°”ê¿ˆ
+   private final String CompleteStatus = "update OrderList set status='ì£¼ë¬¸ì™„ë£Œ' where ordernum=?"; //ì£¼ë¬¸ì ‘ìˆ˜->ì£¼ë¬¸ì™„ë£Œë¡œ ë°”ê¿ˆ
    
    private static OrderDB instance = new OrderDB();
-   //public static String order_info;
    public static int cpname;
    public static String [][] order_info = new String [20][3];
-   
-   //public static String order_info;
-   
+  
 
    public static OrderDB getInstance() {
       return instance;
    }
 
 
-   public int insertMember(Order mdto) { //»õ·Î Ãß°¡
+   public int insertMember(Order mdto) { //ìƒˆë¡œ ì¶”ê°€
 
       conn = Database.getConnection();
 
@@ -65,10 +59,10 @@ public class OrderDB {
          
          int r = stmt.executeUpdate();
          if(r==1) {
-            System.out.println("ÁÖ¹® dbÀúÀå ¼º°ø");
+            System.out.println("ì£¼ë¬¸ dbì €ì¥ ì„±ê³µ");
             return 1;
          }else {
-            System.out.println("db ÀúÀå ½ÇÆĞ");
+            System.out.println("db ì €ì¥ ì‹¤íŒ¨");
          }
 
          //return 1;
@@ -80,14 +74,14 @@ public class OrderDB {
    }
    
    
-   public int selectmeber() { //Customers Å×ÀÌºí Ç×¸ñ ÀüÃ¼ ºÒ·¯¿À±â
+   public int selectmeber() { //Customers í…Œì´ë¸” í•­ëª© ì „ì²´ ë¶ˆëŸ¬ì˜¤ê¸°
 
       conn = Database.getConnection();
 
       try {
          stmt = conn.prepareStatement(SELECT);
          res = stmt.executeQuery();
-         while (res.next()) { // °¢°¢ °ªÀ» °¡Á®¿Í¼­ Å×ÀÌºí°ªµéÀ» Ãß°¡
+         while (res.next()) { // ê°ê° ê°’ì„ ê°€ì ¸ì™€ì„œ í…Œì´ë¸”ê°’ë“¤ì„ ì¶”ê°€
             ordermakeTable.model.addRow(new Object[] {
                   res.getInt("orderNum"), res.getString("cId"),
                   res.getString("pName"), res.getInt("totalQ"), 
@@ -103,7 +97,7 @@ public class OrderDB {
    }
    
    
-   public int searchorder(String field, String st) {// °Ë»ö
+   public int searchorder(String field, String st) {// ê²€ìƒ‰
 
       conn = Database.getConnection();
 
@@ -117,7 +111,7 @@ public class OrderDB {
          stmt.setString(1, st);
 
          res = stmt.executeQuery();
-         while (res.next()) { // °¢°¢ °ªÀ» °¡Á®¿Í¼­ Å×ÀÌºí°ªµéÀ» Ãß°¡
+         while (res.next()) { // ê°ê° ê°’ì„ ê°€ì ¸ì™€ì„œ í…Œì´ë¸”ê°’ë“¤ì„ ì¶”ê°€
             
             ordermakeTable.model.addRow(new Object[] {res.getInt("orderNum"), res.getString("cId"),
                   res.getString("pName"), res.getInt("totalQ"), 
@@ -149,10 +143,10 @@ public class OrderDB {
          stmt.setInt(1, st);
          
          res = stmt.executeQuery();
-         while (res.next()) { // °¢°¢ °ªÀ» °¡Á®¿Í¼­ Å×ÀÌºí°ªµéÀ» Ãß°¡
+         while (res.next()) { // ê°ê° ê°’ì„ ê°€ì ¸ì™€ì„œ í…Œì´ë¸”ê°’ë“¤ì„ ì¶”ê°€
             
-            cpname = res.getInt(1); //Ã¹ ¹øÂ° Ä­ÀÇ °ª +1
-            System.out.println("¸Ş´º°¹¼ö´Â"+cpname);
+            cpname = res.getInt(1); //ì²« ë²ˆì§¸ ì¹¸ì˜ ê°’ +1
+            System.out.println("ë©”ë‰´ê°¯ìˆ˜ëŠ”"+cpname);
             
          }
          
@@ -166,7 +160,7 @@ public class OrderDB {
       
    }
    
-   public int printOrder(int st) { //¿µ¼öÁõ Ãâ·Â ÇÔ¼ö
+   public int printOrder(int st) { //ì˜ìˆ˜ì¦ ì¶œë ¥ í•¨ìˆ˜
       conn = Database.getConnection();
 
       try {
@@ -174,9 +168,9 @@ public class OrderDB {
          stmt.setInt(1, st);
                   
          res = stmt.executeQuery();
-         for (int i=0; i<cpname; i++) { //ÀÌ°Å ¤©¤··Î Å·¹ŞÀ½ Àı´ë·Î ±î¸ÔÁö ¸» °Í!...........
+         for (int i=0; i<cpname; i++) { 
             while (res.next()) {
-               System.out.println("¾ß"+cpname);
+              
                order_info [i][0] = res.getString(1);
                System.out.println(i+order_info[i][0]);
                order_info [i][1] =  Integer.toString(res.getInt(2));
@@ -187,30 +181,7 @@ public class OrderDB {
                
             }
          }
-         //while (res.next()) { // °¢°¢ °ªÀ» °¡Á®¿Í¼­ Å×ÀÌºí°ªµéÀ» Ãß°¡
-            //Admin_order.ordernum = res.getInt(1)+1; //Ã¹ ¹øÂ° Ä­ÀÇ °ª +1
-            //order_info = "," + res.getString(1)+ "," + res.getInt(2) + "," + res.getInt(3);
-            //order_info = "," + res.getString(1)+ "," + res.getInt(2) + "," + res.getInt(3);
-            //System.out.println(order_info);
-            /*
-            for (int i=0; i<cpname; i++) {
-               System.out.println("¾ß"+cpname);
-               order_info [i][0] = res.getString(1);
-               System.out.println(i+order_info[i][0]);
-               order_info [i][1] =  Integer.toString(res.getInt(2));
-               System.out.println(i+order_info[i][1]);
-               order_info[i][2] =  Integer.toString(res.getInt(3));
-               System.out.println(i+order_info[i][2]);
-               
-            }
-            */
-            //System.out.println(order_info);
-            //System.out.println("/" + res.getString(1)+ "/" + res.getInt(2) + "/" + res.getInt(3));
-            //System.out.println(res.getString(1));
-            //System.out.println(res.getInt(2));
-            //System.out.println(res.getInt(3));
-            
-         //} 
+         
          OrderReceipt orc = new OrderReceipt();
          orc.printReceipt();
          return 1;
@@ -222,7 +193,7 @@ public class OrderDB {
       
    }
    
-   public int changeStatus (int st) { //ÁÖ¹®´ë±â->ÁÖ¹®Á¢¼ö
+   public int changeStatus (int st) { //ì£¼ë¬¸ëŒ€ê¸°->ì£¼ë¬¸ì ‘ìˆ˜
       conn = Database.getConnection();
 
       try {
@@ -230,11 +201,7 @@ public class OrderDB {
          stmt.setInt(1, st);
          
          stmt.executeUpdate();
-         //res = stmt.executeQuery();
-         //while (res.next()) { // °¢°¢ °ªÀ» °¡Á®¿Í¼­ Å×ÀÌºí°ªµéÀ» Ãß°¡
-            
-            
-         //}
+        
          
          return 1;
 
@@ -246,7 +213,7 @@ public class OrderDB {
       
    }
    
-   public int completeStatus (int st) { //ÁÖ¹®Á¢¼ö->ÁÖ¹®¿Ï·á
+   public int completeStatus (int st) { //ì£¼ë¬¸ì ‘ìˆ˜->ì£¼ë¬¸ì™„ë£Œ
       conn = Database.getConnection();
 
       try {
@@ -268,14 +235,14 @@ public class OrderDB {
    
    
    
-   public int selectONum() { //orderNumÀ» ±¸ÇÏ´Â ÇÔ¼ö
+   public int selectONum() { //orderNumì„ êµ¬í•˜ëŠ” í•¨ìˆ˜
       conn = Database.getConnection();
 
       try {
          stmt = conn.prepareStatement(NUMSELECT);
          res = stmt.executeQuery();
-         while (res.next()) { // °¢°¢ °ªÀ» °¡Á®¿Í¼­ Å×ÀÌºí°ªµéÀ» Ãß°¡
-            creditCardScreen.ONum = res.getInt(1)+1; //Ã¹ ¹øÂ° Ä­ÀÇ °ª +1
+         while (res.next()) { // ê°ê° ê°’ì„ ê°€ì ¸ì™€ì„œ í…Œì´ë¸”ê°’ë“¤ì„ ì¶”ê°€
+            creditCardScreen.ONum = res.getInt(1)+1; //ì²« ë²ˆì§¸ ì¹¸ì˜ ê°’ +1
             creditCardScreen cs = new creditCardScreen();
             cs.pushONum(creditCardScreen.ONum);
             
