@@ -381,10 +381,10 @@ public class creditCardScreen {
 					
 					int result = odb.insertMember(order);
 					if (result==1) {
-						JOptionPane.showMessageDialog(null, "주민기록 등록 완료");
+						System.out.println("주문 등록 완료");
 					    //dispose();
 					}else {
-		                JOptionPane.showMessageDialog(null, "주민기록 등록 실패");
+						System.out.println("주문 등록 실패");
 		      	      	 //dispose();
 		            }
 						            

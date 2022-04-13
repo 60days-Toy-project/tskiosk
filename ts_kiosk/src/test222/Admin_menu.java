@@ -9,7 +9,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
 
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -23,7 +22,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 public class Admin_menu extends JFrame {
-	
+
 	private JPanel tablePan = new MTablepane(this);
 
 	public Admin_menu() {
@@ -54,6 +53,7 @@ public class Admin_menu extends JFrame {
 	}
 
 }
+
 class MTablepane extends JPanel { // 장바구니 담을 패널
 	private JFrame f;
 	public String Result = "";
@@ -69,6 +69,7 @@ class MTablepane extends JPanel { // 장바구니 담을 패널
 
 	}
 }
+
 class menumakeTable extends JPanel {
 	// DB에서 스윙 화면으로 테이블 값 가져오기(select) , 저장하기(insert), 수정하기(update), 삭제하기(delete)
 
@@ -80,50 +81,47 @@ class menumakeTable extends JPanel {
 	private JButton jBtnmSaveRow = null; // 테이블 한줄 저장 버튼
 	private JButton jBtnmEditRow = null; // 테이블 한줄 저장 버튼
 	private JButton jBtnmDelRow = null; // 테이블 한줄 삭제 벅튼
-	private JButton jbtnmAllRow = null; //메뉴 전체보기
+	private JButton jbtnmAllRow = null; // 메뉴 전체보기
 	private JTable table;
 	private JScrollPane scrollPane; // 테이블 스크롤바 자동으로 생성되게 하기
 
-	private JTextField category = new JTextField(20);//카테고리
-	private JTextField sub = new JTextField(20);//메뉴 이름
-	private JTextField subkey = new JTextField(20);//메뉴 번호
+	private JTextField category = new JTextField(20);// 카테고리
+	private JTextField sub = new JTextField(20);// 메뉴 이름
+	private JTextField subkey = new JTextField(20);// 메뉴 번호
 	private JTextField qty = new JTextField(20);// 수량
 	private JTextField price = new JTextField(20);// 가격
 	private JTextField rdate = new JTextField(20); // 츌시일
-	
+
 	private JLabel imgLabel = new JLabel();// 제품 사진
 	private ImageIcon icon;
-	
+
 	private JLabel backimgLabel = new JLabel();// 제품 사진
 	private ImageIcon bicon;
-	
+
 	private JComboBox<String> cbbsearch;
-	private static String comboNames[] = {"카테고리","메뉴이름","메뉴번호", "가격" };
+	private static String comboNames[] = { "카테고리", "메뉴이름", "메뉴번호", "가격" };
 	private JTextField search = new JTextField(13);
 	private JButton jBtnSearch = new JButton("검색");
 	private String Content; // 검색 카테고리
-	
-	
-	private static String colNames[] = { "Category","Sub", "Subkey", "Qty", "Price", "Realeasedate" }; // 테이블 컬럼 값들
+
+	private static String colNames[] = { "Category", "Sub", "Subkey", "Qty", "Price", "Realeasedate" }; // 테이블 컬럼 값들
 	static DefaultTableModel m = new DefaultTableModel(colNames, 0); // 테이블 데이터 모델 객체 생성
 
-	public menumakeTable(JFrame f1)  {
+	public menumakeTable(JFrame f1) {
 
 		this.f1 = f1;
 		setLayout(null); // 레이아웃 배치관리자 삭제
-		
+
 		jp1.setLayout(null);
-		jp1.setLocation(1,1);
-		jp1.setSize(1200,800);
-		
-		
+		jp1.setLocation(1, 1);
+		jp1.setSize(1200, 800);
+
 		bicon = new ImageIcon("image/icon/backspace.png");
 		backimgLabel.setIcon(bicon);
 		backimgLabel.setBounds(5, 5, 45, 45);
 		jp1.add(backimgLabel);
 		backimgLabel.addMouseListener((MouseListener) new BackSpace()); // 테이블에 마우스리스너 연결
-		
-		
+
 		JLabel optionOrder = new JLabel("메뉴 조회");
 
 		optionOrder.setBounds(0, 0, 1200, 60);
@@ -133,84 +131,79 @@ class menumakeTable extends JPanel {
 		optionOrder.setHorizontalAlignment(JLabel.CENTER);
 		optionOrder.setFont(new Font("함초롱바탕", Font.BOLD, 30));
 		jp1.add(optionOrder);// 컴포넌트 컨테이너에 올림
-		
 
-		
 		JPanel infopan = new JPanel();
-		infopan.setLayout(new GridLayout(6,2,5,5));
-		
-		JPanel searchpan = new JPanel(); //검색 패널
+		infopan.setLayout(new GridLayout(6, 2, 5, 5));
+
+		JPanel searchpan = new JPanel(); // 검색 패널
 		searchpan.setLocation(450, 600);
 		searchpan.setSize(300, 60);
-		JPanel ssspan = new JPanel();//검색 컴포넌트 넣을 패널
+		JPanel ssspan = new JPanel();// 검색 컴포넌트 넣을 패널
 		ssspan.setLayout(new FlowLayout(FlowLayout.LEFT));
 
-		cbbsearch = new JComboBox(comboNames); //콤보박스
-		ssspan.add(cbbsearch);//콤보박스
-		ssspan.add(search); //텍스트필드
-		ssspan.add(jBtnSearch);//검색 버튼
+		cbbsearch = new JComboBox(comboNames); // 콤보박스
+		ssspan.add(cbbsearch);// 콤보박스
+		ssspan.add(search); // 텍스트필드
+		ssspan.add(jBtnSearch);// 검색 버튼
 		searchpan.add(ssspan);
 		searchpan.setBackground(Color.WHITE);
 		ssspan.setBackground(Color.WHITE);
 
-		jBtnSearch.addActionListener(new ActionListener() { //검색 버튼 눌렀을 떄
+		jBtnSearch.addActionListener(new ActionListener() { // 검색 버튼 눌렀을 떄
 			public void actionPerformed(ActionEvent e) {
 				System.out.println(e.getActionCommand()); // 선택된 버튼의 텍스트값 출력
 				DefaultTableModel model1 = (DefaultTableModel) table.getModel();
 
 				if (cbbsearch.getSelectedItem().toString() == "카테고리") {
 					Content = "Category";
-					
+
 				} else if (cbbsearch.getSelectedItem().toString() == "메뉴이름") {
 					Content = "Sub";
-				
+
 				} else if (cbbsearch.getSelectedItem().toString() == "메뉴번호") {
 					Content = "Subkey";
-					
+
 				} else if (cbbsearch.getSelectedItem().toString() == "가격") {
 					Content = "Price";
-					
+
 				}
-								
+
 				model1.setRowCount(0); // 전체 테이블 화면을 지워줌
-				
-				System.out.println(Content+"222");
-				
+
+				System.out.println(Content + "222");
+
 				DAO dao = DAO.getInstance();
-				int result = dao.searchmenu(Content, (String)search.getText());
-				if (result == -1) { //검색 결과 없을 떄 
+				int result = dao.searchmenu(Content, (String) search.getText());
+				if (result == -1) { // 검색 결과 없을 떄
 					JOptionPane.showMessageDialog(null, "해당내용이 없습니다");
 
-				}	
+				}
 			}
 		});
-
 
 		// 아이콘 생성
 		icon = new ImageIcon("image/coffee500300.jpg");
 		imgLabel.setIcon(icon);
 		imgLabel.setBounds(30, 75, 200, 200);
 		jp1.add(imgLabel);
-		
+
 		infopan.add(new JLabel("카테고리 : "));
 		infopan.add(category);
-		
+
 		infopan.add(new JLabel("메뉴이름 : "));
 		infopan.add(sub);
-		
+
 		infopan.add(new JLabel("메뉴번호 : "));
 		infopan.add(subkey);
-		
+
 		infopan.add(new JLabel("수  량  : "));
 		infopan.add(qty);
-		
+
 		infopan.add(new JLabel("가  격  : "));
 		infopan.add(price);
-		
+
 		infopan.add(new JLabel("출 시 일 : "));
 		infopan.add(rdate);
-		
-	
 
 		infopan.setBackground(Color.white);
 		infopan.setLocation(30, 300);
@@ -250,42 +243,42 @@ class menumakeTable extends JPanel {
 			int row = jtable.getSelectedRow(); // 선택된 테이블의 행값
 			int col = jtable.getSelectedColumn(); // 선택된 테이블의 열값
 			String imgpath = null;
-			
-			category.setText((String) m.getValueAt(row,0));
+
+			category.setText((String) m.getValueAt(row, 0));
 			sub.setText((String) m.getValueAt(row, 1));
 			subkey.setText((String) m.getValueAt(row, 2));
 			qty.setText((String) m.getValueAt(row, 3));
 			price.setText((String) m.getValueAt(row, 4));
 			rdate.setText((String) m.getValueAt(row, 5));
-			
-			
-			String ca= (String) m.getValueAt(row, 2);
-			int sk= Integer.parseInt(ca);
-			System.out.println(sk+"------1");
-			
-			if(sk<50000) {
-				
-				imgpath="image/"+(String)m.getValueAt(row, 1)+".jpg";
-				System.out.println(imgpath+"디저트 아닐때");
+
+			String ca = (String) m.getValueAt(row, 2);
+			int sk = Integer.parseInt(ca);
+			System.out.println(sk + "------1");
+
+			if (sk < 40000) {
+
+				imgpath = "image/menu/drink/" + (String) m.getValueAt(row, 1) + ".jpg";
+				System.out.println(imgpath + "디저트 아닐때");
+			} else if (sk > 40000 && sk < 50000) {
+				imgpath = "image/menu/icecream/" + (String) m.getValueAt(row, 1) + ".jpg";
+
+			} else if (sk > 50000) {
+				imgpath = "image/menu/cake/" + (String) m.getValueAt(row, 1) + ".jpg";
+
+				System.out.println(imgpath + "디저트일때");
 			}
-			else if(sk>50000){
-				imgpath="image/menu/cake/"+(String)m.getValueAt(row, 1)+".jpg";
-				
-				
-				System.out.println(imgpath+"디저트일때");
-			}
-			
+
 			icon = new ImageIcon(imgpath);
-			
+
 			Image img = icon.getImage();
-	        
-	        // 추출된 Image의 크기 조절하여 새로운 Image 객체 생성
-	    	Image resizeImg = img.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
-	        
-	        // 새로운 Image 객체로 ImageIcon 객체 생성
-	        ImageIcon updateIcon = new ImageIcon(resizeImg);
+
+			// 추출된 Image의 크기 조절하여 새로운 Image 객체 생성
+			Image resizeImg = img.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+
+			// 새로운 Image 객체로 ImageIcon 객체 생성
+			ImageIcon updateIcon = new ImageIcon(resizeImg);
 			imgLabel.setIcon(updateIcon);
-			
+
 			System.out.println(m.getValueAt(row, col)); // 선택된 위치의 값을 얻어내서 출력
 
 		}
@@ -302,16 +295,17 @@ class menumakeTable extends JPanel {
 		public void mouseReleased(java.awt.event.MouseEvent e) {
 		}
 	}
-	private class BackSpace implements MouseListener { //뒤로가기 클릭 이벤트
-		public void mouseClicked(java.awt.event.MouseEvent e) { 
-			
-			int result = JOptionPane.showConfirmDialog(null,"뒤로 가시겠습니까?","Confirm",JOptionPane.YES_NO_OPTION);
-			if(result==JOptionPane.YES_OPTION) {
+
+	private class BackSpace implements MouseListener { // 뒤로가기 클릭 이벤트
+		public void mouseClicked(java.awt.event.MouseEvent e) {
+
+			int result = JOptionPane.showConfirmDialog(null, "뒤로 가시겠습니까?", "Confirm", JOptionPane.YES_NO_OPTION);
+			if (result == JOptionPane.YES_OPTION) {
 				Admin_main admain = new Admin_main();
 				admain.adminmain();
 				f1.setVisible(false);
 			}
-			
+
 		}
 
 		public void mouseEntered(java.awt.event.MouseEvent e) {
@@ -333,17 +327,15 @@ class menumakeTable extends JPanel {
 		menudao.selectmenu();
 	}
 
-
 	private void initialize() { // 액션이벤트와 버튼 컴포넌트 설정
-		
-		
+
 		// 테이블 새로 한줄 추가하는 부분
 		jBtnmAddRow = new JButton();
 		jBtnmAddRow.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println(e.getActionCommand()); // 선택된 버튼의 텍스트값 출력
 				DefaultTableModel model1 = (DefaultTableModel) table.getModel();
-				model1.addRow(new String[] { "", "", "", "", "","" }); // 새테이블의 초기값
+				model1.addRow(new String[] { "", "", "", "", "", "" }); // 새테이블의 초기값
 			}
 		});
 
@@ -361,7 +353,7 @@ class menumakeTable extends JPanel {
 				if (row < 0)
 					return; // 선택이 안된 상태면 -1리턴
 				Admin_DTO adto = new Admin_DTO();
-				
+
 				adto.setCategory((String) category.getText());
 				adto.setSubkey((String) subkey.getText());
 				adto.setQty((String) qty.getText());
@@ -396,15 +388,13 @@ class menumakeTable extends JPanel {
 					return; // 선택이 안된 상태면 -1리턴
 
 				Admin_DTO adto = new Admin_DTO();
-				
+
 				adto.setCategory((String) category.getText());
 				adto.setSub((String) sub.getText());
 				adto.setSubkey((String) subkey.getText());
 				adto.setQty((String) qty.getText());
 				adto.setPrice((String) price.getText());
 				adto.setRdate((String) rdate.getText());
-				
-			
 
 				DAO dao = DAO.getInstance();
 				int result = dao.updatemenu(adto);
@@ -444,9 +434,9 @@ class menumakeTable extends JPanel {
 		jBtnmDelRow.setBounds(730, 680, 200, 40);
 		jBtnmDelRow.setText("삭제");
 		jp1.add(jBtnmDelRow);
-		
+
 		jbtnmAllRow = new JButton();
-		jbtnmAllRow.addActionListener(new ActionListener() {//전체보기 버튼
+		jbtnmAllRow.addActionListener(new ActionListener() {// 전체보기 버튼
 			public void actionPerformed(java.awt.event.ActionEvent e) {
 				System.out.println(e.getActionCommand()); // 선택된 버튼의 텍스트값 출력
 				DefaultTableModel model1 = (DefaultTableModel) table.getModel();
@@ -458,8 +448,7 @@ class menumakeTable extends JPanel {
 		jbtnmAllRow.setBounds(960, 680, 200, 40);
 		jbtnmAllRow.setText("전체 보기");
 		jp1.add(jbtnmAllRow);
-		
+
 	}
 
 }
-

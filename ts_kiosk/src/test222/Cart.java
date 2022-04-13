@@ -62,14 +62,14 @@ public class Cart extends JPanel {
 		model = new DefaultTableModel(Data, ColName);
 		table = new JTable(model);
 
-		setBackground(new Color(255, 255, 204));
+		setBackground(new Color(250, 250, 249));
 		// DefaultTableModel m = (DefaultTableModel) table.getModel();
 		table.setRowHeight(50);
 		table.getTableHeader().setFont(new Font("±¼¸²Ã¼", Font.BOLD, 15));
 		table.getTableHeader().setBackground(Color.white);
-		table.setBackground(Color.orange);
+		table.setBackground(new Color(250, 250, 249));
 		table.setGridColor(Color.white);
-		table.setSelectionBackground(Color.YELLOW);
+		table.setSelectionBackground(new Color(255,223,238));
 
 		table.getColumnModel().getColumn(3).setCellRenderer(new Plus());
 		table.getColumnModel().getColumn(3).setCellEditor(new Plus());
@@ -109,12 +109,12 @@ public class Cart extends JPanel {
 		HomeBtn.setBackground(Color.GRAY);
 		HomeBtn.addActionListener(new HomeBtnActionListener());
 		
-		Btn.setLocation(1, 90);
+		Btn.setLocation(1, 800);
 		Btn.setLayout(new GridLayout(1, 3, 15, 15));
 		Btn.add(AlldelBtn);
 		Btn.add(PayBtn);
 		Btn.add(HomeBtn);
-		Btn.setBackground(new Color(255, 255, 204));
+		Btn.setBackground(new Color(250, 250, 249));
 		add(Btn);
 
 	}

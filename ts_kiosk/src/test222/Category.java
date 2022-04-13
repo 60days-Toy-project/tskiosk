@@ -56,7 +56,7 @@ public class Category extends JFrame {
 	public JPanel createPanel() {// 반으로 쪼개놓은거 스플릿팬 적용 가능한지 나중에 시도
 		JPanel pn = new JPanel();
 		pn.setLayout(null);
-
+		pn.setBackground(new Color(250, 250, 249));
 		orderPan.setSize(550, 800);
 		orderPan.setLocation(555, 50);
 		pn.add(orderPan);
@@ -75,11 +75,10 @@ public class Category extends JFrame {
 
 		JPanel jp1 = new JPanel();
 		jp1.setLayout(null); // 배치관리자 설정 안함 -> 절대 위치 사용하기 위해서!!!
-		jp1.setBackground(Color.GRAY);
+		jp1.setBackground(new Color(250, 250, 249));
 
 		pane.setLocation(5, 3);
 		pane.setSize(550, 800);
-
 		pane.addTab("커피&음료", pane2);
 		pane2.add("에스프레소 베리에이이션", new Panelcoff());
 		pane2.addTab("티 베리에이션", new Paneltea());
@@ -181,7 +180,7 @@ class Panelcoff extends JPanel {
 
 	public Panelcoff() {
 		setLayout(null);
-		setBackground(new Color(255, 255, 204));
+		setBackground(new Color(250, 250, 249));
 		MenuBtn mbtn = new MenuBtn();// 메뉴버튼
 
 		mbtn.setSize(510, 650);
@@ -263,7 +262,7 @@ class Paneltea extends JPanel {
 
 	public Paneltea() {
 		setLayout(null);
-		setBackground(new Color(255, 255, 204));
+		setBackground(new Color(250, 250, 249));
 		MenuBtn mbtn = new MenuBtn();// 메뉴버튼
 
 		mbtn.setSize(510, 650);
@@ -346,7 +345,7 @@ class Paneldrink extends JPanel {
 
 	public Paneldrink() {
 		setLayout(null);
-		setBackground(new Color(255, 255, 204));
+		setBackground(new Color(250, 250, 249));
 		MenuBtn mbtn = new MenuBtn();// 메뉴버튼
 
 		mbtn.setSize(510, 650);
@@ -426,7 +425,7 @@ class Panelicecream extends JPanel {
 
 	public Panelicecream() {
 		setLayout(null);
-		setBackground(new Color(255, 255, 204));
+		setBackground(new Color(250, 250, 249));
 		MenuBtn mbtn = new MenuBtn();// 메뉴버튼
 
 		mbtn.setSize(510, 650);
@@ -509,7 +508,7 @@ class Panelwholecake extends JPanel {
 
 	public Panelwholecake() {
 		setLayout(null);
-		setBackground(new Color(255, 255, 204));
+		setBackground(new Color(250, 250, 249));
 		MenuBtn mbtn = new MenuBtn();// 메뉴버튼
 
 		mbtn.setSize(510, 650);
@@ -593,7 +592,7 @@ class Panelshortcake extends JPanel {
 
 	public Panelshortcake() {
 		setLayout(null);
-		setBackground(new Color(255, 255, 204));
+		setBackground(new Color(250, 250, 249));
 		MenuBtn mbtn = new MenuBtn();// 메뉴버튼
 
 		mbtn.setSize(510, 650);
@@ -678,7 +677,7 @@ class Paneldessert extends JPanel {
 
 	public Paneldessert() {
 		setLayout(null);
-		setBackground(new Color(255, 255, 204));
+		setBackground(new Color(250, 250, 249));
 		MenuBtn mbtn = new MenuBtn();// 메뉴버튼
 
 		mbtn.setSize(510, 650);

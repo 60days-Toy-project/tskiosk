@@ -13,13 +13,16 @@ public class DAO {
 	private PreparedStatement stmt = null;
 	private ResultSet res = null;
 	private final String LOGIN = "select * from Customers where Id = ? and Pw = ? ";
-	//관리자
-	private final String ADMIN_IDNUM = "select * from Admin where Aid_num = ?";
-	private final String ADMIN_INSERT = "insert into Members(Aid_num,Aid,Apw,Aname)"+" values(?,?,?,?)";
-	private final String ADMIN_LOGIN = "select * from Members where Id = ? and Pw = ? ";
+
 	private final String NAME = "Select Cname from Customers where Id = ? and Pw=?";
 
+	// idpw 찾기
+	private final String FIND_id = "select Id from Customers where Cname = ? and tel=?";
+	private final String FIND_pw = "select * from Customers where Id= ? and tel= ?";
+	private final String RESET_pw = "UPDATE Customers SET Pw= ? where Id = ?";
+
 	// 고객 정보 DB
+	private final String CHECK = "select * from Customers where Id = ?";
 	private final String INSERT = "insert into Customers(Id,Pw,Cname,gender,birth,email,tel)"
 			+ " values(?,?,?,?,?,?,?)";
 	private final String UPDATE = "UPDATE Customers SET Pw=?,Cname=?, gender=?, birth=?, email=?, tel=? "
@@ -81,7 +84,7 @@ public class DAO {
 
 				String[] info = information.split("/"); // "/"를 기준으로 나누기
 				// System.out.println("나눈거"+Arrays.toString(info));
-                  
+
 				String pid = info[1];
 				String pname = info[2];
 				String pemail = info[3];
@@ -100,60 +103,64 @@ public class DAO {
 
 		return -1;
 	}
-	
-	/////관리자 로그인
-	public int Admin_idpw(String id, String passwd) {
 
-	
+	///////// 아이디 찾기
+	public int findID(String name, String tel) {
 		conn = Database.getConnection();
+
 		try {
-			stmt = conn.prepareStatement(LOGIN);
+			stmt = conn.prepareStatement(FIND_id);
 
-			stmt.setString(1, id);
-			stmt.setString(2, passwd);
-			
+			stmt.setString(1, name);
+			stmt.setString(2, tel);
 
-			return 1;
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		return -1;
-	}
-	
-	
-	public int Admin_searchIDNUM(String id_num) {
-	
-		conn = Database.getConnection();
-		try {
-			stmt = conn.prepareStatement(ADMIN_IDNUM);
-
-			stmt.setString(1, id_num);
-			
 			res = stmt.executeQuery();
 
-			return 1;
-		} catch (SQLException e) {
+			if (res.next()) {
+				
+				Find_IDPW.fid=res.getString("Id");
+				return 1;
+			}
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 		return -1;
+
 	}
-	
-	
-	public int Admin_insertMember(DTO mdto) { // 새로 추가
+	//비밀번호 바꾸기 전 개인정보 맞나 확인
+	public int findPW(String id, String tel) {
+		conn = Database.getConnection();
+
+		try {
+			stmt = conn.prepareStatement(FIND_pw);
+
+			stmt.setString(1, id);
+			stmt.setString(2, tel);
+
+			res = stmt.executeQuery();
+
+			if (res.next()) {
+				return 1;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
+
+	}
+
+	public int resetPW(DTO fdto) { // 비밀번호 재설정 업데이트
 
 		conn = Database.getConnection();
 
 		try {
-			stmt = conn.prepareStatement(ADMIN_INSERT);
-			
-			stmt.setString(1, mdto.getAidnum());
-			stmt.setString(2, mdto.getAid());
-			stmt.setString(3, mdto.getApassword());
-			stmt.setString(4, mdto.getAname());
-			
-			
+			stmt = conn.prepareStatement(RESET_pw);
+
+			stmt.setString(1, fdto.getPassword());
+			stmt.setString(2, fdto.getId());
+
 			stmt.executeUpdate();
 
 			return 1;
@@ -163,9 +170,29 @@ public class DAO {
 		}
 		return -1;
 	}
+
+	//////////////////// 고객
+
+	public int checkID(String checkid) { //아이디 중복 조회
+
+		conn = Database.getConnection();
+
+		try {
+			stmt = conn.prepareStatement(CHECK);
+
+			stmt.setString(1, checkid);
+			res = stmt.executeQuery();
+
+			if (res.next()) {
+				return -1;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 1;
+	}
 	
-	
-	////////////////////고객
 	public int insertMember(DTO mdto) { // 새로 추가
 
 		conn = Database.getConnection();
@@ -363,8 +390,7 @@ public class DAO {
 
 			return 1;
 
-		} 
-		catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return -1;
