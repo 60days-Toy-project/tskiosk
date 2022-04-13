@@ -4,18 +4,18 @@ import java.sql.*;
 
 public class Database {
 	public static Connection getConnection(){
-		//¼­¹ö ¿¬°á
+		//ì„œë²„ ì—°ê²°
 		Connection conn = null;
 		      
-		String url = "jdbc:mysql://211.243.183.140:3306/twosome";
-		String user = "dev";
-		String passwd = "emb306";
+		String url = "";
+		String user = "";
+		String passwd = "";
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 		    conn = DriverManager.getConnection(url,user,passwd);
-		    System.out.println("¼­¹ö ¿¬°á ¼º°ø");
+		    System.out.println("ì„œë²„ ì—°ê²° ì„±ê³µ");
 		    } catch(Exception e) {
-		    	System.out.println("¼­¹ö ¿¬°á ½ÇÆÐ > "+e.toString());
+		    	System.out.println("ì„œë²„ ì—°ê²° ì‹¤íŒ¨ > "+e.toString());
 		    	}
 		return conn;
 		
