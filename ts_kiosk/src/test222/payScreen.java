@@ -12,9 +12,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTabbedPane;
 
-//°áÁ¦ÇÏ±â ¹öÆ° ´©¸£¸é ³ª¿À´Â °áÁ¦Ã¢ È­¸é
+//ê²°ì œí•˜ê¸° ë²„íŠ¼ ëˆ„ë¥´ë©´ ë‚˜ì˜¤ëŠ” ê²°ì œì°½ í™”ë©´
 public class payScreen {
-	private JFrame mainf;//¸ŞÀÎÇÁ·¹ÀÓ
+	private JFrame mainf;//ë©”ì¸í”„ë ˆì„
 	
 	public void disPayScreen(JFrame mainf,int sum) {
 		this.mainf=mainf;
@@ -22,84 +22,66 @@ public class payScreen {
 		int pay = 0;
 		int receive = sum-discount-pay;
 	
-		JFrame fr = new JFrame("°áÁ¦Ã¢");
-	    fr.setSize(800, 900);
-        fr.setLocationRelativeTo(null);
-        fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        fr.getContentPane().setLayout(null);
+		JFrame fr = new JFrame("ê²°ì œì°½");
+	    	fr.setSize(800, 900);
+       		fr.setLocationRelativeTo(null);
+        	fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        	fr.getContentPane().setLayout(null);
         
-        JLabel lb = new JLabel("°áÁ¦¹æ¹ıÀ» ¼±ÅÃÇØÁÖ¼¼¿ä.");
-      	fr.add(lb);
+       		JLabel lb = new JLabel("ê²°ì œë°©ë²•ì„ ì„ íƒí•´ì£¼ì„¸ìš”.");
+      		fr.add(lb);
 		lb.setBounds(0, 0, 800, 100);
 		lb.setBackground(new Color(255,0,102));
-        lb.setOpaque(true); //Opaque°ªÀ» true·Î ¼³Á¤ÇØ¾ß ¹è°æ»öÀÌ Àû¿ëµÈ´Ù.
-        lb.setHorizontalAlignment(JLabel.CENTER);
-        lb.setFont(new Font("SansSerif", Font.BOLD, 30));
-        lb.setForeground(Color.WHITE);
+        	lb.setOpaque(true); //Opaqueê°’ì„ trueë¡œ ì„¤ì •í•´ì•¼ ë°°ê²½ìƒ‰ì´ ì ìš©ëœë‹¤.
+        	lb.setHorizontalAlignment(JLabel.CENTER);
+        	lb.setFont(new Font("SansSerif", Font.BOLD, 30));
+        	lb.setForeground(Color.WHITE);
         
-        JLabel lb2 = new JLabel("ÀüÃ¼±İ¾×");
-      	fr.add(lb2);
+       	 	JLabel lb2 = new JLabel("ì „ì²´ê¸ˆì•¡");
+      		fr.add(lb2);
 		lb2.setBounds(50, 150, 100, 50);
 		lb2.setFont(new Font("SansSerif", Font.BOLD, 20));
 		
 		String total =  Integer.toString(sum);
-		JLabel total_won = new JLabel(total + "¿ø");
+		JLabel total_won = new JLabel(total + "ì›");
 		fr.add(total_won);
 		total_won.setBounds(40,190,200,50);
 		total_won.setFont(new Font("SansSerif", Font.BOLD, 30));
 		total_won.setForeground(new Color(255,0,102));
 		
-		/* ¸¶ÀÌ³Ê½º ¾ÆÀÌÄÜ ¹öÀü
-		ImageIcon min = new ImageIcon("image/minus.png");
-        Image minimg = min.getImage();
-        Image newminimg = minimg.getScaledInstance(35, 35, Image.SCALE_SMOOTH);
-        ImageIcon newiconm = new ImageIcon(newminimg);
-        JButton minbtn = new JButton(newiconm);
-        fr.add(minbtn);
-        minbtn.setBounds(170, 180, 35, 35);
-        minbtn.setBorderPainted(false); //¹öÆ° ¿Ü°û¼± ¾ø¾Ö±â
-        minbtn.setContentAreaFilled(false); //¹öÆ° ³»¿ë¿µ¿ª Ã¤¿ì±â ¾ø¾Ö±â
-		*/
+	
 		
-		/*¸¶ÀÌ³Ê½º ±ÛÀÚ ¹öÀü
-		JLabel minus = new JLabel("-");
-		fr.add(minus);
-		minus.setBounds(170,180,200,50);
-		minus.setFont(new Font("SansSerif", Font.BOLD, 30));
-		minus.setForeground(Color.BLACK);
-		*/
-		
-		JLabel discm = new JLabel("ÇÒÀÎ±İ¾×");
-      	fr.add(discm);
+		JLabel discm = new JLabel("í• ì¸ê¸ˆì•¡");
+      		fr.add(discm);
 		discm.setBounds(230, 150, 100, 50);
 		discm.setFont(new Font("SansSerif", Font.BOLD, 20));
 		
 		String discmon =  Integer.toString(discount);
-		JLabel disc_won = new JLabel(discmon + "¿ø");
+		JLabel disc_won = new JLabel(discmon + "ì›");
 		fr.add(disc_won);
 		disc_won.setBounds(220,190,200,50);
 		disc_won.setFont(new Font("SansSerif", Font.BOLD, 30));
 		disc_won.setForeground(new Color(255,0,102));
 		
-		JLabel paym = new JLabel("°áÁ¦±İ¾×");
-      	fr.add(paym);
+		JLabel paym = new JLabel("ê²°ì œê¸ˆì•¡");
+      		fr.add(paym);
 		paym.setBounds(430, 150, 100, 50);
 		paym.setFont(new Font("SansSerif", Font.BOLD, 20));
 		
 		String paymon =  Integer.toString(pay);
-		JLabel pay_won = new JLabel(paymon + "¿ø");
+		JLabel pay_won = new JLabel(paymon + "ì›");
 		fr.add(pay_won);
 		pay_won.setBounds(420,190,200,50);
 		pay_won.setFont(new Font("SansSerif", Font.BOLD, 30));
 		pay_won.setForeground(new Color(255,0,102));
 		
-		JLabel receivem = new JLabel("¹ŞÀ»±İ¾×");
-      	fr.add(receivem);
-      	receivem.setBounds(630, 150, 100, 50);
-      	receivem.setFont(new Font("SansSerif", Font.BOLD, 20));
+		JLabel receivem = new JLabel("ë°›ì„ê¸ˆì•¡");
+      		fr.add(receivem);
+      		receivem.setBounds(630, 150, 100, 50);
+      		receivem.setFont(new Font("SansSerif", Font.BOLD, 20));
 		
 		String receivemon =  Integer.toString(receive);
-		JLabel receive_won = new JLabel(receivemon + "¿ø");
+		JLabel receive_won = new JLabel(receivemon + "ì›");
 		fr.add(receive_won);
 		receive_won.setBounds(620,190,200,50);
 		receive_won.setFont(new Font("SansSerif", Font.BOLD, 30));
@@ -113,8 +95,8 @@ public class payScreen {
         JButton cardbtn = new JButton(newicon);
         fr.add(cardbtn);
         cardbtn.setBounds(100, 300, 170, 180);
-        cardbtn.setBorderPainted(false); //¹öÆ° ¿Ü°û¼± ¾ø¾Ö±â
-        cardbtn.setContentAreaFilled(false); //¹öÆ° ³»¿ë¿µ¿ª Ã¤¿ì±â ¾ø¾Ö±â
+        cardbtn.setBorderPainted(false); //ë²„íŠ¼ ì™¸ê³½ì„  ì—†ì• ê¸°
+        cardbtn.setContentAreaFilled(false); //ë²„íŠ¼ ë‚´ìš©ì˜ì—­ ì±„ìš°ê¸° ì—†ì• ê¸°
         
         ImageIcon mc = new ImageIcon("image/mobilecoupon.png");
         Image mcimg = mc.getImage();
@@ -123,8 +105,8 @@ public class payScreen {
         JButton mcbtn = new JButton(newicon2);
         fr.add(mcbtn);
         mcbtn.setBounds(300, 300, 170, 180);
-        mcbtn.setBorderPainted(false); //¹öÆ° ¿Ü°û¼± ¾ø¾Ö±â
-        mcbtn.setContentAreaFilled(false); //¹öÆ° ³»¿ë¿µ¿ª Ã¤¿ì±â ¾ø¾Ö±â
+        mcbtn.setBorderPainted(false); //ë²„íŠ¼ ì™¸ê³½ì„  ì—†ì• ê¸°
+        mcbtn.setContentAreaFilled(false); //ë²„íŠ¼ ë‚´ìš©ì˜ì—­ ì±„ìš°ê¸° ì—†ì• ê¸°
         
         ImageIcon gc = new ImageIcon("image/giftcard.png");
         Image gcimg = gc.getImage();
@@ -133,8 +115,8 @@ public class payScreen {
         JButton gcbtn = new JButton(newicon3);
         fr.add(gcbtn);
         gcbtn.setBounds(500, 300, 170, 180);
-        gcbtn.setBorderPainted(false); //¹öÆ° ¿Ü°û¼± ¾ø¾Ö±â
-        gcbtn.setContentAreaFilled(false); //¹öÆ° ³»¿ë¿µ¿ª Ã¤¿ì±â ¾ø¾Ö±â
+        gcbtn.setBorderPainted(false); //ë²„íŠ¼ ì™¸ê³½ì„  ì—†ì• ê¸°
+        gcbtn.setContentAreaFilled(false); //ë²„íŠ¼ ë‚´ìš©ì˜ì—­ ì±„ìš°ê¸° ì—†ì• ê¸°
         
         ImageIcon kp = new ImageIcon("image/kakaopay.png");
         Image kpimg = kp.getImage();
@@ -143,8 +125,8 @@ public class payScreen {
         JButton kpbtn = new JButton(newicon4);
         fr.add(kpbtn);
         kpbtn.setBounds(100, 500, 170, 180);
-        kpbtn.setBorderPainted(false); //¹öÆ° ¿Ü°û¼± ¾ø¾Ö±â
-        kpbtn.setContentAreaFilled(false); //¹öÆ° ³»¿ë¿µ¿ª Ã¤¿ì±â ¾ø¾Ö±â
+        kpbtn.setBorderPainted(false); //ë²„íŠ¼ ì™¸ê³½ì„  ì—†ì• ê¸°
+        kpbtn.setContentAreaFilled(false); //ë²„íŠ¼ ë‚´ìš©ì˜ì—­ ì±„ìš°ê¸° ì—†ì• ê¸°
         
         ImageIcon bc = new ImageIcon("image/barcode.png");
         Image bcimg = bc.getImage();
@@ -153,10 +135,10 @@ public class payScreen {
         JButton bcbtn = new JButton(newicon5);
         fr.add(bcbtn);
         bcbtn.setBounds(300, 500, 170, 180);
-        bcbtn.setBorderPainted(false); //¹öÆ° ¿Ü°û¼± ¾ø¾Ö±â
-        bcbtn.setContentAreaFilled(false); //¹öÆ° ³»¿ë¿µ¿ª Ã¤¿ì±â ¾ø¾Ö±â
+        bcbtn.setBorderPainted(false); //ë²„íŠ¼ ì™¸ê³½ì„  ì—†ì• ê¸°
+        bcbtn.setContentAreaFilled(false); //ë²„íŠ¼ ë‚´ìš©ì˜ì—­ ì±„ìš°ê¸° ì—†ì• ê¸°
         
-        JButton cancelbtn = new JButton("Ãë¼Ò");
+        JButton cancelbtn = new JButton("ì·¨ì†Œ");
         fr.add(cancelbtn);
         cancelbtn.setBounds(300,750,180,50);
         cancelbtn.setFont(new Font("SansSerif", Font.BOLD, 30));
@@ -167,28 +149,28 @@ public class payScreen {
         
         fr.setVisible(true);
         
-      //¹öÆ° Á¦´ë·Î ´­¸®´ÂÁö È®ÀÎÇØº¸·Á°í ÇØ³õÀº°Å ½Å°æXX!!!
+      
         cardbtn.addActionListener(new ActionListener() { 
             @Override
             public void actionPerformed(ActionEvent e) {
             	//new TableRowHeaderTest();
             	//new Category(new Pos()));
-                //frm.setVisible(false); // Ã¢ ¾Èº¸ÀÌ°Ô ÇÏ±â 
+                //frm.setVisible(false); // ì°½ ì•ˆë³´ì´ê²Œ í•˜ê¸° 
             	
             	creditCardScreen cs = new creditCardScreen();
-                cs.disCreditCardScreen(mainf,fr,receive); //¸ŞÀÎÇÁ·¹ÀÓ, ÇöÀç ÇÁ·¹ÀÓ °°ÀÌ ³Ñ±â±â
-                //fr.setVisible(false); // Ã¢ ¾Èº¸ÀÌ°Ô ÇÏ±â
+                cs.disCreditCardScreen(mainf,fr,receive); //ë©”ì¸í”„ë ˆì„, í˜„ì¬ í”„ë ˆì„ ê°™ì´ ë„˜ê¸°ê¸°
+                //fr.setVisible(false); // ì°½ ì•ˆë³´ì´ê²Œ í•˜ê¸°
                
                 
             }
         });
         
-        //Ãë¼ÒÇÏ±â ¹öÆ°
+        //ì·¨ì†Œí•˜ê¸° ë²„íŠ¼
         cancelbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 
-                fr.setVisible(false); // Ã¢ ¾Èº¸ÀÌ°Ô ÇÏ±â 
+                fr.setVisible(false); // ì°½ ì•ˆë³´ì´ê²Œ í•˜ê¸° 
             }
         });
         
