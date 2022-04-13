@@ -45,15 +45,15 @@ public class Category extends JFrame {
 
 	public Category(String title) {
 		createFrame(title);
-		JTabbedPane pane = createTabbedPane(); // ÅÇ ÆĞ³Î
-		JPanel pn = createPanel(); // Àå¹Ù±¸´Ï ÆĞ³Î
+		JTabbedPane pane = createTabbedPane(); // íƒ­ íŒ¨ë„
+		JPanel pn = createPanel(); // ì¥ë°”êµ¬ë‹ˆ íŒ¨ë„
 		// this.add(pane, BorderLayout.CENTER);
 
 		this.add(pane);
 		this.add(pn);
 	}
 
-	public JPanel createPanel() {// ¹İÀ¸·Î ÂÉ°³³õÀº°Å ½ºÇÃ¸´ÆÒ Àû¿ë °¡´ÉÇÑÁö ³ªÁß¿¡ ½Ãµµ
+	public JPanel createPanel() {
 		JPanel pn = new JPanel();
 		pn.setLayout(null);
 		pn.setBackground(new Color(250, 250, 249));
@@ -67,30 +67,30 @@ public class Category extends JFrame {
 
 	public JTabbedPane createTabbedPane() {
 
-		// ÅÇ ¸¸µé±â
+		// íƒ­ ë§Œë“¤ê¸°
 		JTabbedPane pane = new JTabbedPane();
 		JTabbedPane pane2 = new JTabbedPane();
 		JTabbedPane pane3 = new JTabbedPane();
 		JTabbedPane pane4 = new JTabbedPane();
 
 		JPanel jp1 = new JPanel();
-		jp1.setLayout(null); // ¹èÄ¡°ü¸®ÀÚ ¼³Á¤ ¾ÈÇÔ -> Àı´ë À§Ä¡ »ç¿ëÇÏ±â À§ÇØ¼­!!!
+		jp1.setLayout(null); // ë°°ì¹˜ê´€ë¦¬ì ì„¤ì • ì•ˆí•¨ -> ì ˆëŒ€ ìœ„ì¹˜ ì‚¬ìš©í•˜ê¸° ìœ„í•´ì„œ!!!
 		jp1.setBackground(new Color(250, 250, 249));
 
 		pane.setLocation(5, 3);
 		pane.setSize(550, 800);
-		pane.addTab("Ä¿ÇÇ&À½·á", pane2);
-		pane2.add("¿¡½ºÇÁ·¹¼Ò º£¸®¿¡ÀÌÀÌ¼Ç", new Panelcoff());
-		pane2.addTab("Æ¼ º£¸®¿¡ÀÌ¼Ç", new Paneltea());
-		pane2.addTab("À½·á", new Paneldrink());
+		pane.addTab("ì»¤í”¼&ìŒë£Œ", pane2);
+		pane2.add("ì—ìŠ¤í”„ë ˆì†Œ ë² ë¦¬ì—ì´ì´ì…˜", new Panelcoff());
+		pane2.addTab("í‹° ë² ë¦¬ì—ì´ì…˜", new Paneltea());
+		pane2.addTab("ìŒë£Œ", new Paneldrink());
 
-		pane.addTab("¾ÆÀÌ½ºÅ©¸²&ºù¼ö", pane3);
-		pane3.addTab("¾ÆÀÌ½ºÅ©¸²", new Panelicecream());
+		pane.addTab("ì•„ì´ìŠ¤í¬ë¦¼&ë¹™ìˆ˜", pane3);
+		pane3.addTab("ì•„ì´ìŠ¤í¬ë¦¼", new Panelicecream());
 
-		pane.addTab("ÄÉÀÌÅ©", pane4);
-		pane4.addTab("È¦ÄÉÀÌÅ©", new Panelwholecake());
-		pane4.addTab("¼îÆ®ÄÉÀÌÅ©", new Panelshortcake());
-		pane4.addTab("µğÀúÆ®", new Paneldessert());
+		pane.addTab("ì¼€ì´í¬", pane4);
+		pane4.addTab("í™€ì¼€ì´í¬", new Panelwholecake());
+		pane4.addTab("ì‡¼íŠ¸ì¼€ì´í¬", new Panelshortcake());
+		pane4.addTab("ë””ì €íŠ¸", new Paneldessert());
 
 		return pane;
 	}
@@ -106,7 +106,7 @@ public class Category extends JFrame {
 
 }
 
-class Orderpan extends JPanel { // Àå¹Ù±¸´Ï ´ãÀ» ÆĞ³Î
+class Orderpan extends JPanel { // ì¥ë°”êµ¬ë‹ˆ ë‹´ì„ íŒ¨ë„
 	private JFrame f;
 	public String Result = "";
 
@@ -127,12 +127,12 @@ class Panelcoff extends JPanel {
 	public int OPflag = 0;
 
 	JButton[] MBtn = new JButton[15];
-	String[] menu = { "¾Æ¸Ş¸®Ä«³ë", "Ä«Æä¶ó¶¼", "Ä«Æä¸ğÄ«", "Ä«¶ó¸á¸¶³¢¾Æ¶Ç", "¹Ù´Ò¶óÄ«Æä¶ó¶¼", "¼ôÄ«Æä¶ó¶¼", "·Õºí·¢", "¿¡½ºÇÁ·¹¼Ò", "½ºÆä´Ï½¬¿¬À¯Ä«Æä¶ó¶¼", "¾ÆÀÌ½ºÅ©¸²Ä«Æä¶ó¶¼",
-			"´Ş°í³ªÄ«Æä¶ó¶¼", "Äİµåºê·ç", "Äİµåºê·ç¶ó¶¼", "ÈæÀÓÀÚÄ«Æä¶ó¶¼", "Ä«ÇªÄ¡³ë" };
+	String[] menu = { "ì•„ë©”ë¦¬ì¹´ë…¸", "ì¹´í˜ë¼ë–¼", "ì¹´í˜ëª¨ì¹´", "ì¹´ë¼ë©œë§ˆë¼ì•„ë˜", "ë°”ë‹ë¼ì¹´í˜ë¼ë–¼", "ìˆì¹´í˜ë¼ë–¼", "ë¡±ë¸”ë™", "ì—ìŠ¤í”„ë ˆì†Œ", "ìŠ¤í˜ë‹ˆì‰¬ì—°ìœ ì¹´í˜ë¼ë–¼", "ì•„ì´ìŠ¤í¬ë¦¼ì¹´í˜ë¼ë–¼",
+			"ë‹¬ê³ ë‚˜ì¹´í˜ë¼ë–¼", "ì½œë“œë¸Œë£¨", "ì½œë“œë¸Œë£¨ë¼ë–¼", "í‘ì„ìì¹´í˜ë¼ë–¼", "ì¹´í‘¸ì¹˜ë…¸" };
 	int[] price = { 4500, 5000, 5500, 5900, 6000, 5500, 5500, 6500, 5000, 6500, 7000, 5500, 6000, 6500, 5500 };
 
-	JTextField tq = new JTextField(30); // ÃÑ ¼ö·®
-	JTextField ts = new JTextField(40); // ÃÑ °¡°İ
+	JTextField tq = new JTextField(30); // ì´ ìˆ˜ëŸ‰
+	JTextField ts = new JTextField(40); // ì´ ê°€ê²©
 
 	JTextField t = new JTextField(10);
 
@@ -147,14 +147,14 @@ class Panelcoff extends JPanel {
 			setLayout(new GridLayout(1, 1));
 			njp2.setBackground(Color.WHITE);
 			setBackground(Color.WHITE);
-			ImageIcon[] img = { new ImageIcon("image/menu/drink/¾Æ¸Ş¸®Ä«³ë.jpg"), new ImageIcon("image/menu/drink/Ä«Æä¶ó¶¼.jpg"),
-					new ImageIcon("image/menu/drink/Ä«Æä¸ğÄ«.jpg"), new ImageIcon("image/menu/drink/Ä«¶ó¸á¸¶³¢¾Æ¶Ç.jpg"),
-					new ImageIcon("image/menu/drink/¹Ù´Ò¶óÄ«Æä¶ó¶¼.jpg"), new ImageIcon("image/menu/drink/¼ôÄ«Æä¶ó¶¼.jpg"),
-					new ImageIcon("image/menu/drink/·Õºí·¢.jpg"), new ImageIcon("image/menu/drink/¿¡½ºÇÁ·¹¼Ò.jpg"),
-					new ImageIcon("image/menu/drink/½ºÆä´Ï½¬¿¬À¯Ä«Æä¶ó¶¼.jpg"), new ImageIcon("image/menu/drink/¾ÆÀÌ½ºÅ©¸²Ä«Æä¶ó¶¼.jpg"),
-					new ImageIcon("image/menu/drink/´Ş°í³ªÄ«Æä¶ó¶¼.jpg"), new ImageIcon("image/menu/drink/Äİµåºê·ç.jpg"),
-					new ImageIcon("image/menu/drink/Äİµåºê·ç¶ó¶¼.jpg"), new ImageIcon("image/menu/drink/ÈæÀÓÀÚÄ«Æä¶ó¶¼.jpg"),
-					new ImageIcon("image/menu/drink/Ä«ÇªÄ¡³ë.jpg")};
+			ImageIcon[] img = { new ImageIcon("image/menu/drink/ì•„ë©”ë¦¬ì¹´ë…¸.jpg"), new ImageIcon("image/menu/drink/ì¹´í˜ë¼ë–¼.jpg"),
+					new ImageIcon("image/menu/drink/ì¹´í˜ëª¨ì¹´.jpg"), new ImageIcon("image/menu/drink/ì¹´ë¼ë©œë§ˆë¼ì•„ë˜.jpg"),
+					new ImageIcon("image/menu/drink/ë°”ë‹ë¼ì¹´í˜ë¼ë–¼.jpg"), new ImageIcon("image/menu/drink/ìˆì¹´í˜ë¼ë–¼.jpg"),
+					new ImageIcon("image/menu/drink/ë¡±ë¸”ë™.jpg"), new ImageIcon("image/menu/drink/ì—ìŠ¤í”„ë ˆì†Œ.jpg"),
+					new ImageIcon("image/menu/drink/ìŠ¤í˜ë‹ˆì‰¬ì—°ìœ ì¹´í˜ë¼ë–¼.jpg"), new ImageIcon("image/menu/drink/ì•„ì´ìŠ¤í¬ë¦¼ì¹´í˜ë¼ë–¼.jpg"),
+					new ImageIcon("image/menu/drink/ë‹¬ê³ ë‚˜ì¹´í˜ë¼ë–¼.jpg"), new ImageIcon("image/menu/drink/ì½œë“œë¸Œë£¨.jpg"),
+					new ImageIcon("image/menu/drink/ì½œë“œë¸Œë£¨ë¼ë–¼.jpg"), new ImageIcon("image/menu/drink/í‘ì„ìì¹´í˜ë¼ë–¼.jpg"),
+					new ImageIcon("image/menu/drink/ì¹´í‘¸ì¹˜ë…¸.jpg")};
 
 			for (int i = 0; i < img.length; i++) {
 				icon[i] = img[i].getImage();
@@ -181,7 +181,7 @@ class Panelcoff extends JPanel {
 	public Panelcoff() {
 		setLayout(null);
 		setBackground(new Color(250, 250, 249));
-		MenuBtn mbtn = new MenuBtn();// ¸Ş´º¹öÆ°
+		MenuBtn mbtn = new MenuBtn();// ë©”ë‰´ë²„íŠ¼
 
 		mbtn.setSize(510, 650);
 		mbtn.setLocation(5, 5);
@@ -189,7 +189,7 @@ class Panelcoff extends JPanel {
 		for (int i = 0; i < MBtn.length; i++) {
 			final int index = i;
 
-			MBtn[i].addActionListener(new ActionListener() { // ¸Ş´º ¹öÆ° ´©¸¦ ¶§
+			MBtn[i].addActionListener(new ActionListener() { // ë©”ë‰´ ë²„íŠ¼ ëˆ„ë¥¼ ë•Œ
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -213,12 +213,12 @@ class Paneltea extends JPanel {
 	public int OPflag = 0;
 
 	JButton[] MBtn = new JButton[11];
-	String[] menu = { "·Î¾â¹ĞÅ©Æ¼", "ºí·¢Æ¼", "±×¸°Æ¼¶ó¶¼", "¾ó±×·¹ÀÌ", "¿À·»ÁöÀÚ¸ùÆ¼", "À¯ÀÚ·¹¸óÆ¼", "À×±Û¸®½¬ºê·ºÆÛ½ºÆ®", "Á¦ÁÖÀ¯±â³ó³ìÂ÷", "Ä«¸ğ¸¶ÀÏ", "¾ÖÇÃ¹ÎÆ®Æ¼",
-			"¹ÎÆ®" };
+	String[] menu = { "ë¡œì–„ë°€í¬í‹°", "ë¸”ë™í‹°", "ê·¸ë¦°í‹°ë¼ë–¼", "ì–¼ê·¸ë ˆì´", "ì˜¤ë Œì§€ìëª½í‹°", "ìœ ìë ˆëª¬í‹°", "ì‰ê¸€ë¦¬ì‰¬ë¸Œë ‰í¼ìŠ¤íŠ¸", "ì œì£¼ìœ ê¸°ë†ë…¹ì°¨", "ì¹´ëª¨ë§ˆì¼", "ì• í”Œë¯¼íŠ¸í‹°",
+			"ë¯¼íŠ¸" };
 	int[] price = { 5500, 5100, 5100, 5200, 6100, 6100, 5100, 4800, 5100, 5100, 6100 };
 
-	JTextField tq = new JTextField(30); // ÃÑ ¼ö·®
-	JTextField ts = new JTextField(40); // ÃÑ °¡°İ
+	JTextField tq = new JTextField(30); // ì´ ìˆ˜ëŸ‰
+	JTextField ts = new JTextField(40); // ì´ ê°€ê²©
 
 	JTextField t = new JTextField(10);
 	Image[] icon = new Image[11];
@@ -232,11 +232,11 @@ class Paneltea extends JPanel {
 			setLayout(new GridLayout(1, 1));
 			tjp.setBackground(Color.WHITE);
 			setBackground(Color.WHITE);
-			ImageIcon[] img = { new ImageIcon("image/menu/drink/·Î¾â¹ĞÅ©Æ¼.jpg"), new ImageIcon("image/menu/drink/ºí·¢Æ¼.jpg"),
-					new ImageIcon("image/menu/drink/±×¸°Æ¼¶ó¶¼.jpg"), new ImageIcon("image/menu/drink/¾ó±×·¹ÀÌ.jpg"),
-					new ImageIcon("image/menu/drink/¿À·»ÁöÀÚ¸ùÆ¼.jpg"), new ImageIcon("image/menu/drink/À¯ÀÚ·¹¸óÆ¼.jpg"),
-					new ImageIcon("image/menu/drink/À×±Û¸®½¬ºê·ºÆÛ½ºÆ®.jpg"), new ImageIcon("image/menu/drink/Á¦ÁÖÀ¯±â³ó³ìÂ÷.jpg"),
-					new ImageIcon("image/menu/drink/Ä«¸ğ¸¶ÀÏ.jpg"), new ImageIcon("image/menu/drink/¾ÖÇÃ¹ÎÆ®Æ¼.jpg"), new ImageIcon("image/menu/drink/¹ÎÆ®.jpg") };
+			ImageIcon[] img = { new ImageIcon("image/menu/drink/ë¡œì–„ë°€í¬í‹°.jpg"), new ImageIcon("image/menu/drink/ë¸”ë™í‹°.jpg"),
+					new ImageIcon("image/menu/drink/ê·¸ë¦°í‹°ë¼ë–¼.jpg"), new ImageIcon("image/menu/drink/ì–¼ê·¸ë ˆì´.jpg"),
+					new ImageIcon("image/menu/drink/ì˜¤ë Œì§€ìëª½í‹°.jpg"), new ImageIcon("image/menu/drink/ìœ ìë ˆëª¬í‹°.jpg"),
+					new ImageIcon("image/menu/drink/ì‰ê¸€ë¦¬ì‰¬ë¸Œë ‰í¼ìŠ¤íŠ¸.jpg"), new ImageIcon("image/menu/drink/ì œì£¼ìœ ê¸°ë†ë…¹ì°¨.jpg"),
+					new ImageIcon("image/menu/drink/ì¹´ëª¨ë§ˆì¼.jpg"), new ImageIcon("image/menu/drink/ì• í”Œë¯¼íŠ¸í‹°.jpg"), new ImageIcon("image/menu/drink/ë¯¼íŠ¸.jpg") };
 
 			for (int i = 0; i < img.length; i++) {
 				icon[i] = img[i].getImage();
@@ -263,7 +263,7 @@ class Paneltea extends JPanel {
 	public Paneltea() {
 		setLayout(null);
 		setBackground(new Color(250, 250, 249));
-		MenuBtn mbtn = new MenuBtn();// ¸Ş´º¹öÆ°
+		MenuBtn mbtn = new MenuBtn();// ë©”ë‰´ë²„íŠ¼
 
 		mbtn.setSize(510, 650);
 		mbtn.setLocation(5, 5);
@@ -271,7 +271,7 @@ class Paneltea extends JPanel {
 		for (int i = 0; i < MBtn.length; i++) {
 			final int index = i;
 
-			MBtn[i].addActionListener(new ActionListener() { // ¸Ş´º ¹öÆ° ´©¸¦ ¶§
+			MBtn[i].addActionListener(new ActionListener() { // ë©”ë‰´ ë²„íŠ¼ ëˆ„ë¥¼ ë•Œ
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -295,12 +295,12 @@ class Paneldrink extends JPanel {
 	public int OPflag = 0;
 
 	JButton[] MBtn = new JButton[10];
-	String[] menu = { "°í±¸¸¶¶ó¶¼", "¹ÎÆ®ÃÊÄÚÇÁ¶óÆä", "º¹¼ş¾Æ¿¡ÀÌµå", "»ıµş±â°¡µæÁÖ½º", "Ä¡ÁîÅ©·³ºíµş±â½¦ÀÌÅ©", "¼§±×¸®¾Æ¿¡ÀÌµå", "¹Ù´Ò¶ó¹ĞÅ©½¦ÀÌÅ©", "·¹¸ó¼Å¹ş¿¡ÀÌµå", "¾¦¶ó¶¼",
-			"¸Á°íÇÁ¶óÆä" };
+	String[] menu = { "ê³ êµ¬ë§ˆë¼ë–¼", "ë¯¼íŠ¸ì´ˆì½”í”„ë¼í˜", "ë³µìˆ­ì•„ì—ì´ë“œ", "ìƒë”¸ê¸°ê°€ë“ì£¼ìŠ¤", "ì¹˜ì¦ˆí¬ëŸ¼ë¸”ë”¸ê¸°ì‰ì´í¬", "ìƒ¹ê·¸ë¦¬ì•„ì—ì´ë“œ", "ë°”ë‹ë¼ë°€í¬ì‰ì´í¬", "ë ˆëª¬ì…”ë²—ì—ì´ë“œ", "ì‘¥ë¼ë–¼",
+			"ë§ê³ í”„ë¼í˜" };
 	int[] price = { 5200, 5800, 6000, 6000, 6300, 6000, 5600, 6500, 5500, 5500 };
 
-	JTextField tq = new JTextField(30); // ÃÑ ¼ö·®
-	JTextField ts = new JTextField(40); // ÃÑ °¡°İ
+	JTextField tq = new JTextField(30); // ì´ ìˆ˜ëŸ‰
+	JTextField ts = new JTextField(40); // ì´ ê°€ê²©
 
 	JTextField t = new JTextField(10);
 
@@ -315,11 +315,11 @@ class Paneldrink extends JPanel {
 			setLayout(new GridLayout(1, 1));
 			djp.setBackground(Color.WHITE);
 			setBackground(Color.WHITE);
-			ImageIcon[] img = { new ImageIcon("image/menu/drink/°í±¸¸¶¶ó¶¼.jpg"), new ImageIcon("image/menu/drink/¹ÎÆ®ÃÊÄÚÇÁ¶óÆä.jpg"),
-					new ImageIcon("image/menu/drink/º¹¼ş¾Æ¿¡ÀÌµå.jpg"), new ImageIcon("image/menu/drink/»ıµş±â°¡µæÁÖ½º.jpg"),
-					new ImageIcon("image/menu/drink/Ä¡ÁîÅ©·³ºíµş±â½¦ÀÌÅ©.jpg"), new ImageIcon("image/menu/drink/¼§±×¸®¾Æ¿¡ÀÌµå.jpg"),
-					new ImageIcon("image/menu/drink/¹Ù´Ò¶ó¹ĞÅ©½¦ÀÌÅ©.jpg"), new ImageIcon("image/menu/drink/·¹¸ó¼Å¹ş¿¡ÀÌµå.jpg"),
-					new ImageIcon("image/menu/drink/¾¦¶ó¶¼.jpg"), new ImageIcon("image/menu/drink/¸Á°íÇÁ¶óÆä.jpg") };
+			ImageIcon[] img = { new ImageIcon("image/menu/drink/ê³ êµ¬ë§ˆë¼ë–¼.jpg"), new ImageIcon("image/menu/drink/ë¯¼íŠ¸ì´ˆì½”í”„ë¼í˜.jpg"),
+					new ImageIcon("image/menu/drink/ë³µìˆ­ì•„ì—ì´ë“œ.jpg"), new ImageIcon("image/menu/drink/ìƒë”¸ê¸°ê°€ë“ì£¼ìŠ¤.jpg"),
+					new ImageIcon("image/menu/drink/ì¹˜ì¦ˆí¬ëŸ¼ë¸”ë”¸ê¸°ì‰ì´í¬.jpg"), new ImageIcon("image/menu/drink/ìƒ¹ê·¸ë¦¬ì•„ì—ì´ë“œ.jpg"),
+					new ImageIcon("image/menu/drink/ë°”ë‹ë¼ë°€í¬ì‰ì´í¬.jpg"), new ImageIcon("image/menu/drink/ë ˆëª¬ì…”ë²—ì—ì´ë“œ.jpg"),
+					new ImageIcon("image/menu/drink/ì‘¥ë¼ë–¼.jpg"), new ImageIcon("image/menu/drink/ë§ê³ í”„ë¼í˜.jpg") };
 
 			for (int i = 0; i < img.length; i++) {
 				icon[i] = img[i].getImage();
@@ -346,7 +346,7 @@ class Paneldrink extends JPanel {
 	public Paneldrink() {
 		setLayout(null);
 		setBackground(new Color(250, 250, 249));
-		MenuBtn mbtn = new MenuBtn();// ¸Ş´º¹öÆ°
+		MenuBtn mbtn = new MenuBtn();// ë©”ë‰´ë²„íŠ¼
 
 		mbtn.setSize(510, 650);
 		mbtn.setLocation(5, 5);
@@ -354,7 +354,7 @@ class Paneldrink extends JPanel {
 		for (int i = 0; i < MBtn.length; i++) {
 			final int index = i;
 
-			MBtn[i].addActionListener(new ActionListener() { // ¸Ş´º ¹öÆ° ´©¸¦ ¶§
+			MBtn[i].addActionListener(new ActionListener() { // ë©”ë‰´ ë²„íŠ¼ ëˆ„ë¥¼ ë•Œ
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -378,11 +378,11 @@ class Panelicecream extends JPanel {
 	public int OPflag = 0;
 
 	JButton[] MBtn = new JButton[4];
-	String[] menu = { "¹ĞÅ©¼ÒÇÁÆ®¾ÆÆ÷°¡Åä", "¹Ù´Ò¶ó¾ÆÆ÷°¡Åä", "ÄÅ¼ÒÇÁÆ®¾ÆÀÌ½ºÅ©¸²", "ÄÜ¼ÒÇÁÆ®¾ÆÀÌ½ºÅ©¸²" };
+	String[] menu = { "ë°€í¬ì†Œí”„íŠ¸ì•„í¬ê°€í† ", "ë°”ë‹ë¼ì•„í¬ê°€í† ", "ì»µì†Œí”„íŠ¸ì•„ì´ìŠ¤í¬ë¦¼", "ì½˜ì†Œí”„íŠ¸ì•„ì´ìŠ¤í¬ë¦¼" };
 	int[] price = { 5500, 5500, 3500, 3500 };
 
-	JTextField tq = new JTextField(30); // ÃÑ ¼ö·®
-	JTextField ts = new JTextField(40); // ÃÑ °¡°İ
+	JTextField tq = new JTextField(30); // ì´ ìˆ˜ëŸ‰
+	JTextField ts = new JTextField(40); // ì´ ê°€ê²©
 
 	JTextField t = new JTextField(10);
 
@@ -397,9 +397,9 @@ class Panelicecream extends JPanel {
 			setLayout(new GridLayout(1, 1));
 			ijp.setBackground(Color.WHITE);
 			setBackground(Color.WHITE);
-			ImageIcon[] img = { new ImageIcon("image/menu/icecream/¹ĞÅ©¼ÒÇÁÆ®¾ÆÆ÷°¡Åä.jpg"), 
-					new ImageIcon("image/menu/icecream/¹Ù´Ò¶ó¾ÆÆ÷°¡Åä.jpg"), new ImageIcon("image/menu/icecream/ÄÅ¼ÒÇÁÆ®¾ÆÀÌ½ºÅ©¸².jpg"), 
-					new ImageIcon("image/menu/icecream/ÄÜ¼ÒÇÁÆ®¾ÆÀÌ½ºÅ©¸².jpg") };
+			ImageIcon[] img = { new ImageIcon("image/menu/icecream/ë°€í¬ì†Œí”„íŠ¸ì•„í¬ê°€í† .jpg"), 
+					new ImageIcon("image/menu/icecream/ë°”ë‹ë¼ì•„í¬ê°€í† .jpg"), new ImageIcon("image/menu/icecream/ì»µì†Œí”„íŠ¸ì•„ì´ìŠ¤í¬ë¦¼.jpg"), 
+					new ImageIcon("image/menu/icecream/ì½˜ì†Œí”„íŠ¸ì•„ì´ìŠ¤í¬ë¦¼.jpg") };
 
 			for (int i = 0; i < img.length; i++) {
 				icon[i] = img[i].getImage();
@@ -426,7 +426,7 @@ class Panelicecream extends JPanel {
 	public Panelicecream() {
 		setLayout(null);
 		setBackground(new Color(250, 250, 249));
-		MenuBtn mbtn = new MenuBtn();// ¸Ş´º¹öÆ°
+		MenuBtn mbtn = new MenuBtn();// ë©”ë‰´ë²„íŠ¼
 
 		mbtn.setSize(510, 650);
 		mbtn.setLocation(5, 5);
@@ -434,7 +434,7 @@ class Panelicecream extends JPanel {
 		for (int i = 0; i < MBtn.length; i++) {
 			final int index = i;
 
-			MBtn[i].addActionListener(new ActionListener() { // ¸Ş´º ¹öÆ° ´©¸¦ ¶§
+			MBtn[i].addActionListener(new ActionListener() { // ë©”ë‰´ ë²„íŠ¼ ëˆ„ë¥¼ ë•Œ
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -456,12 +456,12 @@ class Panelwholecake extends JPanel {
 	public int OPflag = 0;
 
 	JButton[] MBtn = new JButton[13];
-	String[] menu = { "½ºÆ®·Îº£¸®Ä¡Áî¹Ù½ºÄÏ", "»ıµş±â°¡µæÅ¸¸£Æ®", "Æ®¸®ÇÃº£¸®»ıÅ©¸²", "¸¶½ºÄ«Æ÷³×»ıÅ©¸²(¹Í½ºµåº£¸®)", "½ºÆ®·Îº£¸®ÃÊÄİ¸´»ıÅ©¸²", "¸¶½ºÄ«Æ÷³×Æ¼¶ó¹Ì¼ö", "´º¿åÄ¡Áî",
-			"Æ®¸®ÇÃ¼îÄİ¶ó¹«½º", "¸ùºí¶ûº¸´Ì¹ãÄÉÀÌÅ©", "ÄıÁîÄ³·Ô", "ÆÄÆ¼ÆÑÆ¼¶ó¹Ì¼ö", "ÆÄÆ¼ÆÑ¾ÆÀÌ½º¹Ú½º", "ÆÄÆ¼ÆÑ½ºÆ®·Îº£¸®ÃÊÄİ¸´»ıÅ©¸²" };
+	String[] menu = { "ìŠ¤íŠ¸ë¡œë² ë¦¬ì¹˜ì¦ˆë°”ìŠ¤ì¼“", "ìƒë”¸ê¸°ê°€ë“íƒ€ë¥´íŠ¸", "íŠ¸ë¦¬í”Œë² ë¦¬ìƒí¬ë¦¼", "ë§ˆìŠ¤ì¹´í¬ë„¤ìƒí¬ë¦¼(ë¯¹ìŠ¤ë“œë² ë¦¬)", "ìŠ¤íŠ¸ë¡œë² ë¦¬ì´ˆì½œë¦¿ìƒí¬ë¦¼", "ë§ˆìŠ¤ì¹´í¬ë„¤í‹°ë¼ë¯¸ìˆ˜", "ë‰´ìš•ì¹˜ì¦ˆ",
+			"íŠ¸ë¦¬í”Œì‡¼ì½œë¼ë¬´ìŠ¤", "ëª½ë¸”ë‘ë³´ëŠ¬ë°¤ì¼€ì´í¬", "í€¸ì¦ˆìºë¡¯", "íŒŒí‹°íŒ©í‹°ë¼ë¯¸ìˆ˜", "íŒŒí‹°íŒ©ì•„ì´ìŠ¤ë°•ìŠ¤", "íŒŒí‹°íŒ©ìŠ¤íŠ¸ë¡œë² ë¦¬ì´ˆì½œë¦¿ìƒí¬ë¦¼" };
 	int[] price = { 36000, 38000, 33000, 34000, 35000, 35000, 35000, 34000, 34000, 34000, 36600, 36600, 37800 };
 
-	JTextField tq = new JTextField(30); // ÃÑ ¼ö·®
-	JTextField ts = new JTextField(40); // ÃÑ °¡°İ
+	JTextField tq = new JTextField(30); // ì´ ìˆ˜ëŸ‰
+	JTextField ts = new JTextField(40); // ì´ ê°€ê²©
 
 	JTextField t = new JTextField(10);
 	Image[] icon = new Image[13];
@@ -475,14 +475,14 @@ class Panelwholecake extends JPanel {
 			setLayout(new GridLayout(1, 1));
 			wjp.setBackground(Color.WHITE);
 			setBackground(Color.WHITE);
-			ImageIcon[] img = { new ImageIcon("image/menu/cake/½ºÆ®·Îº£¸®Ä¡Áî¹Ù½ºÄÏ.jpg"),
-					new ImageIcon("image/menu/cake/»ıµş±â°¡µæÅ¸¸£Æ®.jpg"), new ImageIcon("image/menu/cake/Æ®¸®ÇÃº£¸®»ıÅ©¸².jpg"),
-					new ImageIcon("image/menu/cake/¸¶½ºÄ«Æ÷³×»ıÅ©¸²(¹Í½ºµåº£¸®).jpg"),
-					new ImageIcon("image/menu/cake/½ºÆ®·Îº£¸®ÃÊÄİ¸´»ıÅ©¸².jpg"), new ImageIcon("image/menu/cake/¸¶½ºÄ«Æ÷³×Æ¼¶ó¹Ì¼ö.jpg"),
-					new ImageIcon("image/menu/cake/´º¿åÄ¡Áî.jpg"), new ImageIcon("image/menu/cake/Æ®¸®ÇÃ¼îÄİ¶ó¹«½º.jpg"),
-					new ImageIcon("image/menu/cake/¸ùºí¶ûº¸´Ì¹ãÄÉÀÌÅ©.jpg"), new ImageIcon("image/menu/cake/ÄıÁîÄ³·Ô.jpg"),
-					new ImageIcon("image/menu/cake/ÆÄÆ¼ÆÑÆ¼¶ó¹Ì¼ö.jpg"), new ImageIcon("image/menu/cake/ÆÄÆ¼ÆÑ¾ÆÀÌ½º¹Ú½º.jpg"),
-					new ImageIcon("image/menu/cake/ÆÄÆ¼ÆÑ½ºÆ®·Îº£¸®ÃÊÄİ¸´»ıÅ©¸².jpg") };
+			ImageIcon[] img = { new ImageIcon("image/menu/cake/ìŠ¤íŠ¸ë¡œë² ë¦¬ì¹˜ì¦ˆë°”ìŠ¤ì¼“.jpg"),
+					new ImageIcon("image/menu/cake/ìƒë”¸ê¸°ê°€ë“íƒ€ë¥´íŠ¸.jpg"), new ImageIcon("image/menu/cake/íŠ¸ë¦¬í”Œë² ë¦¬ìƒí¬ë¦¼.jpg"),
+					new ImageIcon("image/menu/cake/ë§ˆìŠ¤ì¹´í¬ë„¤ìƒí¬ë¦¼(ë¯¹ìŠ¤ë“œë² ë¦¬).jpg"),
+					new ImageIcon("image/menu/cake/ìŠ¤íŠ¸ë¡œë² ë¦¬ì´ˆì½œë¦¿ìƒí¬ë¦¼.jpg"), new ImageIcon("image/menu/cake/ë§ˆìŠ¤ì¹´í¬ë„¤í‹°ë¼ë¯¸ìˆ˜.jpg"),
+					new ImageIcon("image/menu/cake/ë‰´ìš•ì¹˜ì¦ˆ.jpg"), new ImageIcon("image/menu/cake/íŠ¸ë¦¬í”Œì‡¼ì½œë¼ë¬´ìŠ¤.jpg"),
+					new ImageIcon("image/menu/cake/ëª½ë¸”ë‘ë³´ëŠ¬ë°¤ì¼€ì´í¬.jpg"), new ImageIcon("image/menu/cake/í€¸ì¦ˆìºë¡¯.jpg"),
+					new ImageIcon("image/menu/cake/íŒŒí‹°íŒ©í‹°ë¼ë¯¸ìˆ˜.jpg"), new ImageIcon("image/menu/cake/íŒŒí‹°íŒ©ì•„ì´ìŠ¤ë°•ìŠ¤.jpg"),
+					new ImageIcon("image/menu/cake/íŒŒí‹°íŒ©ìŠ¤íŠ¸ë¡œë² ë¦¬ì´ˆì½œë¦¿ìƒí¬ë¦¼.jpg") };
 
 			for (int i = 0; i < img.length; i++) {
 				icon[i] = img[i].getImage();
@@ -509,7 +509,7 @@ class Panelwholecake extends JPanel {
 	public Panelwholecake() {
 		setLayout(null);
 		setBackground(new Color(250, 250, 249));
-		MenuBtn mbtn = new MenuBtn();// ¸Ş´º¹öÆ°
+		MenuBtn mbtn = new MenuBtn();// ë©”ë‰´ë²„íŠ¼
 
 		mbtn.setSize(510, 650);
 		mbtn.setLocation(5, 5);
@@ -517,7 +517,7 @@ class Panelwholecake extends JPanel {
 		for (int i = 0; i < MBtn.length; i++) {
 			final int index = i;
 
-			MBtn[i].addActionListener(new ActionListener() { // ¸Ş´º ¹öÆ° ´©¸¦ ¶§
+			MBtn[i].addActionListener(new ActionListener() { // ë©”ë‰´ ë²„íŠ¼ ëˆ„ë¥¼ ë•Œ
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -541,12 +541,12 @@ class Panelshortcake extends JPanel {
 	public int OPflag = 0;
 
 	JButton[] MBtn = new JButton[13];
-	String[] menu = { "µş±â»ıÅ©¸²Ä¡Áî¼öÇÃ·¹", "¹ĞÅ©»ıÅ©¸²ÃÊÄİ¸´¼öÇÃ·¹", "P.»ıµş±â°¡µæÅ¸¸£Æ®", "¶°¸Ô´Â½ºÆ®·Îº£¸®ÃÊÄİ¸´»ıÅ©¸²", "¶°¸Ô´Â¾ÆÀÌ½º¹Ú½º", "¶°¸Ô´Â°í±¸¸¶¹ĞÅ©»ıÅ©¸²",
-			"»ıÅ©¸²¼ÒÇÁÆ®½¬Æù", "P.Æ®¸®ÇÃº£¸®»ıÅ©¸²", "P.·¹µåº§ºª", "P.ÄıÁîÄ³·Ô", "P.Å¬·¡½Ä°¡Åä¼îÄİ¶ó", "P.¸ğ¾î´íÄíÅ°¾ØÅ©¸²", "P.±×·ò¿¡¸£Ä¡Áî¹«½º" };
+	String[] menu = { "ë”¸ê¸°ìƒí¬ë¦¼ì¹˜ì¦ˆìˆ˜í”Œë ˆ", "ë°€í¬ìƒí¬ë¦¼ì´ˆì½œë¦¿ìˆ˜í”Œë ˆ", "P.ìƒë”¸ê¸°ê°€ë“íƒ€ë¥´íŠ¸", "ë– ë¨¹ëŠ”ìŠ¤íŠ¸ë¡œë² ë¦¬ì´ˆì½œë¦¿ìƒí¬ë¦¼", "ë– ë¨¹ëŠ”ì•„ì´ìŠ¤ë°•ìŠ¤", "ë– ë¨¹ëŠ”ê³ êµ¬ë§ˆë°€í¬ìƒí¬ë¦¼",
+			"ìƒí¬ë¦¼ì†Œí”„íŠ¸ì‰¬í°", "P.íŠ¸ë¦¬í”Œë² ë¦¬ìƒí¬ë¦¼", "P.ë ˆë“œë²¨ë²³", "P.í€¸ì¦ˆìºë¡¯", "P.í´ë˜ì‹ê°€í† ì‡¼ì½œë¼", "P.ëª¨ì–´ëŒ„ì¿ í‚¤ì•¤í¬ë¦¼", "P.ê·¸ë¤¼ì—ë¥´ì¹˜ì¦ˆë¬´ìŠ¤" };
 	int[] price = { 9500, 9500, 7500, 6300, 6100, 6100, 6500, 6200, 6500, 6500, 6500, 5900, 6200 };
 
-	JTextField tq = new JTextField(30); // ÃÑ ¼ö·®
-	JTextField ts = new JTextField(40); // ÃÑ °¡°İ
+	JTextField tq = new JTextField(30); // ì´ ìˆ˜ëŸ‰
+	JTextField ts = new JTextField(40); // ì´ ê°€ê²©
 
 	JTextField t = new JTextField(10);
 	Image[] icon = new Image[13];
@@ -560,13 +560,13 @@ class Panelshortcake extends JPanel {
 			setLayout(new GridLayout(1, 1));
 			sjp.setBackground(Color.WHITE);
 			setBackground(Color.WHITE);
-			ImageIcon[] img = { new ImageIcon("image/menu/cake/µş±â»ıÅ©¸²Ä¡Áî¼öÇÃ·¹.jpg"),
-					new ImageIcon("image/menu/cake/¹ĞÅ©»ıÅ©¸²ÃÊÄİ¸´¼öÇÃ·¹.jpg"), new ImageIcon("image/menu/cake/P.»ıµş±â°¡µæÅ¸¸£Æ®.jpg"),
-					new ImageIcon("image/menu/cake/¶°¸Ô´Â½ºÆ®·Îº£¸®ÃÊÄİ¸´»ıÅ©¸².jpg"), new ImageIcon("image/menu/cake/¶°¸Ô´Â¾ÆÀÌ½º¹Ú½º.jpg"),
-					new ImageIcon("image/menu/cake/¶°¸Ô´Â°í±¸¸¶¹ĞÅ©»ıÅ©¸².jpg"), new ImageIcon("image/menu/cake/»ıÅ©¸²¼ÒÇÁÆ®½¬Æù.jpg"),
-					new ImageIcon("image/menu/cake/P.Æ®¸®ÇÃº£¸®»ıÅ©¸².jpg"), new ImageIcon("image/menu/cake/P.·¹µåº§ºª.jpg"),
-					new ImageIcon("image/menu/cake/P.ÄıÁîÄ³·Ô.jpg"), new ImageIcon("image/menu/cake/P.Å¬·¡½Ä°¡Åä¼îÄİ¶ó.jpg"),
-					new ImageIcon("image/menu/cake/P.¸ğ¾î´íÄíÅ°¾ØÅ©¸².jpg"), new ImageIcon("image/menu/cake/P.±×·ò¿¡¸£Ä¡Áî¹«½º.jpg") };
+			ImageIcon[] img = { new ImageIcon("image/menu/cake/ë”¸ê¸°ìƒí¬ë¦¼ì¹˜ì¦ˆìˆ˜í”Œë ˆ.jpg"),
+					new ImageIcon("image/menu/cake/ë°€í¬ìƒí¬ë¦¼ì´ˆì½œë¦¿ìˆ˜í”Œë ˆ.jpg"), new ImageIcon("image/menu/cake/P.ìƒë”¸ê¸°ê°€ë“íƒ€ë¥´íŠ¸.jpg"),
+					new ImageIcon("image/menu/cake/ë– ë¨¹ëŠ”ìŠ¤íŠ¸ë¡œë² ë¦¬ì´ˆì½œë¦¿ìƒí¬ë¦¼.jpg"), new ImageIcon("image/menu/cake/ë– ë¨¹ëŠ”ì•„ì´ìŠ¤ë°•ìŠ¤.jpg"),
+					new ImageIcon("image/menu/cake/ë– ë¨¹ëŠ”ê³ êµ¬ë§ˆë°€í¬ìƒí¬ë¦¼.jpg"), new ImageIcon("image/menu/cake/ìƒí¬ë¦¼ì†Œí”„íŠ¸ì‰¬í°.jpg"),
+					new ImageIcon("image/menu/cake/P.íŠ¸ë¦¬í”Œë² ë¦¬ìƒí¬ë¦¼.jpg"), new ImageIcon("image/menu/cake/P.ë ˆë“œë²¨ë²³.jpg"),
+					new ImageIcon("image/menu/cake/P.í€¸ì¦ˆìºë¡¯.jpg"), new ImageIcon("image/menu/cake/P.í´ë˜ì‹ê°€í† ì‡¼ì½œë¼.jpg"),
+					new ImageIcon("image/menu/cake/P.ëª¨ì–´ëŒ„ì¿ í‚¤ì•¤í¬ë¦¼.jpg"), new ImageIcon("image/menu/cake/P.ê·¸ë¤¼ì—ë¥´ì¹˜ì¦ˆë¬´ìŠ¤.jpg") };
 
 			for (int i = 0; i < img.length; i++) {
 				icon[i] = img[i].getImage();
@@ -593,7 +593,7 @@ class Panelshortcake extends JPanel {
 	public Panelshortcake() {
 		setLayout(null);
 		setBackground(new Color(250, 250, 249));
-		MenuBtn mbtn = new MenuBtn();// ¸Ş´º¹öÆ°
+		MenuBtn mbtn = new MenuBtn();// ë©”ë‰´ë²„íŠ¼
 
 		mbtn.setSize(510, 650);
 		mbtn.setLocation(5, 5);
@@ -601,7 +601,7 @@ class Panelshortcake extends JPanel {
 		for (int i = 0; i < MBtn.length; i++) {
 			final int index = i;
 
-			MBtn[i].addActionListener(new ActionListener() { // ¸Ş´º ¹öÆ° ´©¸¦ ¶§
+			MBtn[i].addActionListener(new ActionListener() { // ë©”ë‰´ ë²„íŠ¼ ëˆ„ë¥¼ ë•Œ
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -625,12 +625,12 @@ class Paneldessert extends JPanel {
 	public int OPflag = 0;
 
 	JButton[] MBtn = new JButton[14];
-	String[] menu = { "µş±â¹Ù´Ò¶óÇÁ·ÎÁğÄÉÀÌÅ©", "¾ÆÀÌ½º¹Ú½ºÇÁ·ÎÁğÄÉÀÌÅ©", "ÃÊÄİ¸´Å©·ÎÄ²·Õ½´", "¹Ù´Ò¶óÅ©·ÎÄ²·Õ½´", "Å©·½½´(ÃÊÄİ¸´)", "Å©·½½´(¹Ù´Ò¶ó)", "Åõ½æ¸¶Ä«·Õ¼¼Æ®(6°³ÀÔ)",
-			"Åõ½æ¸¶Ä«·Õ¼¼Æ®(12°³ÀÔ)", "º§Áö¾ÈÃÊÄİ¸´¸¶Ä«·Õ", "¸¶´Ù°¡½ºÄ«¸£¹Ù´Ò¶ó¸¶Ä«·Õ", "¸Á°íÆ®·ÎÇÇÄÃ¸¶Ä«·Õ", "ÇÇ½ºÅ¸Ä¡¿À¸¶Ä«·Õ", "ºí·çº£¸®¸¶Ä«·Õ", "»êµş±â¸¶Ä«·Õ" };
+	String[] menu = { "ë”¸ê¸°ë°”ë‹ë¼í”„ë¡œì¦Œì¼€ì´í¬", "ì•„ì´ìŠ¤ë°•ìŠ¤í”„ë¡œì¦Œì¼€ì´í¬", "ì´ˆì½œë¦¿í¬ë¡œìº‰ë¡±ìŠˆ", "ë°”ë‹ë¼í¬ë¡œìº‰ë¡±ìŠˆ", "í¬ë ˜ìŠˆ(ì´ˆì½œë¦¿)", "í¬ë ˜ìŠˆ(ë°”ë‹ë¼)", "íˆ¬ì¸ë§ˆì¹´ë¡±ì„¸íŠ¸(6ê°œì…)",
+			"íˆ¬ì¸ë§ˆì¹´ë¡±ì„¸íŠ¸(12ê°œì…)", "ë²¨ì§€ì•ˆì´ˆì½œë¦¿ë§ˆì¹´ë¡±", "ë§ˆë‹¤ê°€ìŠ¤ì¹´ë¥´ë°”ë‹ë¼ë§ˆì¹´ë¡±", "ë§ê³ íŠ¸ë¡œí”¼ì»¬ë§ˆì¹´ë¡±", "í”¼ìŠ¤íƒ€ì¹˜ì˜¤ë§ˆì¹´ë¡±", "ë¸”ë£¨ë² ë¦¬ë§ˆì¹´ë¡±", "ì‚°ë”¸ê¸°ë§ˆì¹´ë¡±" };
 	int[] price = { 3500, 3500, 4700, 4700, 5100, 5100, 14500, 28000, 2200, 2200, 2200, 2200, 2200, 2200 };
 
-	JTextField tq = new JTextField(30); // ÃÑ ¼ö·®
-	JTextField ts = new JTextField(40); // ÃÑ °¡°İ
+	JTextField tq = new JTextField(30); // ì´ ìˆ˜ëŸ‰
+	JTextField ts = new JTextField(40); // ì´ ê°€ê²©
 
 	JTextField t = new JTextField(10);
 	Image[] icon = new Image[14];
@@ -644,14 +644,14 @@ class Paneldessert extends JPanel {
 			setLayout(new GridLayout(1, 1));
 			dejp.setBackground(Color.WHITE);
 			setBackground(Color.WHITE);
-			ImageIcon[] img = { new ImageIcon("image/menu/cake/µş±â¹Ù´Ò¶óÇÁ·ÎÁğÄÉÀÌÅ©.jpg"),
-					new ImageIcon("image/menu/cake/¾ÆÀÌ½º¹Ú½ºÇÁ·ÎÁğÄÉÀÌÅ©.jpg"), new ImageIcon("image/menu/cake/ÃÊÄİ¸´Å©·ÎÄ²·Õ½´.jpg"),
-					new ImageIcon("image/menu/cake/¹Ù´Ò¶óÅ©·ÎÄ²·Õ½´.jpg"), new ImageIcon("image/menu/cake/Å©·½½´(ÃÊÄİ¸´).jpg"),
-					new ImageIcon("image/menu/cake/Å©·½½´(¹Ù´Ò¶ó).jpg"), new ImageIcon("image/menu/cake/Åõ½æ¸¶Ä«·Õ¼¼Æ®(6°³ÀÔ).jpg"),
-					new ImageIcon("image/menu/cake/Åõ½æ¸¶Ä«·Õ¼¼Æ®(12°³ÀÔ).jpg"), new ImageIcon("image/menu/cake/º§Áö¾ÈÃÊÄİ¸´¸¶Ä«·Õ.jpg"),
-					new ImageIcon("image/menu/cake/¸¶´Ù°¡½ºÄ«¸£¹Ù´Ò¶ó¸¶Ä«·Õ.jpg"), new ImageIcon("image/menu/cake/¸Á°íÆ®·ÎÇÇÄÃ¸¶Ä«·Õ.jpg"),
-					new ImageIcon("image/menu/cake/ÇÇ½ºÅ¸Ä¡¿À¸¶Ä«·Õ.jpg"), new ImageIcon("image/menu/cake/ºí·çº£¸®¸¶Ä«·Õ.jpg"),
-					new ImageIcon("image/menu/cake/»êµş±â¸¶Ä«·Õ.jpg") };
+			ImageIcon[] img = { new ImageIcon("image/menu/cake/ë”¸ê¸°ë°”ë‹ë¼í”„ë¡œì¦Œì¼€ì´í¬.jpg"),
+					new ImageIcon("image/menu/cake/ì•„ì´ìŠ¤ë°•ìŠ¤í”„ë¡œì¦Œì¼€ì´í¬.jpg"), new ImageIcon("image/menu/cake/ì´ˆì½œë¦¿í¬ë¡œìº‰ë¡±ìŠˆ.jpg"),
+					new ImageIcon("image/menu/cake/ë°”ë‹ë¼í¬ë¡œìº‰ë¡±ìŠˆ.jpg"), new ImageIcon("image/menu/cake/í¬ë ˜ìŠˆ(ì´ˆì½œë¦¿).jpg"),
+					new ImageIcon("image/menu/cake/í¬ë ˜ìŠˆ(ë°”ë‹ë¼).jpg"), new ImageIcon("image/menu/cake/íˆ¬ì¸ë§ˆì¹´ë¡±ì„¸íŠ¸(6ê°œì…).jpg"),
+					new ImageIcon("image/menu/cake/íˆ¬ì¸ë§ˆì¹´ë¡±ì„¸íŠ¸(12ê°œì…).jpg"), new ImageIcon("image/menu/cake/ë²¨ì§€ì•ˆì´ˆì½œë¦¿ë§ˆì¹´ë¡±.jpg"),
+					new ImageIcon("image/menu/cake/ë§ˆë‹¤ê°€ìŠ¤ì¹´ë¥´ë°”ë‹ë¼ë§ˆì¹´ë¡±.jpg"), new ImageIcon("image/menu/cake/ë§ê³ íŠ¸ë¡œí”¼ì»¬ë§ˆì¹´ë¡±.jpg"),
+					new ImageIcon("image/menu/cake/í”¼ìŠ¤íƒ€ì¹˜ì˜¤ë§ˆì¹´ë¡±.jpg"), new ImageIcon("image/menu/cake/ë¸”ë£¨ë² ë¦¬ë§ˆì¹´ë¡±.jpg"),
+					new ImageIcon("image/menu/cake/ì‚°ë”¸ê¸°ë§ˆì¹´ë¡±.jpg") };
 
 			for (int i = 0; i < img.length; i++) {
 				icon[i] = img[i].getImage();
@@ -678,7 +678,7 @@ class Paneldessert extends JPanel {
 	public Paneldessert() {
 		setLayout(null);
 		setBackground(new Color(250, 250, 249));
-		MenuBtn mbtn = new MenuBtn();// ¸Ş´º¹öÆ°
+		MenuBtn mbtn = new MenuBtn();// ë©”ë‰´ë²„íŠ¼
 
 		mbtn.setSize(510, 650);
 		mbtn.setLocation(5, 5);
@@ -686,7 +686,7 @@ class Paneldessert extends JPanel {
 		for (int i = 0; i < MBtn.length; i++) {
 			final int index = i;
 
-			MBtn[i].addActionListener(new ActionListener() { // ¸Ş´º ¹öÆ° ´©¸¦ ¶§
+			MBtn[i].addActionListener(new ActionListener() { // ë©”ë‰´ ë²„íŠ¼ ëˆ„ë¥¼ ë•Œ
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
